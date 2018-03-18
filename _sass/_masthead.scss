@@ -1,0 +1,32 @@
+// Super small header above the content for site name and short description.
+
+.masthead {
+  padding: 3rem 0 1rem;
+
+  &-title {
+    margin-top: 0;
+    margin-bottom: 0;
+    color: $gray-4;
+    letter-spacing: 14px;
+  }
+
+  &-squid-image {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 160px;
+  }
+
+  &-link-container {
+    margin: 0 auto;
+    text-align: center;
+    padding: 4rem 0;
+
+    a {
+      padding: 0 10px;
+    }
+  }
+
+  .current {
+    text-decoration: underline;
+  }
+}
