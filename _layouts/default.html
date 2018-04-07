@@ -6,7 +6,7 @@
   <body>
 
     {% assign current = page.url | downcase | split: '/' %}
-<!-- 
+<!--
     <nav>
       <ul>
         <li><a href='/about' {% if current[1] == 'about' %}class='current'{% endif %}>about</a></li>
@@ -25,7 +25,8 @@
         </a>
         <div class="masthead-link-container">
           <a href="{{ site.baseurl }}/about" title="About" {% if current[1] == 'about' %}class='current'{% endif %}>About</a>
-          <a href="{{ site.baseurl }}/blog" title="Blog" {% if current[1] == 'blog' %}class='current'{% endif %}>Blog</a>
+          <a href="{{ site.baseurl }}/workshops" title="Workshops" {% if current[1] == 'workshops' %}class='current'{% endif %}>Workshops</a>
+          <a href="{{ site.baseurl }}/podcasts" title="Podcasts" {% if current[1] == 'podcasts' %}class='current'{% endif %}>Podcasts</a>
           <a href="{{ site.baseurl }}/jobs" title="Jobs" {% if current[1] == 'jobs' %}class='current'{% endif %}>Jobs</a>
           <a href="{{ site.baseurl }}/subscribe" title="Subscribe" {% if current[1] == 'subscribe' %}class='current'{% endif %}>Subscribe</a>
         </div>
