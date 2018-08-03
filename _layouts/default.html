@@ -20,15 +20,16 @@
         <a href="{{ site.baseurl }}/" title="Home">
           <img
             src="{{ site.baseurl }}/public/cr-squid-colorful.svg"
-            alt="a small squid with one eye and many tenticles"
+            alt="a small and noble squid with one eye and many tenticles"
             class="masthead-squid-image">
         </a>
         <div class="masthead-link-container">
           <a href="{{ site.baseurl }}/about" title="About" {% if current[1] == 'about' %}class='current'{% endif %}>About</a>
           <a href="{{ site.baseurl }}/workshops" title="Workshops" {% if current[1] == 'workshops' %}class='current'{% endif %}>Workshops</a>
           <a href="{{ site.baseurl }}/podcasts" title="Podcasts" {% if current[1] == 'podcasts' %}class='current'{% endif %}>Podcasts</a>
+          <a href="{{ site.baseurl }}/validator" title="Validator" {% if current[1] == 'validator' %}class='current'{% endif %}>Validator</a>
           <a href="{{ site.baseurl }}/jobs" title="Jobs" {% if current[1] == 'jobs' %}class='current'{% endif %}>Jobs</a>
-          <a href="{{ site.baseurl }}/subscribe" title="Subscribe" {% if current[1] == 'subscribe' %}class='current'{% endif %}>Subscribe</a>
+          <!-- <a href="{{ site.baseurl }}/subscribe" title="Subscribe" {% if current[1] == 'subscribe' %}class='current'{% endif %}>Subscribe</a> -->
         </div>
       </header>
 
@@ -40,18 +41,28 @@
         <small>
           &copy; <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time>. All rights reserved.
         </small>
+        <!-- <a href="{{ site.baseurl }}/subscribe" title="Subscribe" {% if current[1] == 'subscribe' %}class='current'{% endif %}>Subscribe</a> -->
       </footer>
     </div>
 
     {% if site.analytics_id %}
      <script>
-       (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-       (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-       m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-       })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-       ga('create', '{{ site.analytics_id }}', 'auto');
-       ga('send', 'pageview');
-     </script>
+     (function(i, s, o, g, r, a, m) {
+  i["GoogleAnalyticsObject"] = r;
+  (i[r] =
+    i[r] ||
+    function() {
+      (i[r].q = i[r].q || []).push(arguments);
+    }),
+    (i[r].l = 1 * new Date());
+  (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
+  a.async = 1;
+  a.src = g;
+  m.parentNode.insertBefore(a, m);
+})(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
+ga("create", "{{ site.analytics_id }}", "auto");
+ga("send", "pageview");
+</script>
     {% endif %}
   </body>
 </html>
