@@ -3,9 +3,12 @@ layout: page
 title: Cosmos Validator
 ---
 
+The Cephalopod Equipment validator runs secure and redundant hardware with a
+Yubikey HSM in a Tier 3 Datacenter.
+
 ## Active Since Genesis
 
-The Cephalopod Equipment validator was a proud participant in the gentx ceremony
+The Cephalopod Equipment validator was a proud [participant in the gentx ceremony](https://github.com/cosmos/launch/blob/master/gentx/cec.json)
 of the Cosmos Hub and has been an active validator since the genesis block.
 
 We recently upgraded our infrastructure and cycled validator signing and
