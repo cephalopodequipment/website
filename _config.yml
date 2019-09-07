@@ -2,9 +2,9 @@
 permalink:           pretty
 
 # Setup
-title:               Chaos Reduction Squad
+title:               Cephalopod Equipment Corp.
 tagline:
-url:                 https://chaosreduction.com
+url:                 https://cephalopod.equipment
 paginate:            1
 baseurl:             ""
 
@@ -24,7 +24,7 @@ author:
 # Custom vars
 version:             2.0.0
 github:
-  repo:              https://github.com/jolesbi/cr-squad
+  repo:              https://github.com/cephalopodequipment/website
 
 # Plugins
 plugins:
