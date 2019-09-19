@@ -9,6 +9,13 @@ of the Cosmos Hub and has been an active validator since the genesis block.
 We recently upgraded our infrastructure and cycled validator signing and
 operator keys. Here is a summary of our setup:
 
+- Operator Address
+  - cosmosvaloper16k579jk6yt2cwmqx9dz5xvq9fug2tekvlu9qdv
+  - 2-of-3 multisig
+- Commission
+  - Rate: 8.11%
+  - Max Change Rate: 1.18%
+  - Max Rate: 42%
 - Datacenter
   - Tier 3
   - Near Toronto, Canada
@@ -25,6 +32,10 @@ operator keys. Here is a summary of our setup:
 - Alerting
   - Peer connectivity
   - Height drift
-- Operator Address
-  - 2-of-3 multisig
 
+You can delegate to our validator by using [Lunie](https://lunie.io/)
+or your Cosmos wallet of choice.
+
+By delegating to our validator, you agree to our 
+[terms and
+conditions](https://drive.google.com/file/d/12rtA0PgIMdTHy4ks0ZpgzBKY_pW6i7So/view?usp=sharing).
