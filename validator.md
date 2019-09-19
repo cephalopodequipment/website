@@ -38,4 +38,4 @@ or your Cosmos wallet of choice.
 
 By delegating to our validator, you agree to our 
 [terms and
-conditions](https://drive.google.com/file/d/12rtA0PgIMdTHy4ks0ZpgzBKY_pW6i7So/view?usp=sharing).
+conditions](https://docs.google.com/document/d/1GvxlxBJO42YJ3xDUzAopQsJ7IVWBTnwWhV5S9rOYUao/edit?usp=sharing).
