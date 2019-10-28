@@ -20,7 +20,7 @@ operator keys. Here is a summary of our setup:
   - Tier 3
   - Near Toronto, Canada
 - Hardware
-  - RAID-0 storage
+  - RAID-1 storage
   - TPM encrypted hard drive
   - Secure Boot
   - Redundant networking and power
