@@ -3,7 +3,7 @@ layout: page
 title: Careers
 ---
 
-## [TITLE]
+## Director of Infrastructure & Operations
 
 Cephalopod Equipment Corporation is looking for a new team member to help grow
 the team. 
