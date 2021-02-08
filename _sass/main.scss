@@ -437,7 +437,7 @@ a:hover {
 
   align-items: center;
   border-radius: 1000px;
-  box-shadow: 0 0 0 $border-width $color--secondary;
+  box-shadow: 0 0 0 $border-width $color--foreground;
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -445,11 +445,11 @@ a:hover {
   transition: $default-transition;
 
   &:hover {
-    box-shadow: 0 0 0 $border-width $color--foreground;
+    box-shadow: 0 0 0 $border-width $color--secondary;
   }
   &.is-active {
     box-shadow:
-      0 0 0 $border-width $color--foreground,
+      0 0 0 $border-width $color--secondary,
       0 0 0 $grid-unit $color--bubbleBox;
     z-index: 1;
   }
@@ -614,7 +614,7 @@ a:hover {
 
   padding: ($grid-unit / 2) $grid-unit;
   border-radius: 1000px;
-  background-color: $color--secondary;
+  background-color: $color--foreground;
   color: $color--background;
   margin: 0 auto;
   white-space: nowrap;
@@ -624,20 +624,20 @@ a:hover {
 
   .leadership-person:hover &,
   .is-active & {
-    background-color: $color--foreground;
+    background-color: $color--secondary;
   }
 }
 
 .leadership-portraitContainer {
   overflow: hidden;
   border-radius: 1000px;
-  border: $border-width solid $color--secondary;
+  border: $border-width solid $color--foreground;
   transition: $default-transition;
   margin-bottom: $grid-unit * -1;
 
   .leadership-person:hover &,
   .is-active & {
-    border-color: $color--foreground;
+    border-color: $color--secondary;
   }
   .is-active & {
     box-shadow: 0 0 0 $grid-unit $color--bubbleBox;
