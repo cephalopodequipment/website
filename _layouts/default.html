@@ -20,18 +20,27 @@
 
                 <ul class="siteNavigation-items">
                     <li class="siteNavigation-item">
-                        <a class="siteNavigation-button" href="#">
-                            {{ site.data.leadership.sectionTitle }}
-                        </a>
-                    </li>
-                    <li class="siteNavigation-item">
-                        <a class="siteNavigation-button" href="#">
+                        <a
+                            class="siteNavigation-button"
+                            href="#{{ site.data.networks-we-support.sectionHandle }}"
+                        >
                             {{ site.data.networks-we-support.sectionTitle }}
                         </a>
                     </li>
                     <li class="siteNavigation-item">
-                        <a class="siteNavigation-button" href="#">
+                        <a
+                            class="siteNavigation-button"
+                            href="#{{ site.data.why-stake-with-us.sectionHandle }}"
+                        >
                             {{ site.data.why-stake-with-us.sectionTitle }}
+                        </a>
+                    </li>
+                    <li class="siteNavigation-item">
+                        <a
+                            class="siteNavigation-button"
+                            href="#{{ site.data.leadership.sectionHandle }}"
+                        >
+                            {{ site.data.leadership.sectionTitle }}
                         </a>
                     </li>
                 </ul>
@@ -44,22 +53,35 @@
 
         <footer class="siteFooter">
             <div class="siteFooter-wrapper">
+                <div class="siteFooter-plant"></div>
+                <div class="siteFooter-plant"></div>
+                <div class="siteFooter-plant"></div>
+                <div class="siteFooter-plant"></div>
                 <div class="siteFooter-contents">
                     <nav class="siteFooter-nav">
                         <ul class="siteFooter-navItems">
                             <li class="siteFooter-navItem">
-                                <a href="#" class="siteFooter-navButton">
-                                    {{ site.data.leadership.sectionTitle }}
-                                </a>
-                            </li>
-                            <li class="siteFooter-navItem">
-                                <a href="#" class="siteFooter-navButton">
+                                <a
+                                    href="#{{ site.data.networks-we-support.sectionHandle }}"
+                                    class="siteFooter-navButton"
+                                >
                                     {{ site.data.networks-we-support.sectionTitle }}
                                 </a>
                             </li>
                             <li class="siteFooter-navItem">
-                                <a href="#" class="siteFooter-navButton">
+                                <a
+                                    href="#{{ site.data.why-stake-with-us.sectionHandle }}"
+                                    class="siteFooter-navButton"
+                                >
                                     {{ site.data.why-stake-with-us.sectionTitle }}
+                                </a>
+                            </li>
+                            <li class="siteFooter-navItem">
+                                <a
+                                    href="#{{ site.data.leadership.sectionHandle }}"
+                                    class="siteFooter-navButton"
+                                >
+                                    {{ site.data.leadership.sectionTitle }}
                                 </a>
                             </li>
                         </ul>
@@ -79,8 +101,12 @@
                             <ul class="socialLinks-items">
                                 {% for socialLink in site.data.company-info.socialLinks %}
                                     <li class="socialLinks-item">
-                                        <a href="{{ socialLink.url }}" class="socialLinks-button">
-                                            <i class="fab fa-{{ socialLink.icon }}" aria-hidden></i>
+                                        <a
+                                            title="{{ socialLink.label }}"
+                                            href="{{ socialLink.url }}"
+                                            class="socialLinks-button"
+                                        >
+                                            <i class="{{ socialLink.icon }}" aria-hidden></i>
                                             <span class="socialLinks-buttonLabel">
                                                 {{ socialLink.label }}
                                             </span>

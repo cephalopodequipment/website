@@ -7,12 +7,9 @@ description: |
 delegateWithUsAt: cosmosvaloper16k579jk6yt2cwmqx9dz5xvq9fug2tekvlu9qdv
 
 socialLinks:
-    - label: Facebook
-      href: '#'
-      icon: facebook-square
-    - label: Instagram
-      href: '#'
-      icon: instagram-square
+    - label: Email
+      href: 'mailto:squad@cephalopod.equipment'
+      icon: fas fa-envelope-square
     - label: Twitter
-      href: '#'
-      icon: twitter-square
+      href: https://twitter.com/cephalopodequip
+      icon: fab fa-twitter-square

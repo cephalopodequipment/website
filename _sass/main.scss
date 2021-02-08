@@ -59,6 +59,10 @@ $text--lineHeight--display: 1.4em;
 /*/////////////////////////////////////////////////////////////////////////////
 // Nav
 */
+a:hover {
+  color: $color--secondary;
+}
+
 .siteNavigation {
   display: flex;
   justify-content: center;
@@ -404,6 +408,24 @@ $text--lineHeight--display: 1.4em;
 /*/////////////////////////////////////////////////////////////////////////////
 // Supported Networks
 */
+.supportedNetworks {
+  position: relative;
+
+  &:before {
+    @extend .floatInPlace;
+
+    content: '';
+    position: absolute;
+    width: 426px;
+    height: 509px;
+    background-image: url(/assets/img/diver.svg);
+    filter: blur(4px);
+    opacity: 0.5;
+    right: 85%;
+    bottom: 60%;
+  }
+}
+
 .supportedNetworks-tabs {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -413,15 +435,23 @@ $text--lineHeight--display: 1.4em;
 .supportedNetworks-tab {
   @extend .bubbleBox;
 
-  cursor: pointer;
-  border-radius: 1000px;
-  display: flex;
   align-items: center;
+  border-radius: 1000px;
+  box-shadow: 0 0 0 $border-width $color--secondary;
+  cursor: pointer;
+  display: flex;
   justify-content: center;
+  position: relative;
   transition: $default-transition;
 
-  &.is-active {
+  &:hover {
     box-shadow: 0 0 0 $border-width $color--foreground;
+  }
+  &.is-active {
+    box-shadow:
+      0 0 0 $border-width $color--foreground,
+      0 0 0 $grid-unit $color--bubbleBox;
+    z-index: 1;
   }
 }
 
@@ -541,7 +571,21 @@ $text--lineHeight--display: 1.4em;
 // Leadership
 */
 .leadership {
+  position: relative;
 
+  &:before {
+    @extend .floatInPlace;
+
+    content: '';
+    position: absolute;
+    width: 396px;
+    height: 288px;
+    background-image: url(/assets/img/submarine.svg);
+    filter: blur(4px);
+    opacity: 0.5;
+    left: 80%;
+    bottom: 80%;
+  }
 }
 
 .leadership-people {
@@ -700,6 +744,38 @@ $text--lineHeight--display: 1.4em;
   }
 }
 
+.siteFooter-plant {
+  position: absolute;
+  top: -220px;
+  width: 186px;
+  height: 160px;
+  background-repeat: no-repeat;
+  background-position: bottom center;
+
+  &:nth-child(1) {
+    background-image: url(/assets/img/plant-1.svg);
+    left: 14vw;
+    top: -240px;
+    z-index: 10;
+  }
+  &:nth-child(2) {
+    background-image: url(/assets/img/plant-2.svg);
+    left: 34vw;
+    top: -260px;
+  }
+  &:nth-child(3) {
+    background-image: url(/assets/img/plant-3.svg);
+    left: 67vw;
+    top: -200px;
+  }
+  &:nth-child(4) {
+    background-image: url(/assets/img/plant-4.svg);
+    left: 84vw;
+    top: -240px;
+    z-index: 10;
+  }
+}
+
 .siteFooter-contents {
   position: relative;
   z-index: 5;
@@ -725,7 +801,7 @@ $text--lineHeight--display: 1.4em;
 }
 
 .siteFooter-navButton {
-
+  text-decoration: underline;
 }
 
 .siteFooter-legalAndSocial {
@@ -751,7 +827,7 @@ $text--lineHeight--display: 1.4em;
 }
 
 .legalLink {
-
+  text-decoration: underline;
 }
 
 .socialLinks {
