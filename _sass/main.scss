@@ -131,6 +131,7 @@ a:hover {
   font-size: $text--fontSize--display / 2;
   line-height: $text--lineHeight--display;
   margin-bottom: $grid-unit;
+  text-align: center;
 }
 
 /*/////////////////////////////////////////////////////////////////////////////
@@ -142,8 +143,9 @@ a:hover {
   flex-direction: column;
   grid-column-start: 4;
   grid-column-end: 11;
-  height: 100vh;
+  height: 80vh;
   justify-content: center;
+  margin-top: 10vh;
 
   & > * + * {
     margin-top: $grid-unit * 2;
@@ -187,6 +189,11 @@ a:hover {
   font-size: $text--fontSize--display / 1.5;
   font-weight: $text--fontWeight--display;
   line-height: $text--lineHeight--display / 1.25;
+}
+
+.description {
+  font-size: $text--fontSize--display / 2.5;
+  line-height: $text--lineHeight--display;
 }
 
 /*/////////////////////////////////////////////////////////////////////////////
@@ -545,11 +552,14 @@ a:hover {
 }
 
 .delegateWithUs {
-  text-align: center;
-  padding: $grid-unit;
-  border: $border-width solid $color--bubbleBox;
   border-radius: 1000px;
+  border: $border-width solid $color--bubbleBox;
+  font-size: $text--fontSize--display / 2;
+  line-height: $text--lineHeight--display;
+  padding: $grid-unit;
   position: relative;
+  text-align: center;
+  margin-top: $grid-unit * 4;
 }
 
 .delegateWithUs-title {
@@ -568,9 +578,9 @@ a:hover {
 }
 
 /*/////////////////////////////////////////////////////////////////////////////
-// Leadership
+// Team
 */
-.leadership {
+.team {
   position: relative;
 
   &:before {
@@ -588,13 +598,13 @@ a:hover {
   }
 }
 
-.leadership-people {
+.team-people {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: $grid-unit;
 }
 
-.leadership-person {
+.team-person {
   @extend .floatInPlace;
 
   position: relative;
@@ -609,7 +619,7 @@ a:hover {
   }
 }
 
-.leadership-personName {
+.team-personName {
   @extend .floatInPlace;
 
   padding: ($grid-unit / 2) $grid-unit;
@@ -622,20 +632,20 @@ a:hover {
   position: relative;
   z-index: 2;
 
-  .leadership-person:hover &,
+  .team-person:hover &,
   .is-active & {
     background-color: $color--secondary;
   }
 }
 
-.leadership-portraitContainer {
+.team-portraitContainer {
   overflow: hidden;
   border-radius: 1000px;
   border: $border-width solid $color--foreground;
   transition: $default-transition;
   margin-bottom: $grid-unit * -1;
 
-  .leadership-person:hover &,
+  .team-person:hover &,
   .is-active & {
     border-color: $color--secondary;
   }
@@ -644,18 +654,18 @@ a:hover {
   }
 }
 
-.leadership-portrait {
+.team-portrait {
   display: block;
   width: 100%;
   filter: grayscale(1);
 }
 
-.leadership-bioContainer {
+.team-bioContainer {
   height: 200px;
   position: relative;
 }
 
-.leadership-bio {
+.team-bio {
   @extend .bubbleBox;
 
   position: absolute;
@@ -670,7 +680,7 @@ a:hover {
   }
 }
 
-.leadership-bioName {
+.team-bioName {
   display: block;
   font-size: $text--fontSize--display / 2;
   font-weight: $text--fontWeight--display;
@@ -679,7 +689,7 @@ a:hover {
   margin-bottom: $grid-unit / 2;
 }
 
-.leadership-bioContent {
+.team-bioContent {
   column-count: 3;
   column-gap: $grid-unit;
 }
@@ -801,7 +811,7 @@ a:hover {
 }
 
 .siteFooter-navButton {
-  text-decoration: underline;
+
 }
 
 .siteFooter-legalAndSocial {
@@ -827,7 +837,7 @@ a:hover {
 }
 
 .legalLink {
-  text-decoration: underline;
+
 }
 
 .socialLinks {

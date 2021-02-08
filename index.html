@@ -10,11 +10,11 @@ layout: default
         <span class="logo-smallText">corp.</span>
     </h1>
 
-    <h2 class="valueProp">
+    <h2 class="valueProp js-prevent-widows">
         {{ site.data.company-info.valueProp }}
     </h2>
 
-    <p class="description">
+    <p class="description js-prevent-widows">
         {{ site.data.company-info.description }}
     </p>
 </section>
@@ -95,27 +95,27 @@ layout: default
 </section>
 
 <section
-    class="leadership section-container js-tabs"
-    id="{{ site.data.leadership.sectionHandle }}"
+    class="team section-container js-tabs"
+    id="{{ site.data.team.sectionHandle }}"
 >
     <h2 class="section-title">
-        {{ site.data.leadership.sectionTitle }}
-    </h2> 
+        {{ site.data.team.sectionTitle }}
+    </h2>
 
-    <div class="section-intro">
-        {{ site.data.leadership.sectionIntro }}
+    <div class="section-intro js-prevent-widows">
+        {{ site.data.team.sectionIntro }}
     </div>
 
-    <div class="leadership-people">
-        {% for person in site.data.leadership.people %}
-            <div class="leadership-person js-tab">
-                <h3 class="leadership-personName">
+    <div class="team-people">
+        {% for person in site.data.team.people %}
+            <div class="team-person js-tab">
+                <h3 class="team-personName">
                     {{ person.name }}
                 </h3>
 
-                <div class="leadership-portraitContainer">
+                <div class="team-portraitContainer">
                     <img
-                        class="leadership-portrait"
+                        class="team-portrait"
                         src="/assets/img/people/{{ person.image }}"
                         alt="Photo of {{ person.name }}"
                     />
@@ -124,13 +124,13 @@ layout: default
         {% endfor %}
     </div>
 
-    <div class="leadership-bioContainer">
-        {% for person in site.data.leadership.people %}
-            <div class="leadership-bio js-tab-content">
-                <div class="leadership-bioName">
+    <div class="team-bioContainer">
+        {% for person in site.data.team.people %}
+            <div class="team-bio js-tab-content">
+                <div class="team-bioName">
                     {{ person.name }}
                 </div>
-                <p class="leadership-bioContent">
+                <p class="team-bioContent js-prevent-widows">
                     {{ person.bio }}
                 </p>
             </div>
