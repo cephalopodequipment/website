@@ -47,7 +47,7 @@ networks:
           - title: Operator Address
             icon: globe-americas
             values:
-                - cosmosvaloper16k579jk6yt2cwmqx9dz5xvq9fug2tekvlu9qdv
+                - abcdefghijklmnopqrstuvwxyz0123456789
                 - 2-of-3 multisig
           - title: Commission
             icon: money-bill-wave
