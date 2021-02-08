@@ -1,0 +1,778 @@
+@import url('https://fonts.googleapis.com/css2?family=Catamaran:wght@500;900&display=swap');
+
+/*/////////////////////////////////////////////////////////////////////////////
+// Config
+*/
+$breakpoints--xlarge: 1200px;
+
+$grid-unit: 30px;
+
+$border-width: 8px;
+
+$default-transition: all 0.25s ease-in-out;
+
+$color--background: #05053e;
+$color--foreground: #2be0dd;
+$color--secondary: #FAC68E;
+$color--secondary--light: #FEF0E2;
+$color--bubbleBox: rgba($color--foreground, 0.12);
+$color--seaFloor: #01010e;
+
+$text--fontFamily--body: Catamaran, sans-serif;
+$text--fontFamily--display: $text--fontFamily--body;
+$text--fontSize--body: 18px;
+$text--fontSize--display: 60px;
+$text--fontWeight--body: 500;
+$text--fontWeight--display: 900;
+$text--lineHeight--body: 1.5rem;
+$text--lineHeight--display: 1.4em;
+
+/*/////////////////////////////////////////////////////////////////////////////
+// Resets
+*/
+* {
+  border: none;
+  box-sizing: border-box;
+  color: inherit;
+  font-family: inherit;
+  font-size: inherit;
+  font-style: inherit;
+  font-weight: inherit;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-decoration: none;
+}
+
+:root {
+  --grid-unit: 30px;
+
+  background: $color--background;
+  color: $color--foreground;
+  font-family: $text--fontFamily--body;
+  font-size: $text--fontSize--body;
+  line-height: $text--lineHeight--body;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////
+// Nav
+*/
+.siteNavigation {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  background-color: rgba(darken($color--background, 5%), 0.85);
+  z-index: 1;
+}
+
+.siteNavigation-contents {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  max-width: $breakpoints--xlarge;
+}
+
+.siteNavigation-items {
+  display: flex;
+}
+
+.siteNavigation-button {
+  display: block;
+  color: $color--secondary;
+  font-weight: $text--fontWeight--display;
+  padding: ($grid-unit / 2) ($grid-unit / 2);
+
+  &:hover {
+    color: $color--foreground;
+  }
+}
+
+/*/////////////////////////////////////////////////////////////////////////////
+// Core Layout
+*/
+.gridContainer {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: $grid-unit;
+  max-width: $breakpoints--xlarge;
+  margin: 0 auto;
+}
+
+.section-container {
+  grid-column-start: 1;
+  grid-column-end: 13;
+  padding: 10vh 0;
+
+  & > * + * {
+    margin-top: $grid-unit * 2;
+  }
+}
+
+.section-title {
+  font-weight: $text--fontWeight--display;
+  font-size: $text--fontSize--display;
+  line-height: $text--lineHeight--display;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.section-intro {
+  color: $color--secondary;
+  font-weight: $text--fontWeight--display;
+  font-size: $text--fontSize--display / 2;
+  line-height: $text--lineHeight--display;
+  margin-bottom: $grid-unit;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////
+// Hero
+*/
+.hero {
+  align-items: flex-start;
+  display: flex;
+  flex-direction: column;
+  grid-column-start: 4;
+  grid-column-end: 11;
+  height: 100vh;
+  justify-content: center;
+
+  & > * + * {
+    margin-top: $grid-unit * 2;
+  }
+}
+
+.logo {
+  position: relative;
+
+  &:before {
+    @extend .floatInPlace;
+
+    content: '';
+    position: absolute;
+    height: 309px;
+    width: 309px;
+    background-image: url(/assets/img/logo.svg);
+    top: -200px;
+    left: -200px;
+  }
+}
+
+.logo > * {
+  display: block;
+}
+
+.logo-smallText {
+  font-weight: $text--fontWeight--body;
+  font-size: 30px;
+  line-height: 30px;
+}
+
+.logo-bigText {
+  @extend .section-title;
+  text-align: left;
+}
+
+.valueProp {
+  color: $color--secondary;
+  font-size: $text--fontSize--display / 1.5;
+  font-weight: $text--fontWeight--display;
+  line-height: $text--lineHeight--display / 1.25;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////
+// Animations
+*/
+@keyframes verticalAnimation {
+  0% {
+    bottom: 0%;
+    opacity: 1;
+  }
+  80% {
+    opacity: 1;
+  }
+  100% {
+    bottom: 110%;
+    opacity: 0;
+  }
+}
+
+@keyframes horizontalAnimation {
+  0% {
+    left: 0;
+  }
+  100% {
+    left: 100%;
+  }
+}
+
+@keyframes floatingInPlace {
+  0% {
+    transform: translateY(2px);
+  }
+  20% {
+    transform: translateY(-4px);
+  }
+  40% {
+    transform: translateY( 2px);
+  }
+  60% {
+    transform: translateY(-3px);
+  }
+  80% {
+    transform: translateY( 2px);
+  }
+  100% {
+    transform: translateY(-2px);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.5;
+  }
+  50% {
+    transform: scale(0.95);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.05);
+    opacity: 0.3;
+  }
+}
+
+/*/////////////////////////////////////////////////////////////////////////////
+// Floating stuff in place (bobbing?)
+*/
+.floatInPlace {
+  animation-name: floatingInPlace;
+  animation-duration: 10s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+  animation-timing-function: ease-in-out;
+}
+
+.floatInPlace:nth-child(2) {
+  animation-delay: -5s;
+}
+.floatInPlace:nth-child(3) {
+  animation-delay: -3s;
+}
+.floatInPlace:nth-child(4) {
+  animation-delay: -7s;
+}
+.floatInPlace:nth-child(5) {
+  animation-delay: -2s;
+}
+
+.animationToggleButton {
+  display: none;
+}
+
+.bubbles {
+  display: none;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////
+// First breakpoint
+*/
+@media screen and (min-width: 1280px) {
+  .animationToggleButton {
+    display: block;
+  }
+
+  .bubbles {
+    bottom: 0;
+    display: block;
+    left: 0;
+    overflow: hidden;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .bubble-track,
+  .bubble-wrapper,
+  .bubble {
+    position: absolute;
+  }
+
+  .bubble-track {
+    --bubble-blur: 1px;
+    --bubble-size: 30px;
+    --bubble-speed: 5s;
+    --delay: 0;
+    --track-height: 100%;
+    --track-offset: 50vw;
+    --track-speed: 45s;
+    --track-width: 5vh;
+
+    bottom: 0;
+    left: var(--track-offset);
+    top: calc(100% - var(--track-height));
+    width: var(--track-width);
+  }
+
+  .bubble-wrapper,
+  .bubble {
+    animation-delay: var(--delay);
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+
+    .is-animating-bubbles & {
+      animation-play-state: running;
+    }
+  }
+
+  .bubble-wrapper {
+    animation-name: verticalAnimation;
+    animation-duration: var(--track-speed);
+    animation-timing-function: ease-out;
+    bottom: calc(var(--bubble-size) * -2);
+    left: 0;
+    right: 0;
+  }
+
+  .bubble {
+    animation-direction: alternate;
+    animation-duration: var(--bubble-speed);
+    animation-name: horizontalAnimation;
+    animation-timing-function: ease-in-out;
+    background: radial-gradient(circle at 35% 75%, rgba(255, 255, 255, 0), hsla(178, 69%, 54%, 0.5));
+    border-radius: 1000px;
+    display: block;
+    filter: blur(var(--bubble-blur));
+    height: var(--bubble-size);
+    opacity: 0.75;
+    width: var(--bubble-size);
+
+    .is-animating-bubbles & {
+      opacity: 1;
+    }
+  }
+}
+
+.toggleButton {
+  align-items: center;
+  background-color: inherit;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  opacity: 0.5;
+  padding: 4px 8px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:before {
+    background-color: $color--background;
+    border: 1px solid $color--foreground;
+    border-radius: 3px;
+    padding: 1px 2px;
+    content: 'OFF';
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  &[aria-pressed="true"] {
+    opacity: 1;
+
+    &:before {
+      content: 'ON';
+      background-color: $color--foreground;
+      color: $color--background;
+    }
+  }
+}
+
+.bubbleBox {
+  background-color: $color--bubbleBox;
+  border-radius: $grid-unit;
+  padding: $grid-unit / 2;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////
+// Supported Networks
+*/
+.supportedNetworks-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: $grid-unit;
+}
+
+.supportedNetworks-tab {
+  @extend .bubbleBox;
+
+  border-radius: 1000px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.supportedNetworks-metaData {
+  @extend .bubbleBox;
+
+  grid-template-columns: repeat(3, 1fr);
+  gap: $grid-unit;
+  padding: $grid-unit;
+  display: none;
+
+  &.is-active {
+    display: grid;
+  }
+}
+
+.supportedNetworks-metaDatum {
+  padding-left: $grid-unit * 2;
+
+  &:first-child {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
+}
+
+.supportedNetworks-metaDatumTitle {
+  color: $color--secondary;
+  font-weight: $text--fontWeight--display;
+  font-size: $text--fontSize--display / 2;
+  margin-bottom: $grid-unit / 2;
+  position: relative;
+}
+
+.supportedNetworks-metaDatumTitle .icon {
+  color: $color--secondary--light;
+  position: absolute;
+  top: 0;
+  right: 100%;
+  margin-right: $grid-unit / 2;
+}
+
+.supportedNetworks-metaDatumValues {
+
+}
+
+.supportedNetworks-metaDatumValue {
+
+}
+
+/*/////////////////////////////////////////////////////////////////////////////
+// Why Stake With Us
+*/
+.whyStakeWithUs-reasons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $grid-unit;
+}
+
+.whyStakeWithUs-reason {
+
+}
+
+.whyStakeWithUs-reasonTitle {
+  color: $color--secondary;
+  font-weight: $text--fontWeight--display;
+  font-size: $text--fontSize--display / 2;
+  margin-bottom: $grid-unit / 2;
+}
+
+.whyStakeWithUs-reasonTitle .icon {
+  @extend .floatInPlace;
+
+  display: block;
+  font-size: $text--fontSize--display;
+  color: $color--secondary--light;
+  margin-bottom: $grid-unit;
+
+  .whyStakeWithUs-reason:nth-child(2) & {
+    animation-delay: -2s;
+  }
+  .whyStakeWithUs-reason:nth-child(3) & {
+    animation-delay: -5s;
+  }
+  .whyStakeWithUs-reason:nth-child(4) & {
+    animation-delay: -3s;
+  }
+}
+
+.whyStakeWithUs-reasonDescription {
+
+}
+
+.delegateWithUs {
+  text-align: center;
+  padding: $grid-unit;
+  border: $border-width solid $color--bubbleBox;
+  border-radius: 1000px;
+  position: relative;
+}
+
+.delegateWithUs-title {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: $color--secondary;
+  font-weight: $text--fontWeight--display;
+  padding: ($grid-unit / 2) $grid-unit;
+  background-color: $color--background;
+}
+
+.delegateWithUs-key {
+
+}
+
+/*/////////////////////////////////////////////////////////////////////////////
+// Leadership
+*/
+.leadership {
+
+}
+
+.leadership-people {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: $grid-unit;
+}
+
+.leadership-person {
+  @extend .floatInPlace;
+
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+
+  &:nth-child(2),
+  &:nth-child(4) {
+    margin-top: $grid-unit * 4;
+  }
+}
+
+.leadership-personName {
+  @extend .floatInPlace;
+
+  padding: ($grid-unit / 2) $grid-unit;
+  border-radius: 1000px;
+  background-color: $color--secondary;
+  color: $color--background;
+  margin: 0 auto;
+  white-space: nowrap;
+  transition: $default-transition;
+  position: relative;
+  z-index: 2;
+
+  .leadership-person:hover &,
+  .is-active & {
+    background-color: $color--foreground;
+  }
+}
+
+.leadership-portraitContainer {
+  overflow: hidden;
+  border-radius: 1000px;
+  border: $border-width solid $color--secondary;
+  transition: $default-transition;
+  margin-bottom: $grid-unit * -1;
+
+  .leadership-person:hover &,
+  .is-active & {
+    border-color: $color--foreground;
+  }
+  .is-active & {
+    box-shadow: 0 0 0 $grid-unit $color--bubbleBox;
+  }
+}
+
+.leadership-portrait {
+  display: block;
+  width: 100%;
+  filter: grayscale(1);
+}
+
+.leadership-bioContainer {
+  height: 200px;
+  position: relative;
+}
+
+.leadership-bio {
+  @extend .bubbleBox;
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  padding: $grid-unit;
+  display: none;
+
+  &.is-active {
+    display: block;
+  }
+}
+
+.leadership-bioName {
+  display: block;
+  font-size: $text--fontSize--display / 2;
+  font-weight: $text--fontWeight--display;
+  line-height: $text--lineHeight--display;
+  color: $color--secondary;
+  margin-bottom: $grid-unit / 2;
+}
+
+.leadership-bioContent {
+  column-count: 3;
+  column-gap: $grid-unit;
+}
+
+/*/////////////////////////////////////////////////////////////////////////////
+// Footer
+*/
+.siteFooter {
+  padding: 60px 0 100px;
+  margin-top: $grid-unit * 10;
+  background-color: $color--seaFloor;
+  z-index: 10000;
+  position: relative;
+
+  &:before,
+  &:after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -40px;
+    height: 65px;
+    box-shadow: 0 1000px 0 1000px $color--seaFloor;
+    background-image: url(/assets/img/seafloor.svg);
+    background-repeat: repeat-x;
+    background-position: top left;
+  }
+
+  &:before {
+    opacity: 0.5;
+    top: -80px;
+    z-index: 1;
+    background-position: 200px 0;
+  }
+  &:after {
+    z-index: 3;
+  }
+}
+
+.siteFooter-wrapper {
+  position: relative;
+
+  &:before {
+    animation-direction: alternate;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    animation-name: pulse;
+    animation-timing-function: ease-in-out;
+    background-image:
+      radial-gradient(
+        closest-side,
+        $color--foreground,
+        rgba($color--foreground, 0)
+      );
+    content: '';
+    height: 600px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: -300px;
+    z-index: 1;
+  }
+}
+
+.siteFooter-contents {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  justify-content: space-between;
+  max-width: $breakpoints--xlarge;
+  margin: 0 auto;
+  opacity: 0.8;
+}
+
+.siteFooter-nav {
+
+}
+
+.siteFooter-navItems {
+  & > * + * {
+    margin-top: $grid-unit / 2;
+  }
+}
+
+.siteFooter-navItem {
+
+}
+
+.siteFooter-navButton {
+
+}
+
+.siteFooter-legalAndSocial {
+  & > * + * {
+    margin-top: $grid-unit / 2;
+  }
+}
+
+.legalLinks {
+
+}
+
+.legalLinks-items {
+  display: flex;
+
+  & > * + * {
+    margin-left: $grid-unit / 2;
+  }
+}
+
+.legaLinks-item {
+
+}
+
+.legalLink {
+
+}
+
+.socialLinks {
+
+}
+
+.socialLinks-items {
+  display: flex;
+  justify-content: flex-end;
+  font-size: $text--fontSize--display / 2;
+
+  & > * + * {
+    margin-left: $grid-unit / 2;
+  }
+}
+
+.socialLinks-item {
+
+}
+
+.socialLinks-button {
+
+}
+
+.socialLinks-buttonIcon {
+
+}
+
+.socialLinks-buttonLabel {
+  display: none;
+}

@@ -1,0 +1,40 @@
+sectionTitle: Leadership
+sectionIntro: |
+  The Cephalopod team has decades of collective experience in data center
+  operations, distributed systems, and cryptocurrency. We are long term
+  contributors to the Cosmos project, including one of the founders and some of
+  the earliest team members.
+people:
+  -
+    name: Ethan Buchman
+    image: ethan.jpg
+    bio: |
+      Ethan is a co-founder of the Cosmos and Tendermint projects and a Director
+      of Cephalopod Equipment Corp. He sees consensus algorithms as the 21st
+      century means for promoting social cohesion. He is driven to empower humans
+      with new ways to coordinate and reach agreement at scale. He is currently
+      CEO at Informal Systems. He was previously the Technical Director at the
+      Interchain Foundation and was co-founder/CTO of Tendermint Inc. He is
+      currently the Vice-President of the Interchain Foundation.
+  -
+    name: Greg Szabo
+    image: greg.jpg
+    bio: |
+      Greg is CEO of Cephalopod Equipment Corp, and manages day to day
+      operations of the validator. He is also [part-time] Infrastructure and
+      Security Lead at Informal Systems where he leads infrastructure projects
+      that build tools and services for the Cosmos ecosystem.  He believes that
+      using IT infrastructure should be a seamless experience that enables
+      customers to focus on their goals, instead of fighting the servers.
+  -
+    name: Arianne Flemming
+    image: arianne.jpg
+    bio: |
+      Arianne is a Director of Cephalopod Equipment Corp, she works at the
+      intersection of people, business, and computers, and oversees all business
+      (non-technical) aspects of Cephalopod’s operations. She is also currently
+      COO at Informal Systems. She was the Managing Director of the Interchain
+      Foundation and VP Finance at Tendermint Inc. In her spare time, she
+      practices and teaches yoga, tutors math, and hangs out with her dog
+      Millie. Arianne holds a Master in Finance from Princeton University and a
+      Bachelor of Arts and Science- Economics from McMaster University.

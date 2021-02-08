@@ -1,0 +1,25 @@
+sectionTitle: Why Stake With Us
+reasons:
+  -
+    title: Ecosystem Integration
+    icon: chart-network
+    description: |
+      In collaboration with Informal Systems, etc.
+  -
+    title: Distributed
+    icon: chart-network
+    description: |
+      Our servers are geographically distributed in order to mitigate
+      risk and ensure we are always online.
+  -
+    title: Reliable
+    icon: shield-check
+    description: |
+      We are consistently monitoring our operations and [employ X process] to
+      ensure we are always available to respond to critical incidents.
+  -
+    title: Secure
+    icon: lock
+    description: |
+      We take security very seriously and employ multi-tiered security best
+      practices to ensure your assets are always protected.

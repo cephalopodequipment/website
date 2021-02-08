@@ -1,67 +1,123 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ site.lang | default: "en-US" }}">
+    <head>
+        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <meta charset="utf-8">
+        <title>{{ page.title }} - {{ site.title }}</title>
+        <link rel="stylesheet" href="{{ "/assets/css/main.css" | relative_url }}">
+        <script src="https://kit.fontawesome.com/b5d5066112.js" crossorigin="anonymous"></script>
+    </head>
+    <body>
+        <header class="siteNavigation">
+            <div class="siteNavigation-contents">
+                <button
+                    aria-pressed="false"
+                    class="animationToggleButton toggleButton"
+                    role="switch"
+                    tabindex="0">
+                    Animate Background
+                </button>
 
-{% include head.html %}
+                <ul class="siteNavigation-items">
+                    <li class="siteNavigation-item">
+                        <a class="siteNavigation-button" href="#">
+                            {{ site.data.leadership.sectionTitle }}
+                        </a>
+                    </li>
+                    <li class="siteNavigation-item">
+                        <a class="siteNavigation-button" href="#">
+                            {{ site.data.networks-we-support.sectionTitle }}
+                        </a>
+                    </li>
+                    <li class="siteNavigation-item">
+                        <a class="siteNavigation-button" href="#">
+                            {{ site.data.why-stake-with-us.sectionTitle }}
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </header>
 
-<body>
+        <main class="gridContainer">
+            {{ content }}
+        </main>
 
-  {% assign current = page.url | downcase | split: '/' %}
-  <!--
-    <nav>
-      <ul>
-        <li><a href='/about' {% if current[1] == 'about' %}class='current'{% endif %}>about</a></li>
-        <li><a href='/blog' {% if current[1] == 'blog' %}class='current'{% endif %}>blog</a></li>
-        <li><a href='/contact' {% if current[1] == 'contact' %}class='current'{% endif %}>contact</a></li>
-      </ul>
-    </nav> -->
+        <footer class="siteFooter">
+            <div class="siteFooter-wrapper">
+                <div class="siteFooter-contents">
+                    <nav class="siteFooter-nav">
+                        <ul class="siteFooter-navItems">
+                            <li class="siteFooter-navItem">
+                                <a href="#" class="siteFooter-navButton">
+                                    {{ site.data.leadership.sectionTitle }}
+                                </a>
+                            </li>
+                            <li class="siteFooter-navItem">
+                                <a href="#" class="siteFooter-navButton">
+                                    {{ site.data.networks-we-support.sectionTitle }}
+                                </a>
+                            </li>
+                            <li class="siteFooter-navItem">
+                                <a href="#" class="siteFooter-navButton">
+                                    {{ site.data.why-stake-with-us.sectionTitle }}
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                    <div class="siteFooter-legalAndSocial">
+                        <nav class="legalLinks">
+                            <ul class="legalLinks-items">
+                                <li class="legaLinks-item">
+                                    <a href="#" class="legalLink">Terms of Service</a>
+                                </li>
+                                <li class="legaLinks-item">
+                                    <a href="#" class="legalLink">Privacy Policy</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        <nav class="socialLinks">
+                            <ul class="socialLinks-items">
+                                {% for socialLink in site.data.company-info.socialLinks %}
+                                    <li class="socialLinks-item">
+                                        <a href="{{ socialLink.url }}" class="socialLinks-button">
+                                            <i class="fab fa-{{ socialLink.icon }}" aria-hidden></i>
+                                            <span class="socialLinks-buttonLabel">
+                                                {{ socialLink.label }}
+                                            </span>
+                                        </a>
+                                    </li>
+                                {% endfor %}
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </footer>
 
-  <div class="container content">
-    <header class="masthead">
-      <a href="{{ site.baseurl }}/" title="Home">
-        <img src="{{ site.baseurl }}/public/cr-squid-colorful.svg" alt="a small and noble squid with one eye and many tenticles"
-          class="masthead-squid-image">
-      </a>
-      <div class="masthead-link-container">
-        <a href="{{ site.baseurl }}/about" title="About" {% if current[1]=='about' %}class='current' {% endif %}>About</a>
-        <a href="{{ site.baseurl }}/validator" title="Validator" {% if current[1]=='validator' %}class='current' {%
-          endif %}>Cosmos Validator</a>
-        <a href="{{ site.baseurl }}/careers" title="careers" {% if current[1]=='careers' %}class='current' {%
-          endif %}>Careers</a>
-      </div>
-    </header>
+        <div class="bubbles">
+            <!--
+                Bubbles will be inserted by Javascript
 
-    <main>
-      {{ content }}
-    </main>
+                <div
+                    class="bubble-track"
+                    style="
+                        --bubble-color: [...]; // green | pink | peach | yellow | neon | green
+                        --bubble-size: [...];  // 30px; diameter of bubble
+                        --track-height: [...]; // 100%; distance from bottom at which point bubble fades
+                        --track-speed: [...];  // 60s; time from top to bottom
+                        --track-width: [...];  // 5vw; left-to-right movement distance
+                    "
+                >
+                    <div class="bubble-wrapper">
+                        <div class="bubble"></div>
+                    </div>
+                </div>
+            -->
+        </div>
 
-    <footer class="footer">
-      <small>
-        &copy; <time datetime="{{ site.time | date_to_xmlschema }}">{{ site.time | date: '%Y' }}</time>. All rights
-        reserved.
-      </small>
-      <!-- <a href="{{ site.baseurl }}/subscribe" title="Subscribe" {% if current[1] == 'subscribe' %}class='current'{% endif %}>Subscribe</a> -->
-    </footer>
-  </div>
-
-  {% if site.analytics_id %}
-  <script>
-    (function (i, s, o, g, r, a, m) {
-      i["GoogleAnalyticsObject"] = r;
-      (i[r] =
-        i[r] ||
-        function () {
-          (i[r].q = i[r].q || []).push(arguments);
-        }),
-        (i[r].l = 1 * new Date());
-      (a = s.createElement(o)), (m = s.getElementsByTagName(o)[0]);
-      a.async = 1;
-      a.src = g;
-      m.parentNode.insertBefore(a, m);
-    })(window, document, "script", "//www.google-analytics.com/analytics.js", "ga");
-    ga("create", "{{ site.analytics_id }}", "auto");
-    ga("send", "pageview");
-  </script>
-  {% endif %}
-</body>
-
+        <script
+            type="text/javascript"
+            src="{{ "/assets/js/main.js" | relative_url }}">
+        </script>
+    </body>
 </html>

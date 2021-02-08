@@ -1,27 +1,130 @@
 ---
-layout: page
-title: Cephalopod Equipment
+layout: default
 ---
 
-<!-- <img src="{{ site.baseurl }}/public/octopus-1.jpeg" alt="wonderfully colorful coral"> -->
+<section class="hero">
+    <h1 class="logo">
+        <span class="logo-smallText">the</span>
+        <span class="logo-bigText">Cephalopod</span>
+        <span class="logo-bigText">Equipment</span>
+        <span class="logo-smallText">corp.</span>
+    </h1>
 
-<h2>Infrastructure for decentralized intelligence</h2>
+    <h2 class="valueProp">
+        {{ site.data.company-info.valueProp }}
+    </h2>
 
-<p>We are the Cephalopod Equipment Corp. — a small, independent network validator based in Toronto, Canada. 🇨🇦</p>
+    <p class="description">
+        {{ site.data.company-info.description }}
+    </p>
+</section>
 
-<p>We exist to enable global and local participant owned networks.</p>
+<section class="section-container js-tabs">
+    <h2 class="section-title">
+        {{ site.data.networks-we-support.sectionTitle }}
+    </h2>
 
-<!-- <img class="cephalopod" src="/public/cephalopod.jpg" alt="Octopus"> -->
+    <div class="supportedNetworks-tabs">
+        {% for network in site.data.networks-we-support.networks %}
+            <div class="supportedNetworks-tab js-tab">
+                <img
+                    src="/assets/img/network-logos/{{ network.image }}"
+                    alt="{{ network.title }} Logo"
+                />
+            </div>
+        {% endfor %}
+    </div>
 
-<!-- <div class="pagination">
-  {% if paginator.next_page %}
-  <a class="pagination-item older" href="{{ paginator.next_page_path | prepend: site.baseurl }}">Older</a>
-  {% else %}
-  <span class="pagination-item older">Older</span>
-  {% endif %}
-  {% if paginator.previous_page %}
-  <a class="pagination-item newer" href="{{ paginator.previous_page_path | prepend: site.baseurl }}">Newer</a>
-  {% else %}
-  <span class="pagination-item newer">Newer</span>
-  {% endif %}
-</div> -->
+    {% for network in site.data.networks-we-support.networks %}
+        <div class="supportedNetworks-metaData js-tab-content">
+            {% for datum in network.data %}
+                <div class="supportedNetworks-metaDatum">
+                    <h3 class="supportedNetworks-metaDatumTitle">
+                        <i class="icon fal fa-{{ datum.icon }}" aria-hidden></i>
+                        {{ datum.title }}
+                    </h3>
+                    <ul class="supportedNetworks-metaDatumValues">
+                        {% for value in datum.values %}
+                            <li class="supportedNetworks-metaDatumValue">
+                                {{ value }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</section>
+
+<section class="section-container">
+    <h2 class="section-title">
+        {{ site.data.why-stake-with-us.sectionTitle }}
+    </h2>
+
+    <div class="whyStakeWithUs-reasons">
+        {% for reason in site.data.why-stake-with-us.reasons %}
+            <div class="whyStakeWithUs-reason">
+                <h3 class="whyStakeWithUs-reasonTitle">
+                    <i class="icon fal fa-{{ reason.icon }}" aria-hidden></i>
+                    {{ reason.title }}
+                </h3>
+
+                <p class="whyStakeWithUs-reasonDescription">
+                    {{ reason.description }}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="delegateWithUs">
+        <div class="delegateWithUs-title">
+            Delegate with us at:
+        </div>
+        <p>
+            <code class="delegateWithUs-key">
+                {{ site.data.company-info.delegateWithUsAt }}
+            </code>
+        </p>
+    </div>
+</section>
+
+<section class="leadership section-container js-tabs">
+    <h2 class="section-title">
+        {{ site.data.leadership.sectionTitle }}
+    </h2> 
+
+    <div class="section-intro">
+        {{ site.data.leadership.sectionIntro }}
+    </div>
+
+    <div class="leadership-people">
+        {% for person in site.data.leadership.people %}
+            <div class="leadership-person js-tab">
+                <h3 class="leadership-personName">
+                    {{ person.name }}
+                </h3>
+
+                <div class="leadership-portraitContainer">
+                    <img
+                        class="leadership-portrait"
+                        src="/assets/img/people/{{ person.image }}"
+                        alt="Photo of {{ person.name }}"
+                    />
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="leadership-bioContainer">
+        {% for person in site.data.leadership.people %}
+            <div class="leadership-bio js-tab-content">
+                <div class="leadership-bioName">
+                    {{ person.name }}
+                </div>
+                <p class="leadership-bioContent">
+                    {{ person.bio }}
+                </p>
+            </div>
+        {% endfor %}
+    </div>
+</section>
