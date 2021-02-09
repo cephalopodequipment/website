@@ -17,6 +17,78 @@ textContainers.forEach((textContainer) => {
 });
 
 ///////////////////////////////////////////////////////////////////////////////
+// Font Themes
+const fontOptions = [
+    {
+        name: 'Catamaran',
+        fontURL:
+            'https://fonts.googleapis.com/css2?family=Catamaran:wght@500;700&display=swap',
+    },
+    {
+        name: 'Roboto',
+        fontURL:
+            'https://fonts.googleapis.com/css2?family=Roboto:wght@400;900&display=swap',
+    },
+    {
+        name: 'Lato',
+        fontURL:
+            'https://fonts.googleapis.com/css2?family=Lato:wght@400;900&display=swap',
+    },
+    {
+        name: 'Ubuntu',
+        fontURL:
+            'https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;700&display=swap',
+    },
+    {
+        name: 'Rubik',
+        fontURL:
+            'https://fonts.googleapis.com/css2?family=Rubik:wght@300;700&display=swap',
+    },
+    {
+        name: 'Quicksand',
+        fontURL:
+            'https://fonts.googleapis.com/css2?family=Quicksand:wght@300;700&display=swap',
+    },
+    {
+        name: 'Kanit',
+        fontURL:
+            'https://fonts.googleapis.com/css2?family=Kanit:wght@300;700&display=swap',
+    },
+    {
+        name: 'Fira Sans',
+        fontURL:
+            'https://fonts.googleapis.com/css2?family=Fira%20Sans:wght@300;900&display=swap',
+    },
+];
+
+const linkElement = select('#js-google-font');
+const bodyElement = select('body');
+const navItems = selectAll('.siteFooter-navItems')[1];
+
+const setFont = (name, url) => {
+    linkElement.setAttribute('href', url);
+    bodyElement.style.fontFamily = name;
+};
+
+setFont(fontOptions[0].name, fontOptions[0].fontURL);
+
+fontOptions.forEach((fontOption) => {
+    const navItem = document.createElement('li');
+    const navButton = document.createElement('a');
+
+    navItem.classList.add('siteFooter-navItem');
+    navButton.classList.add('siteFooter-navButton');
+    navButton.setAttribute('href', '#');
+    navButton.innerText = fontOption.name;
+    navButton.addEventListener('click', (evt) => {
+        evt.preventDefault();
+        setFont(fontOption.name, fontOption.fontURL);
+    });
+    navItem.appendChild(navButton);
+    navItems.appendChild(navItem);
+});
+
+///////////////////////////////////////////////////////////////////////////////
 // Tabs
 
 const ACTIVE_TAB_CLASS_NAME = 'is-active';
