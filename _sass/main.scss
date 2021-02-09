@@ -743,9 +743,13 @@ a:hover {
   .team-person {
     max-width: unset;
 
+    &:nth-child(1),
+    &:nth-child(3) {
+      margin-top: $grid-unit * -2;
+    }
     &:nth-child(2),
     &:nth-child(4) {
-      margin-top: $grid-unit * 4;
+      margin-top: $grid-unit * 2;
     }
   }
 }
