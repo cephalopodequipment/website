@@ -48,7 +48,7 @@ layout: default
                     </h3>
                     <ul class="supportedNetworks-metaDatumValues">
                         {% for value in datum.values %}
-                            <li class="supportedNetworks-metaDatumValue">
+                            <li class="text supportedNetworks-metaDatumValue">
                                 {{ value }}
                             </li>
                         {% endfor %}
@@ -75,7 +75,7 @@ layout: default
                     {{ reason.title }}
                 </h3>
 
-                <p class="whyStakeWithUs-reasonDescription">
+                <p class="text whyStakeWithUs-reasonDescription">
                     {{ reason.description }}
                 </p>
             </div>
@@ -130,7 +130,7 @@ layout: default
                 <div class="team-bioName">
                     {{ person.name }}
                 </div>
-                <p class="team-bioContent js-prevent-widows">
+                <p class="text team-bioContent js-prevent-widows">
                     {{ person.bio }}
                 </p>
             </div>

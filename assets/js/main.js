@@ -47,7 +47,7 @@ const fontOptions = [
     {
         name: 'Quicksand',
         fontURL:
-            'https://fonts.googleapis.com/css2?family=Quicksand:wght@300;700&display=swap',
+            'https://fonts.googleapis.com/css2?family=Quicksand:wght@400;700&display=swap',
     },
     {
         name: 'Kanit',
