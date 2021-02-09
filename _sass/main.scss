@@ -447,19 +447,19 @@ a:hover {
 
   align-items: center;
   border-radius: 1000px;
-  box-shadow: 0 0 0 $border-width $color--foreground;
+  border: $border-width solid $color--foreground;
   cursor: pointer;
   display: flex;
   justify-content: center;
   position: relative;
   transition: $default-transition;
 
-  &:hover {
-    box-shadow: 0 0 0 $border-width $color--secondary;
+  &:hover,
+  &.is-active {
+    border-color: $color--secondary;
   }
   &.is-active {
     box-shadow:
-      0 0 0 $border-width $color--secondary,
       0 0 0 $grid-unit $color--bubbleBox;
     z-index: 1;
   }
