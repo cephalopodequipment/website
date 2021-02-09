@@ -66,6 +66,29 @@ a:hover {
   color: $color--secondary;
 }
 
+.markdown {
+  a {
+    color: $color--secondary;
+    text-decoration: underline;
+
+    &:hover {
+      color: $color--secondary--light;
+    }
+  }
+
+  strong {
+    font-weight: $text--fontWeight--display;
+  }
+
+  em {
+    font-style: italic;
+  }
+
+  p + p {
+    margin-top: $grid-unit;
+  }
+}
+
 .text {
   color: lighten($color--foreground, 20%);
 }
@@ -519,6 +542,11 @@ a:hover {
     &.is-active {
       display: grid;
     }
+
+    .markdown {
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
   }
 }
 
@@ -530,6 +558,7 @@ a:hover {
 
 .supportedNetworks-metaDatum {
   padding-left: $grid-unit * 2;
+  word-break: break-all;
 
   & + & {
     margin-top: $grid-unit;
@@ -542,6 +571,7 @@ a:hover {
       grid-column-start: 1;
       grid-column-end: 4;
     }
+
     & + & {
       margin-top: 0;
     }
@@ -928,8 +958,9 @@ a:hover {
   display: flex;
   justify-content: space-between;
   max-width: $breakpoints--xlarge;
-  margin: 0 auto;
   opacity: 0.8;
+  margin: 0 auto;
+  padding: 0 $grid-unit;
 }
 
 .siteFooter-nav {

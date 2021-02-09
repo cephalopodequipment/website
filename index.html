@@ -43,6 +43,11 @@ layout: default
             <h2 class="supportedNetworks-hiddenTabContents">
                 {{ network.title }}
             </h2>
+            {% if network.description %}
+                <div class="markdown">
+                    {{ network.description | markdownify }}
+                </div>
+            {% endif %}
             {% for datum in network.data %}
                 <div class="supportedNetworks-metaDatum">
                     <h3 class="supportedNetworks-metaDatumTitle">
