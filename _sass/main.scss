@@ -139,11 +139,11 @@ a:hover {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  grid-column-start: 4;
-  grid-column-end: 11;
+  grid-column-start: 3;
+  grid-column-end: 12;
   height: 80vh;
   justify-content: center;
-  margin-top: 10vh;
+  margin-top: 15vh;
 
   & > * + * {
     margin-top: $grid-unit * 2;
