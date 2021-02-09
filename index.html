@@ -40,6 +40,9 @@ layout: default
 
     {% for network in site.data.networks-we-support.networks %}
         <div class="supportedNetworks-metaData js-tab-content">
+            <h2 class="supportedNetworks-hiddenTabContents">
+                {{ network.title }}
+            </h2>
             {% for datum in network.data %}
                 <div class="supportedNetworks-metaDatum">
                     <h3 class="supportedNetworks-metaDatumTitle">
@@ -130,6 +133,15 @@ layout: default
                 <div class="team-bioName">
                     {{ person.name }}
                 </div>
+                
+                <div class="team-bioPortraitContainer">
+                    <img
+                        class="team-portrait"
+                        src="/assets/img/people/{{ person.image }}"
+                        alt="Photo of {{ person.name }}"
+                    />
+                </div>
+
                 <p class="text team-bioContent js-prevent-widows">
                     {{ person.bio }}
                 </p>

@@ -1,7 +1,12 @@
 /*/////////////////////////////////////////////////////////////////////////////
 // Config
 */
+
+$breakpoints--xlarge--minWidth: 1280px;
 $breakpoints--xlarge: 1200px;
+
+$breakpoints--large--minWidth: 1024px;
+$breakpoints--large: 960px;
 
 $grid-unit: 30px;
 
@@ -105,8 +110,20 @@ a:hover {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: $grid-unit;
-  max-width: $breakpoints--xlarge;
-  margin: 0 auto;
+  margin: $grid-unit;
+}
+
+@media screen and (min-width: $breakpoints--large--minWidth) {
+  .gridContainer {
+    max-width: $breakpoints--large;
+    margin: 0 auto;
+  }
+}
+
+@media screen and (min-width: $breakpoints--xlarge--minWidth) {
+  .gridContainer {
+    max-width: $breakpoints--xlarge;
+  }
 }
 
 .section-container {
@@ -122,7 +139,7 @@ a:hover {
 .section-title {
   font-weight: $text--fontWeight--display;
   font-size: $text--fontSize--display;
-  line-height: $text--lineHeight--display;
+  line-height: 0.9em;
   text-transform: uppercase;
   text-align: center;
 }
@@ -436,10 +453,32 @@ a:hover {
   }
 }
 
+.supportedNetworks-hiddenTabContents {
+  @extend .section-title;
+
+  margin-bottom: $grid-unit;
+}
+
 .supportedNetworks-tabs {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(1, 1fr);
   gap: $grid-unit;
+  display: grid;
+}
+
+@media screen and (min-width: $breakpoints--large--minWidth) {
+  .supportedNetworks-hiddenTabContents {
+    display: none;
+  }
+
+  .supportedNetworks-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: $breakpoints--xlarge--minWidth) {
+  .supportedNetworks-tabs {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .supportedNetworks-tab {
@@ -468,24 +507,47 @@ a:hover {
 .supportedNetworks-metaData {
   @extend .bubbleBox;
 
-  grid-template-columns: repeat(3, 1fr);
-  gap: $grid-unit;
   padding: $grid-unit;
-  display: none;
+}
 
-  &.is-active {
-    display: grid;
+@media screen and (min-width: $breakpoints--large--minWidth) {
+  .supportedNetworks-metaData {
+    display: none;
+    gap: $grid-unit;
+    grid-template-columns: repeat(2, 1fr);
+
+    &.is-active {
+      display: grid;
+    }
+  }
+}
+
+@media screen and (min-width: $breakpoints--xlarge--minWidth) {
+  .supportedNetworks-metaData {
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .supportedNetworks-metaDatum {
   padding-left: $grid-unit * 2;
 
-  &:first-child {
-    grid-column-start: 1;
-    grid-column-end: 4;
+  & + & {
+    margin-top: $grid-unit;
   }
 }
+
+@media screen and (min-width: $breakpoints--large--minWidth) {
+  .supportedNetworks-metaDatum {
+    &:first-child {
+      grid-column-start: 1;
+      grid-column-end: 4;
+    }
+    & + & {
+      margin-top: 0;
+    }
+  }
+}
+
 
 .supportedNetworks-metaDatumTitle {
   color: $color--secondary;
@@ -515,13 +577,35 @@ a:hover {
 // Why Stake With Us
 */
 .whyStakeWithUs-reasons {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: $grid-unit;
+
+}
+
+@media screen and (min-width: $breakpoints--large--minWidth) {
+  .whyStakeWithUs-reasons {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $grid-unit;
+  }
+}
+
+@media screen and (min-width: $breakpoints--xlarge--minWidth) {
+  .whyStakeWithUs-reasons {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 .whyStakeWithUs-reason {
+  & + & {
+    margin-top: $grid-unit * 2;
+  }
+}
 
+@media screen and (min-width: $breakpoints--large--minWidth) {
+  .whyStakeWithUs-reason {
+    & + & {
+      margin-top: unset;
+    }
+  }
 }
 
 .whyStakeWithUs-reasonTitle {
@@ -574,10 +658,11 @@ a:hover {
   font-weight: $text--fontWeight--display;
   padding: ($grid-unit / 2) $grid-unit;
   background-color: $color--background;
+  white-space: nowrap;
 }
 
 .delegateWithUs-key {
-
+  word-break: break-all;
 }
 
 /*/////////////////////////////////////////////////////////////////////////////
@@ -602,9 +687,15 @@ a:hover {
 }
 
 .team-people {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: $grid-unit;
+  display: none;
+}
+
+@media screen and (min-width: $breakpoints--large--minWidth) {
+  .team-people {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: $grid-unit;
+  }
 }
 
 .team-person {
@@ -615,10 +706,17 @@ a:hover {
   display: flex;
   flex-direction: column-reverse;
   justify-content: center;
+  max-width: 200px;
+}
 
-  &:nth-child(2),
-  &:nth-child(4) {
-    margin-top: $grid-unit * 4;
+@media screen and (min-width: $breakpoints--large--minWidth) {
+  .team-person {
+    max-width: unset;
+
+    &:nth-child(2),
+    &:nth-child(4) {
+      margin-top: $grid-unit * 4;
+    }
   }
 }
 
@@ -664,22 +762,51 @@ a:hover {
 }
 
 .team-bioContainer {
-  height: 200px;
-  position: relative;
+
 }
 
 .team-bio {
   @extend .bubbleBox;
 
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  padding: $grid-unit;
-  display: none;
+  & + & {
+    margin-top: $grid-unit;
+  }
+}
 
-  &.is-active {
-    display: block;
+.team-bioPortraitContainer {
+  @extend .floatInPlace;
+
+  float: left;
+  overflow: hidden;
+  border-radius: 1000px;
+  border: $border-width solid $color--foreground;
+  margin-right: $grid-unit;
+  margin-bottom: $grid-unit / 2;
+  max-width: 25vw;
+}
+
+@media screen and (min-width: $breakpoints--large--minWidth) {
+  .team-bioContainer {
+    height: 200px;
+    position: relative;
+  }
+
+  .team-bio {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    padding: $grid-unit;
+    display: none;
+    margin-top: unset;
+
+    &.is-active {
+      display: block;
+    }
+  }
+
+  .team-bioPortraitContainer {
+    display: none;
   }
 }
 
@@ -693,8 +820,14 @@ a:hover {
 }
 
 .team-bioContent {
-  column-count: 3;
-  column-gap: $grid-unit;
+
+}
+
+@media screen and (min-width: $breakpoints--large--minWidth) {
+  .team-bioContent {
+    column-count: 3;
+    column-gap: $grid-unit;
+  }
 }
 
 /*/////////////////////////////////////////////////////////////////////////////
