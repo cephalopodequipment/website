@@ -14,7 +14,7 @@ $border-width: 8px;
 
 $default-transition: all 0.25s ease-in-out;
 
-$color--background: #05053e;
+$color--background: #13136f;
 $color--foreground: #2be0dd;
 $color--secondary: #FAC68E;
 $color--secondary--light: #FEF0E2;
@@ -61,7 +61,7 @@ $text--lineHeight--display: 1.4em;
 
 body {
   background-image:
-    linear-gradient(rgba(black, 0) 80%, black);
+    linear-gradient(rgba(black, 0) 80%, rgba(black, 0.5));
 
   &:before,
   &:after {
@@ -72,6 +72,7 @@ body {
     bottom: 0;
     background-size: 100%;
     background-repeat: no-repeat;
+    z-index: -100;
   }
 
   &:before {
@@ -387,7 +388,7 @@ a:hover {
 
   .bubble-track {
     --bubble-blur: 1px;
-    --bubble-size: 30px;
+    --bubble-size: 10vh;
     --bubble-speed: 5s;
     --delay: 0;
     --track-height: 100%;
@@ -430,12 +431,13 @@ a:hover {
     border-radius: 1000px;
     display: block;
     filter: blur(var(--bubble-blur));
-    height: var(--bubble-size);
+    height: 5vh;
     opacity: 0.75;
-    width: var(--bubble-size);
+    width: 5vh;
+    transform: scale(var(--bubble-scale-factor));
 
     .is-animating-bubbles & {
-      opacity: 1;
+      opacity: var(--bubble-opacity);
     }
   }
 }

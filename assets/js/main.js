@@ -172,17 +172,37 @@ tabSets.forEach((tabSet) => {
 ///////////////////////////////////////////////////////////////////////////////
 // Bubbles
 
-// int
+// integer
 const MIN_BUBBLES = 40;
 const MAX_BUBBLES = 80;
 
-// s
+// seconds
 const MIN_DELAY = -120;
 const MAX_DELAY = 0;
 
-// s
+// opacity
+const MIN_BUBBLE_OPACITY = 0.4;
+const MAX_BUBBLE_OPACITY = 1;
+
+// scale factor
+const MIN_BUBBLE_SIZE = 0.5;
+const MAX_BUBBLE_SIZE = 1.5;
+
+// seconds
 const MIN_BUBBLE_SPEED = 5;
 const MAX_BUBBLE_SPEED = 10;
+
+// px
+const MIN_BUBBLE_BLUR = 0;
+const MAX_BUBBLE_BLUR = 6;
+
+// seconds
+const MIN_TRACK_SPEED = 45;
+const MAX_TRACK_SPEED = 120;
+
+// vw
+const MIN_TRACK_WIDTH = 3;
+const MAX_TRACK_WIDTH = 10;
 
 // %
 const MIN_TRACK_HEIGHT = 20;
@@ -196,43 +216,96 @@ const BUBBLE_STYLES = {
     tiny: {
         // Tiny; way back
         '--bubble-blur': '0',
-        '--bubble-size': '5px',
         '--track-speed': '60s',
         '--track-width': '20px',
     },
     small: {
         // Small; back
         '--bubble-blur': '3px',
-        '--bubble-size': '3vw',
         '--track-speed': '120s',
         '--track-width': '10vw',
     },
     medium: {
         // Medium; middle
         '--bubble-blur': '5px',
-        '--bubble-size': '6vw',
         '--track-speed': '90s',
         '--track-width': '15vw',
     },
     large: {
         // Large; front
         '--bubble-blur': '1px',
-        '--bubble-size': '10vw',
         '--track-speed': '60s',
-        '--track-width': '25vw',
+        '--track-width': '20vw',
     },
 };
-
-const BUBBLE_STYLE_FREQUENCY = [
-    ...Array(50).fill('tiny'),
-    ...Array(20).fill('small'),
-    ...Array(5).fill('medium'),
-    ...Array(1).fill('large'),
-];
 
 const bubblesContainer = select('.bubbles');
 
 const randomNumberOfBubbles = randomNumber(MIN_BUBBLES, MAX_BUBBLES);
+
+const randomTinyBubbleSizes = Array.from(new Array(50)).map(
+    () => randomNumber(15, 25) / 100
+);
+
+const randomSmallBubbleSizes = Array.from(new Array(20)).map(
+    () => randomNumber(51, 65) / 100
+);
+
+const randomMediumBubbleSizes = Array.from(new Array(10)).map(
+    () => randomNumber(65, 85) / 100
+);
+
+const randomLargeBubbleSizes = Array.from(new Array(5)).map(
+    () => randomNumber(100, 120) / 100
+);
+
+const randomScaleFactors = [].concat(
+    randomTinyBubbleSizes,
+    randomSmallBubbleSizes,
+    randomMediumBubbleSizes,
+    randomLargeBubbleSizes
+);
+
+Array.from(new Array(randomNumberOfBubbles)).forEach(() => {
+    const randomBubbleOpacity = randomNumber(
+        MIN_BUBBLE_OPACITY,
+        MAX_BUBBLE_OPACITY
+    );
+    const randomBubbleScaleFactor =
+        randomScaleFactors[randomNumber(0, randomScaleFactors.length)];
+    const randomBubbleBlur = randomNumber(MIN_BUBBLE_BLUR, MAX_BUBBLE_BLUR);
+    const randomBubbleSpeed = randomNumber(MIN_BUBBLE_SPEED, MAX_BUBBLE_SPEED);
+    const randomDelay = randomNumber(MIN_DELAY, MAX_DELAY);
+    const randomTrackSpeed = randomNumber(MIN_TRACK_SPEED, MAX_TRACK_SPEED);
+    const randomTrackWidth = randomNumber(MIN_TRACK_WIDTH, MAX_TRACK_WIDTH);
+    const randomTrackHeight = randomNumber(MIN_TRACK_HEIGHT, MAX_TRACK_HEIGHT);
+    const randomTrackOffset = randomNumber(MIN_TRACK_OFFSET, MAX_TRACK_OFFSET);
+
+    const bubbleTrack = document.createElement('div');
+    const bubbleWrapper = document.createElement('div');
+    const bubble = document.createElement('div');
+
+    bubbleTrack.classList.add('bubble-track');
+    bubbleWrapper.classList.add('bubble-wrapper');
+    bubble.classList.add('bubble');
+
+    bubblesContainer.appendChild(bubbleTrack);
+    bubbleTrack.appendChild(bubbleWrapper);
+    bubbleWrapper.appendChild(bubble);
+
+    bubbleTrack.style.setProperty('--bubble-blur', `${randomBubbleBlur}px`);
+    bubbleTrack.style.setProperty(
+        '--bubble-scale-factor',
+        randomBubbleScaleFactor
+    );
+    bubbleTrack.style.setProperty('--bubble-speed', `${randomBubbleSpeed}s`);
+    bubbleTrack.style.setProperty('--bubble-opacity', randomBubbleOpacity);
+    bubbleTrack.style.setProperty('--delay', `${randomDelay}s`);
+    bubbleTrack.style.setProperty('--track-height', `${randomTrackHeight}%`);
+    bubbleTrack.style.setProperty('--track-offset', `${randomTrackOffset}vw`);
+    bubbleTrack.style.setProperty('--track-speed', `${randomTrackSpeed}s`);
+    bubbleTrack.style.setProperty('--track-width', `${randomTrackWidth}vw`);
+});
 
 const animationToggleButton = select('.animationToggleButton[role="switch"]');
 
@@ -265,39 +338,3 @@ animationToggleButton.addEventListener(
 const savedState = window.localStorage.getItem('is-animating-bubbles');
 
 toggleAnimation(savedState !== null ? savedState === 'true' : isAnimating());
-
-for (var i = 0; i < randomNumberOfBubbles; i++) {
-    const randomBubbleSpeed = randomNumber(MIN_BUBBLE_SPEED, MAX_BUBBLE_SPEED);
-    const randomBubbleStyle =
-        BUBBLE_STYLE_FREQUENCY[
-            (BUBBLE_STYLE_FREQUENCY.length * Math.random()) | 0
-        ];
-    const randomBubbleStyleObject = BUBBLE_STYLES[randomBubbleStyle];
-    const randomDelay = randomNumber(MIN_DELAY, MAX_DELAY);
-    const randomTrackHeight = randomNumber(MIN_TRACK_HEIGHT, MAX_TRACK_HEIGHT);
-    const randomTrackOffset = randomNumber(MIN_TRACK_OFFSET, MAX_TRACK_OFFSET);
-
-    const bubbleTrack = document.createElement('div');
-    const bubbleWrapper = document.createElement('div');
-    const bubble = document.createElement('div');
-
-    bubbleTrack.classList.add('bubble-track');
-    bubbleWrapper.classList.add('bubble-wrapper');
-    bubble.classList.add('bubble');
-
-    bubblesContainer.appendChild(bubbleTrack);
-    bubbleTrack.appendChild(bubbleWrapper);
-    bubbleWrapper.appendChild(bubble);
-
-    bubbleTrack.style.setProperty('--bubble-speed', `${randomBubbleSpeed}s`);
-    bubbleTrack.style.setProperty('--delay', `${randomDelay}s`);
-    bubbleTrack.style.setProperty('--track-height', `${randomTrackHeight}%`);
-    bubbleTrack.style.setProperty('--track-offset', `${randomTrackOffset}vw`);
-
-    Object.keys(randomBubbleStyleObject).map((propertyName) => {
-        bubbleTrack.style.setProperty(
-            propertyName,
-            randomBubbleStyleObject[propertyName]
-        );
-    });
-}
