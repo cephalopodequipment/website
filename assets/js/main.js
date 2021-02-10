@@ -212,33 +212,6 @@ const MAX_TRACK_HEIGHT = 110;
 const MIN_TRACK_OFFSET = -5;
 const MAX_TRACK_OFFSET = 105;
 
-const BUBBLE_STYLES = {
-    tiny: {
-        // Tiny; way back
-        '--bubble-blur': '0',
-        '--track-speed': '60s',
-        '--track-width': '20px',
-    },
-    small: {
-        // Small; back
-        '--bubble-blur': '3px',
-        '--track-speed': '120s',
-        '--track-width': '10vw',
-    },
-    medium: {
-        // Medium; middle
-        '--bubble-blur': '5px',
-        '--track-speed': '90s',
-        '--track-width': '15vw',
-    },
-    large: {
-        // Large; front
-        '--bubble-blur': '1px',
-        '--track-speed': '60s',
-        '--track-width': '20vw',
-    },
-};
-
 const bubblesContainer = select('.bubbles');
 
 const randomNumberOfBubbles = randomNumber(MIN_BUBBLES, MAX_BUBBLES);
