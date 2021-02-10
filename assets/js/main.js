@@ -17,6 +17,51 @@ textContainers.forEach((textContainer) => {
 });
 
 ///////////////////////////////////////////////////////////////////////////////
+// Fish
+const bodyElement = select('body');
+const NUM_FISH = 20;
+
+const randomlyAdjustFishRoute = (fishElement) => {
+    fishElement.style.setProperty(
+        '--random-rotation',
+        `${randomNumber(-30, 30)}deg`
+    );
+};
+
+const fishContainerElement = document.createElement('div');
+fishContainerElement.classList.add('fish-container');
+bodyElement.appendChild(fishContainerElement);
+
+Array.from(new Array(NUM_FISH)).forEach((fish) => {
+    const fishElement = document.createElement('div');
+
+    fishElement.classList.add('fish');
+    fishElement.style.setProperty('--random-blur', `${randomNumber(1, 5)}px`);
+    fishElement.style.setProperty('--random-delay', `${randomNumber(-90, 0)}s`);
+    fishElement.style.setProperty(
+        '--random-duration',
+        `${randomNumber(30, 90)}s`
+    );
+    fishElement.style.setProperty('--random-scale', randomNumber(20, 80) / 100);
+    fishElement.style.setProperty(
+        '--random-left-offset',
+        `${randomNumber(-10, 110)}%`
+    );
+    fishElement.style.setProperty(
+        '--random-top-offset',
+        `${randomNumber(10, 100)}%`
+    );
+
+    fishContainerElement.appendChild(fishElement);
+
+    randomlyAdjustFishRoute(fishElement);
+
+    setInterval(() => {
+        randomlyAdjustFishRoute(fishElement);
+    }, randomNumber(5000, 15000));
+});
+
+///////////////////////////////////////////////////////////////////////////////
 // Font Themes
 const fontOptions = [
     {
@@ -62,7 +107,6 @@ const fontOptions = [
 ];
 
 const linkElement = select('#js-google-font');
-const bodyElement = select('body');
 const navItems = selectAll('.siteFooter-navItems')[1];
 
 const setFont = (name, url) => {
@@ -129,8 +173,8 @@ tabSets.forEach((tabSet) => {
 // Bubbles
 
 // int
-const MIN_BUBBLES = 60;
-const MAX_BUBBLES = 100;
+const MIN_BUBBLES = 40;
+const MAX_BUBBLES = 80;
 
 // s
 const MIN_DELAY = -120;

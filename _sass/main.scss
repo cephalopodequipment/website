@@ -59,6 +59,34 @@ $text--lineHeight--display: 1.4em;
   overflow-x: hidden;
 }
 
+body {
+  background-image:
+    linear-gradient(rgba(black, 0) 80%, black);
+
+  &:before,
+  &:after {
+    width: 75vw;
+    height: 75vw;
+    content: '';
+    position: absolute;
+    bottom: 0;
+    background-size: 100%;
+    background-repeat: no-repeat;
+  }
+
+  &:before {
+    left: 0;
+    background-image: url(/assets/img/seafloor-1.svg);
+    background-position: bottom left;
+  }
+
+  &:after {
+    right: 0;
+    background-image: url(/assets/img/seafloor-2.svg);
+    background-position: bottom right;
+  }
+}
+
 /*/////////////////////////////////////////////////////////////////////////////
 // Nav
 */
@@ -870,10 +898,11 @@ a:hover {
 .siteFooter {
   padding: 60px 0 100px;
   margin-top: $grid-unit * 10;
-  background-color: $color--seaFloor;
+  // background-color: $color--seaFloor;
   z-index: 10000;
   position: relative;
 
+  /*
   &:before,
   &:after {
     content: '';
@@ -897,11 +926,13 @@ a:hover {
   &:after {
     z-index: 3;
   }
+  */
 }
 
 .siteFooter-wrapper {
   position: relative;
 
+  /*
   &:before {
     animation-direction: alternate;
     animation-duration: 10s;
@@ -909,21 +940,23 @@ a:hover {
     animation-name: pulse;
     animation-timing-function: ease-in-out;
     background-image:
-      radial-gradient(
-        closest-side,
-        $color--foreground,
-        rgba($color--foreground, 0)
+    radial-gradient(
+      closest-side,
+      $color--foreground,
+      rgba($color--foreground, 0)
       );
-    content: '';
-    height: 600px;
-    left: 0;
-    position: absolute;
-    right: 0;
-    top: -300px;
-    z-index: 1;
+      content: '';
+      height: 600px;
+      left: 0;
+      position: absolute;
+      right: 0;
+      top: -300px;
+      z-index: 1;
+    }
+    */
   }
-}
 
+/*
 .siteFooter-plant {
   position: absolute;
   top: -220px;
@@ -955,6 +988,7 @@ a:hover {
     z-index: 10;
   }
 }
+*/
 
 .siteFooter-contents {
   position: relative;
@@ -972,8 +1006,11 @@ a:hover {
 }
 
 .siteFooter-navItems {
+  display: flex;
+  align-items: center;
+
   & > * + * {
-    margin-top: $grid-unit / 2;
+    margin-left: $grid-unit;
   }
 }
 
@@ -999,7 +1036,7 @@ a:hover {
   display: flex;
 
   & > * + * {
-    margin-left: $grid-unit / 2;
+    margin-left: $grid-unit;
   }
 }
 
@@ -1045,10 +1082,130 @@ a:hover {
   opacity: 0.3;
   position: fixed;
   bottom: $grid-unit;
-  left: $grid-unit;
+  left: $grid-unit * 2;
   transition: $default-transition;
 
   &:hover {
     opacity: 1;
+  }
+}
+
+@keyframes swimming {
+  0%, 10%, 20%, 60%, 70%, 80%, 90%, 100% {
+    transform: rotate3d(0, 1, 0, 30deg);
+  }
+  5%, 15%, 25%, 65%, 75%, 85%, 95% {
+    transform: rotate3d(0, 1, 0, -30deg);
+  }
+}
+
+@keyframes swimRoute {
+  0% {
+    transform:
+      rotate(var(--random-rotation))
+      translateX(0)
+      scale(var(--random-scale));
+  }
+
+  20% {
+    transform:
+      rotate(var(--random-rotation))
+      translateX(30vw)
+      scale(var(--random-scale));
+  }
+  21% {
+    transform:
+      rotate(var(--random-rotation))
+      translateX(30vw)
+      rotate3d(0, 1, 0, 180deg)
+      scale(var(--random-scale));
+  }
+  30% {
+    transform:
+      rotate(var(--random-rotation))
+      translateX(10vw)
+      rotate3d(0, 1, 0, 180deg)
+      scale(var(--random-scale));
+  }
+  31% {
+    transform:
+      rotate(var(--random-rotation))
+      translateX(10vw)
+      rotate3d(0, 1, 0, 0)
+      scale(var(--random-scale));
+  }
+
+  60% {
+    transform:
+      rotate(var(--random-rotation))
+      translateX(30vw)
+      scale(var(--random-scale));
+  }
+  61% {
+    transform:
+      rotate(var(--random-rotation))
+      translateX(30vw)
+      rotate3d(0, 1, 0, 180deg)
+      scale(var(--random-scale));
+  }
+  80% {
+    transform:
+      rotate(var(--random-rotation))
+      translateX(10vw)
+      rotate3d(0, 1, 0, 180deg)
+      scale(var(--random-scale));
+  }
+  81% {
+    transform:
+      rotate(var(--random-rotation))
+      translateX(10vw)
+      rotate3d(0, 1, 0, 0)
+      scale(var(--random-scale));
+  }
+
+  100% {
+    transform:
+      rotate(var(--random-rotation))
+      translateX(120vw)
+      scale(var(--random-scale));
+  }
+}
+
+.fish-container {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.fish {
+  position: absolute;
+  animation-delay: var(--random-delay);
+  animation-duration: var(--random-duration);
+  animation-iteration-count: infinite;
+  animation-name: swimRoute;
+  animation-timing-function: ease-out;
+  top: var(--random-top-offset);
+  left: var(--random-left-offset);
+  width: 54px;
+  height: 31px;
+  transition: all 0.5s ease-in-out;
+
+  &:before {
+    content: '';
+    position: absolute;
+    background-image: url(/assets/img/fish.svg);
+    background-size: contain;
+    width: 54px;
+    height: 31px;
+    animation-name: swimming;
+    animation-timing-function: ease-out;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+    filter: blur(var(--random-blur));
   }
 }
