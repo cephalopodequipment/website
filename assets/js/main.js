@@ -243,19 +243,23 @@ const bubblesContainer = select('.bubbles');
 
 const randomNumberOfBubbles = randomNumber(MIN_BUBBLES, MAX_BUBBLES);
 
-const randomTinyBubbleSizes = Array.from(new Array(50)).map(
+const randomTinyBubbleSizes = Array.from(
+    new Array(50),
     () => randomNumber(15, 25) / 100
 );
 
-const randomSmallBubbleSizes = Array.from(new Array(20)).map(
+const randomSmallBubbleSizes = Array.from(
+    new Array(20),
     () => randomNumber(51, 65) / 100
 );
 
-const randomMediumBubbleSizes = Array.from(new Array(10)).map(
+const randomMediumBubbleSizes = Array.from(
+    new Array(10),
     () => randomNumber(65, 85) / 100
 );
 
-const randomLargeBubbleSizes = Array.from(new Array(5)).map(
+const randomLargeBubbleSizes = Array.from(
+    new Array(5),
     () => randomNumber(100, 120) / 100
 );
 
