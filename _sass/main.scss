@@ -1,7 +1,6 @@
 /*/////////////////////////////////////////////////////////////////////////////
 // Config
 */
-
 $breakpoints--xlarge--minWidth: 1280px;
 $breakpoints--xlarge: 1200px;
 
@@ -15,13 +14,13 @@ $border-width: 8px;
 $default-transition: all 0.25s ease-in-out;
 
 $color--background: #13136f;
-$color--foreground: #2be0dd;
-$color--secondary: #FAC68E;
+$color--foreground: #2BCDCA;
+$color--secondary: #E5BF97;
 $color--secondary--light: #FEF0E2;
 $color--bubbleBox: rgba($color--foreground, 0.12);
 $color--seaFloor: #01010e;
 
-$text--fontFamily--body: Roboto, sans-serif;
+$text--fontFamily--body: Quicksand, sans-serif;
 $text--fontFamily--display: $text--fontFamily--body;
 $text--fontSize--body: 18px;
 $text--fontSize--display: 60px;
@@ -88,6 +87,11 @@ body {
   }
 }
 
+code {
+  word-break: break-all;
+  font-family: 'Fira Code', monospace;
+}
+
 /*/////////////////////////////////////////////////////////////////////////////
 // Nav
 */
@@ -116,10 +120,6 @@ a:hover {
   p + p {
     margin-top: $grid-unit;
   }
-}
-
-.text {
-  color: lighten($color--foreground, 20%);
 }
 
 .siteNavigation {
@@ -214,7 +214,7 @@ a:hover {
   flex-direction: column;
   grid-column-start: 3;
   grid-column-end: 12;
-  height: 80vh;
+  height: 65vh;
   justify-content: center;
   margin-top: 15vh;
 
@@ -699,30 +699,28 @@ a:hover {
 }
 
 .delegateWithUs {
-  border-radius: 1000px;
-  border: $border-width solid $color--bubbleBox;
+  border-bottom: $border-width solid $color--bubbleBox;
+  border-top: $border-width solid $color--bubbleBox;
   font-size: $text--fontSize--display / 2;
+  grid-column-end: 4;
+  grid-column-start: 1;
   line-height: $text--lineHeight--display;
-  padding: $grid-unit;
+  margin-bottom: $grid-unit;
+  padding: $grid-unit 0;
   position: relative;
   text-align: center;
-  margin-top: $grid-unit * 4;
+}
+
+@media screen and (min-width: $breakpoints--large--minWidth) {
+  .delegateWithUs {
+    border-top: 0;
+    padding-top: 0;
+  }
 }
 
 .delegateWithUs-title {
-  position: absolute;
-  top: 0;
-  left: 50%;
-  transform: translate(-50%, -50%);
   color: $color--secondary;
   font-weight: $text--fontWeight--display;
-  padding: ($grid-unit / 2) $grid-unit;
-  background-color: $color--background;
-  white-space: nowrap;
-}
-
-.delegateWithUs-key {
-  word-break: break-all;
 }
 
 /*/////////////////////////////////////////////////////////////////////////////

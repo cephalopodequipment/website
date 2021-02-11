@@ -1,10 +1,11 @@
 sectionTitle: Team
 sectionHandle: team
 sectionIntro: |
-    The Cephalopod team has decades of collective experience in data center
-    operations, distributed systems, and cryptocurrency. We are long term
-    contributors to the Cosmos project, including one of the founders and some of
-    the earliest team members.
+    The Cephalopod Validator is part of the [Informal Systems](http://www.informal.systems) family.
+
+    The team has decades of collective experience in data center operations,
+    distributed systems, and cryptocurrency and are long term contributors to the
+    Cosmos project.
 people:
     - name: Ethan Buchman
       image: ethan.jpg

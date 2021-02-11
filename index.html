@@ -43,8 +43,20 @@ layout: default
             <h2 class="supportedNetworks-hiddenTabContents">
                 {{ network.title }}
             </h2>
+            {% if network.fancyHeading.label %}
+                <div class="delegateWithUs">
+                    <div class="delegateWithUs-title">
+                        {{ network.fancyHeading.label }}
+                    </div>
+                    <p>
+                        <code class="text delegateWithUs-key">
+                            {{ network.fancyHeading.value | markdownify }}
+                        </code>
+                    </p>
+                </div>
+            {% endif %}
             {% if network.description %}
-                <div class="markdown">
+                <div class="markdown text">
                     {{ network.description | markdownify }}
                 </div>
             {% endif %}
@@ -83,22 +95,11 @@ layout: default
                     {{ reason.title }}
                 </h3>
 
-                <p class="text whyStakeWithUs-reasonDescription">
-                    {{ reason.description }}
+                <p class="markdown text whyStakeWithUs-reasonDescription">
+                    {{ reason.description | markdownify }}
                 </p>
             </div>
         {% endfor %}
-    </div>
-
-    <div class="delegateWithUs">
-        <div class="delegateWithUs-title">
-            Delegate with us at:
-        </div>
-        <p>
-            <code class="delegateWithUs-key">
-                {{ site.data.company-info.delegateWithUsAt }}
-            </code>
-        </p>
     </div>
 </section>
 
@@ -110,8 +111,8 @@ layout: default
         {{ site.data.team.sectionTitle }}
     </h2>
 
-    <div class="section-intro js-prevent-widows">
-        {{ site.data.team.sectionIntro }}
+    <div class="markdown text section-intro js-prevent-widows">
+        {{ site.data.team.sectionIntro | markdownify }}
     </div>
 
     <div class="team-people">
@@ -147,8 +148,8 @@ layout: default
                     />
                 </div>
 
-                <p class="text team-bioContent js-prevent-widows">
-                    {{ person.bio }}
+                <p class="markdown text team-bioContent js-prevent-widows">
+                    {{ person.bio | markdownify }}
                 </p>
             </div>
         {% endfor %}

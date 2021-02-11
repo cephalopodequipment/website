@@ -3,6 +3,10 @@ sectionHandle: supported-networks
 networks:
     - title: Cosmos
       image: cosmos.svg
+      fancyHeading:
+          label: 'Delegate with us at:'
+          value: |
+              [cosmosvaloper16k579jk6yt2cwmqx9dz5xvq9fug2tekvlu9qdv](https://wallet.keplr.app/#/cosmoshub-3/stake?modal=stake&validator=cosmosvaloper16k579jk6yt2cwmqx9dz5xvq9fug2tekvlu9qdv)
       data:
           - title: Operator Address
             icon: globe-americas
