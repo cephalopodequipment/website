@@ -11,18 +11,14 @@ $containerWidthsAtBreakpoint: (
   large: 960px
 );
 
+$color--background: #13136f;
+$color--foreground: #2BCDCA;
+
 $grid-unit: 30px;
 
 $border-width: 8px;
 
 $default-transition: all 0.25s ease-in-out;
-
-$color--background: #13136f;
-$color--foreground: #2BCDCA;
-$color--secondary: #E5BF97;
-$color--secondary--light: #FEF0E2;
-$color--bubbleBox: rgba($color--foreground, 0.12);
-$color--seaFloor: #01010e;
 
 $text--fontFamily--body: Quicksand, sans-serif;
 $text--fontFamily--display: $text--fontFamily--body;
@@ -53,19 +49,24 @@ $text--fontWeight--display: 900;
 }
 
 :root {
+  --color-background: #{$color--background};
+  --color-foreground: #{$color--foreground};
+  --color-secondary: #E5BF97;
+  --color-secondary-light: #FEF0E2;
+  --color-bubble-box: ${rgba($color--foreground, 0.12)};
+  --color-sea-floor: #01010e;
+
   --grid-unit: 30px;
   --text-size-body: 16px;
   --text-size-display: 40px;
   --text-line-height-body: 1.5rem;
   --text-line-height-display: 1.4em;
 
-  background: $color--background;
-  color: $color--foreground;
+  background: var(--color-background);
+  color: var(--color-foreground);
   font-family: $text--fontFamily--body;
   font-size: var(--text-size-body);
   line-height: var(--text-line-height-body);
-  position: relative;
-  overflow-x: hidden;
 }
 
 @include responsiveStylesFor(large) {
@@ -78,6 +79,8 @@ $text--fontWeight--display: 900;
 body {
   background-image:
     linear-gradient(rgba(black, 0) 80%, rgba(black, 0.5));
+  overflow-x: hidden;
+  position: relative;
 
   &:before,
   &:after {
@@ -119,16 +122,16 @@ code {
 // Nav
 */
 a:hover {
-  color: $color--secondary;
+  color: var(--color-secondary);
 }
 
 .markdown {
   a {
-    color: $color--secondary;
+    color: var(--color-secondary);
     text-decoration: underline;
 
     &:hover {
-      color: $color--secondary--light;
+      color: var(--color-secondary--light);
     }
   }
 
@@ -148,7 +151,7 @@ a:hover {
 .siteNavigation-menuToggleButton {
   position: fixed;
   font-size: 0;
-  background: rgba(darken($color--background, 5%), 0.85);
+  background-color: rgba(0, 0, 0, 0.25);
   z-index: 1000;
   top: 0;
   left: 0;
@@ -160,6 +163,10 @@ a:hover {
     content: '\f0c9';
     font-family: 'Font Awesome 5 Pro';
     font-size: calc(var(--text-size-display) / 2);
+  }
+
+  &[aria-expanded="true"] {
+    background-color: transparent;
   }
 }
 
@@ -186,7 +193,7 @@ a:hover {
     top: 0;
     bottom: 0;
     left: 0;
-    background-color: rgba($color--seaFloor, 0.8);
+    background-color: rgba(0, 0, 0, 0.5);
     opacity: 0;
     width: 100vw;
     z-index: -1;
@@ -233,7 +240,7 @@ a:hover {
   height: 100%;
   white-space: nowrap;
   padding-top: $grid-unit * 2.5;
-  background-color: $color--background;
+  background-color: var(--color-background);
 }
 
 @include responsiveStylesFor(large) {
@@ -250,12 +257,12 @@ a:hover {
 
 .siteNavigation-button {
   display: block;
-  color: $color--secondary;
+  color: var(--color-secondary);
   font-weight: $text--fontWeight--display;
   padding: ($grid-unit / 2) $grid-unit;
 
   &:hover {
-    color: $color--foreground;
+    color: var(--color-foreground);
   }
 }
 
@@ -273,8 +280,8 @@ a:hover {
   }
 
   &:before {
-    background-color: $color--background;
-    border: 1px solid $color--foreground;
+    background-color: var(--color-background);
+    border: 1px solid var(--color-foreground);
     border-radius: 3px;
     padding: 1px 2px;
     content: 'OFF';
@@ -289,8 +296,8 @@ a:hover {
 
     &:before {
       content: 'ON';
-      background-color: $color--foreground;
-      color: $color--background;
+      background-color: var(--color-foreground);
+      color: var(--color-background);
     }
   }
 }
@@ -303,7 +310,7 @@ a:hover {
   .siteNavigation {
     display: flex;
     justify-content: center;
-    background-color: rgba(darken($color--background, 5%), 0.85);
+    background-color: rgba(0, 0, 0, 0.25);
     z-index: 20;
   }
 
@@ -365,7 +372,7 @@ a:hover {
 }
 
 .section-intro {
-  color: $color--secondary;
+  color: var(--color-secondary);
   font-weight: $text--fontWeight--display;
   font-size: calc(var(--text-size-display) / 2);
   line-height: calc(var(--text-line-height-display));
@@ -445,7 +452,7 @@ a:hover {
 }
 
 .valueProp {
-  color: $color--secondary;
+  color: var(--color-secondary);
   font-size: calc(var(--text-size-display) / 1.5);
   font-weight: $text--fontWeight--display;
   line-height: calc(var(--text-line-height-display) / 1.25);
@@ -630,8 +637,8 @@ a:hover {
 }
 
 .bubbleBox {
-  border: 8px solid $color--bubbleBox;
-  // background-color: $color--bubbleBox;
+  border: 8px solid var(--color-bubble-box);
+  // background-color: var(--color-bubble-box);
   border-radius: $grid-unit;
   padding: $grid-unit / 2;
 }
@@ -703,7 +710,7 @@ a:hover {
 
   align-items: center;
   border-radius: 1000px;
-  border: $border-width solid $color--foreground;
+  border: $border-width solid var(--color-foreground);
   cursor: pointer;
   display: flex;
   justify-content: center;
@@ -712,11 +719,11 @@ a:hover {
 
   &:hover,
   &.is-active {
-    border-color: $color--secondary;
+    border-color: var(--color-secondary);
   }
   &.is-active {
     box-shadow:
-      0 0 0 $grid-unit $color--bubbleBox;
+      0 0 0 $grid-unit var(--color-bubble-box);
     z-index: 1;
   }
 }
@@ -774,7 +781,7 @@ a:hover {
 
 
 .supportedNetworks-metaDatumTitle {
-  color: $color--secondary;
+  color: var(--color-secondary);
   font-weight: $text--fontWeight--display;
   font-size: calc(var(--text-size-display) / 2);
   margin-bottom: $grid-unit / 2;
@@ -782,7 +789,7 @@ a:hover {
 }
 
 .supportedNetworks-metaDatumTitle .icon {
-  color: $color--secondary--light;
+  color: var(--color-secondary--light);
   position: absolute;
   top: 0;
   right: 100%;
@@ -833,7 +840,7 @@ a:hover {
 }
 
 .whyStakeWithUs-reasonTitle {
-  color: $color--secondary;
+  color: var(--color-secondary);
   font-weight: $text--fontWeight--display;
   font-size: calc(var(--text-size-display) / 2);
   margin-bottom: $grid-unit / 2;
@@ -844,7 +851,7 @@ a:hover {
 
   display: block;
   font-size: calc(var(--text-size-display));
-  color: $color--secondary--light;
+  color: var(--color-secondary--light);
   margin-bottom: $grid-unit;
 
   .whyStakeWithUs-reason:nth-child(2) & {
@@ -863,8 +870,8 @@ a:hover {
 }
 
 .delegateWithUs {
-  border-bottom: $border-width solid $color--bubbleBox;
-  border-top: $border-width solid $color--bubbleBox;
+  border-bottom: $border-width solid var(--color-bubble-box);
+  border-top: $border-width solid var(--color-bubble-box);
   font-size: calc(var(--text-size-display) / 2);
   grid-column-end: 4;
   grid-column-start: 1;
@@ -883,7 +890,7 @@ a:hover {
 }
 
 .delegateWithUs-title {
-  color: $color--secondary;
+  color: var(--color-secondary);
   font-weight: $text--fontWeight--display;
 }
 
@@ -964,8 +971,8 @@ a:hover {
 
   padding: ($grid-unit / 2) $grid-unit;
   border-radius: 1000px;
-  background-color: $color--foreground;
-  color: $color--background;
+  background-color: var(--color-foreground);
+  color: var(--color-background);
   margin: 0 auto;
   white-space: nowrap;
   transition: $default-transition;
@@ -974,23 +981,23 @@ a:hover {
 
   .team-person:hover &,
   .is-active & {
-    background-color: $color--secondary;
+    background-color: var(--color-secondary);
   }
 }
 
 .team-portraitContainer {
   overflow: hidden;
   border-radius: 1000px;
-  border: $border-width solid $color--foreground;
+  border: $border-width solid var(--color-foreground);
   transition: $default-transition;
   margin-bottom: $grid-unit * -1;
 
   .team-person:hover &,
   .is-active & {
-    border-color: $color--secondary;
+    border-color: var(--color-secondary);
   }
   .is-active & {
-    box-shadow: 0 0 0 $grid-unit $color--bubbleBox;
+    box-shadow: 0 0 0 $grid-unit var(--color-bubble-box);
   }
 }
 
@@ -1018,7 +1025,7 @@ a:hover {
   float: left;
   overflow: hidden;
   border-radius: 1000px;
-  border: $border-width solid $color--foreground;
+  border: $border-width solid var(--color-foreground);
   margin-right: $grid-unit;
   margin-bottom: $grid-unit / 2;
   max-width: 25vw;
@@ -1054,7 +1061,7 @@ a:hover {
   font-size: calc(var(--text-size-display) / 2);
   font-weight: $text--fontWeight--display;
   line-height: calc(var(--text-line-height-display));
-  color: $color--secondary;
+  color: var(--color-secondary);
   margin-bottom: $grid-unit / 2;
 }
 
