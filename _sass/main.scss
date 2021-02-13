@@ -163,6 +163,12 @@ a:hover {
   }
 }
 
+@include responsiveStylesFor(large) {
+  .siteNavigation-menuToggleButton {
+    display: none;
+  }
+}
+
 .siteNavigation {
   position: fixed;
   top: 0;
@@ -195,6 +201,19 @@ a:hover {
   }
 }
 
+@include responsiveStylesFor(large) {
+  .siteNavigation {
+    opacity: 1;
+    transform: none;
+    right: 0;
+    bottom: unset;
+
+    &:after {
+      content: unset;
+    }
+  }
+}
+
 .siteNavigation-contents {
   position: absolute;
   top: 0;
@@ -203,6 +222,18 @@ a:hover {
   white-space: nowrap;
   padding-top: $grid-unit * 2.5;
   background-color: $color--background;
+}
+
+@include responsiveStylesFor(large) {
+  .siteNavigation-contents {
+    position: static;
+    top: unset;
+    left: unset;
+    height: unset;
+    white-space: unset;
+    padding-top: unset;
+    background-color: unset;
+  }
 }
 
 .siteNavigation-button {
