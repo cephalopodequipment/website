@@ -105,7 +105,7 @@ body {
 }
 
 code {
-  word-break: break-all;
+  word-break: break-word;
   font-family: 'Fira Code', monospace;
 }
 
@@ -752,7 +752,7 @@ a:hover {
 
 .supportedNetworks-metaDatum {
   padding-left: $grid-unit * 2;
-  word-break: break-all;
+  word-break: break-word;
 
   & + & {
     margin-top: $grid-unit;
