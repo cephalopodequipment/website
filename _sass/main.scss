@@ -177,6 +177,7 @@ a:hover {
   z-index: 999;
   transition: all 0.5s;
   opacity: 0;
+  pointer-events: none;
   transform: translateX(-100%);
 
   &:after {
@@ -193,6 +194,7 @@ a:hover {
 
   .siteNavigation-menuToggleButton[aria-expanded="true"] + & {
     opacity: 1;
+    pointer-events: all;
     transform: translateX(0);
 
     &:after {
@@ -207,9 +209,19 @@ a:hover {
     transform: none;
     right: 0;
     bottom: unset;
+    pointer-events: all;
 
     &:after {
       content: unset;
+    }
+  }
+
+  .siteNavigation-backToTop {
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    &.has-scrolled {
+      opacity: 1;
     }
   }
 }
@@ -472,22 +484,22 @@ a:hover {
 
 @keyframes floatingInPlace {
   0% {
-    transform: translateY(2px);
+    transform: scaleX(var(--scale-x)) translateY(2px);
   }
   20% {
-    transform: translateY(-4px);
+    transform: scaleX(var(--scale-x)) translateY(-4px);
   }
   40% {
-    transform: translateY( 2px);
+    transform: scaleX(var(--scale-x)) translateY( 2px);
   }
   60% {
-    transform: translateY(-3px);
+    transform: scaleX(var(--scale-x)) translateY(-3px);
   }
   80% {
-    transform: translateY( 2px);
+    transform: scaleX(var(--scale-x)) translateY( 2px);
   }
   100% {
-    transform: translateY(-2px);
+    transform: scaleX(var(--scale-x)) translateY(-2px);
   }
 }
 
@@ -510,6 +522,8 @@ a:hover {
 // Floating stuff in place (bobbing?)
 */
 .floatInPlace {
+  --scale-x: 1;
+
   animation-name: floatingInPlace;
   animation-duration: 10s;
   animation-iteration-count: infinite;
@@ -629,6 +643,8 @@ a:hover {
   position: relative;
 
   &:before {
+    --scale-x: -1;
+
     @extend .floatInPlace;
 
     content: '';
@@ -638,8 +654,19 @@ a:hover {
     background-image: url(/assets/img/diver.svg);
     filter: blur(4px);
     opacity: 0.5;
-    right: 85%;
-    bottom: 60%;
+    right: -55%;
+    bottom: 91%;
+  }
+}
+
+@include responsiveStylesFor(large) {
+  .supportedNetworks {
+    &:before {
+      --scale-x: 1;
+
+      right: 75%;
+      bottom: 60%;
+    }
   }
 }
 
@@ -867,6 +894,8 @@ a:hover {
   position: relative;
 
   &:before {
+    --scale-x: -1;
+
     @extend .floatInPlace;
 
     content: '';
@@ -876,8 +905,19 @@ a:hover {
     background-image: url(/assets/img/submarine.svg);
     filter: blur(4px);
     opacity: 0.5;
-    left: 80%;
-    bottom: 80%;
+    left: -46%;
+    bottom: 93%;
+  }
+}
+
+@include responsiveStylesFor(large) {
+  .team {
+    &:before {
+      --scale-x: 1;
+
+      left: 80%;
+      bottom: 80%;
+    }
   }
 }
 

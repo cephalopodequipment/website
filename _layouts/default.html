@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="{{ site.lang | default: "en-US" }}">
     <head>
-        <meta content="width=device-width, initial-scale=1" name="viewport">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
         <meta charset="utf-8">
 
         <title>{{ page.title }} - {{ site.title }}</title>
@@ -33,6 +33,16 @@
                 </button>
 
                 <ul class="siteNavigation-items" role="menu">
+                    <li class="siteNavigation-item siteNavigation-backToTop">
+                        <a
+                            class="siteNavigation-button js-menu-item"
+                            href="#"
+                            role="menuitem"
+                        >
+                            <i class="far fa-arrow-to-top" aria-hidden="true"></i>
+                            Back to Top
+                        </a>
+                    </li>
                     <li class="siteNavigation-item">
                         <a
                             class="siteNavigation-button js-menu-item"
@@ -77,6 +87,15 @@
                 <div class="siteFooter-contents">
                     <nav class="siteFooter-nav">
                         <ul class="siteFooter-navItems">
+                            <li class="siteFooter-navItem">
+                                <a
+                                    href="#"
+                                    class="siteFooter-navButton siteFooter-backToTop"
+                                >
+                                    <i class="far fa-arrow-to-top" aria-hidden="true"></i>
+                                    Back to Top
+                                </a>
+                            </li>
                             <li class="siteFooter-navItem">
                                 <a
                                     href="#{{ site.data.networks-we-support.sectionHandle }}"

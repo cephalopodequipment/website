@@ -33,6 +33,17 @@ menuToggleButton.addEventListener('click', toggleMenu);
 menuButtons.forEach((item) => item.addEventListener('click', toggleMenu));
 
 ///////////////////////////////////////////////////////////////////////////////
+// Back to Top
+const backToTopAnchorElement = select('.siteNavigation-backToTop');
+
+window.addEventListener('scroll', () => {
+    const scrolledFarEnough =
+        document.scrollingElement.scrollTop > window.innerHeight / 2;
+
+    backToTopAnchorElement.classList.toggle('has-scrolled', scrolledFarEnough);
+});
+
+///////////////////////////////////////////////////////////////////////////////
 // Fish
 const bodyElement = select('body');
 const NUM_FISH = 20;

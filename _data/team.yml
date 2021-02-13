@@ -1,7 +1,11 @@
 sectionTitle: Team
 sectionHandle: team
 sectionIntro: |
-    The Cephalopod Validator is part of the [Informal Systems](http://www.informal.systems) family.
+    The Cephalopod Validator is part of the
+    <a href="http://www.informal.systems" target="_blank">
+      Informal Systems
+    </a>
+    family.
 
     The team has decades of collective experience in data center operations,
     distributed systems, and cryptocurrency and are long term contributors to the
