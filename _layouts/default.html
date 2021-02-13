@@ -14,8 +14,16 @@
         <link rel="stylesheet" href="assets/css/main.css">
     </head>
     <body>
+        <button
+            aria-haspopup="true"
+            aria-expanded="false"
+            class="siteNavigation-menuToggleButton js-menu-toggle-button"
+        >
+            Open Navigation Menu
+        </button>
+
         <header class="siteNavigation">
-            <div class="siteNavigation-contents">
+            <nav class="siteNavigation-contents">
                 <button
                     aria-pressed="true"
                     class="animationToggleButton toggleButton"
@@ -24,33 +32,36 @@
                     Animate Background
                 </button>
 
-                <ul class="siteNavigation-items">
+                <ul class="siteNavigation-items" role="menu">
                     <li class="siteNavigation-item">
                         <a
-                            class="siteNavigation-button"
+                            class="siteNavigation-button js-menu-item"
                             href="#{{ site.data.networks-we-support.sectionHandle }}"
+                            role="menuitem"
                         >
                             {{ site.data.networks-we-support.sectionTitle }}
                         </a>
                     </li>
                     <li class="siteNavigation-item">
                         <a
-                            class="siteNavigation-button"
+                            class="siteNavigation-button js-menu-item"
                             href="#{{ site.data.why-stake-with-us.sectionHandle }}"
+                            role="menuitem"
                         >
                             {{ site.data.why-stake-with-us.sectionTitle }}
                         </a>
                     </li>
                     <li class="siteNavigation-item">
                         <a
-                            class="siteNavigation-button"
+                            class="siteNavigation-button js-menu-item"
                             href="#{{ site.data.team.sectionHandle }}"
+                            role="menuitem"
                         >
                             {{ site.data.team.sectionTitle }}
                         </a>
                     </li>
                 </ul>
-            </div>
+            </nav>
         </header>
 
         <main class="gridContainer">

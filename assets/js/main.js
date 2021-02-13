@@ -13,8 +13,24 @@ const textContainers = selectAll('.js-prevent-widows');
 textContainers.forEach((textContainer) => {
     textContainer.innerHTML = textContainer.innerHTML
         .trim()
-        .replace(/[ ]([^ ]+)$/, `${String.fromCharCode(160)}$1`);
+        .replace(/([^ ]+)[ ]([^ ]+)$/, `<span class="nowrap">$1 $2</span>`);
 });
+
+///////////////////////////////////////////////////////////////////////////////
+// Menu
+const menuToggleButton = select('.js-menu-toggle-button');
+const menuButtons = selectAll('.js-menu-item');
+
+const toggleMenu = () => {
+    const isExpanded =
+        menuToggleButton.getAttribute('aria-expanded') === 'true';
+
+    menuToggleButton.setAttribute('aria-expanded', !isExpanded);
+};
+
+menuToggleButton.addEventListener('click', toggleMenu);
+
+menuButtons.forEach((item) => item.addEventListener('click', toggleMenu));
 
 ///////////////////////////////////////////////////////////////////////////////
 // Fish

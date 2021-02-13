@@ -1,11 +1,15 @@
 /*/////////////////////////////////////////////////////////////////////////////
 // Config
 */
-$breakpoints--xlarge--minWidth: 1280px;
-$breakpoints--xlarge: 1200px;
+$breakpoints: (
+  xlarge: 1280px,
+  large: 1024px
+);
 
-$breakpoints--large--minWidth: 1024px;
-$breakpoints--large: 960px;
+$containerWidthsAtBreakpoint: (
+  xlarge: 1200px,
+  large: 960px
+);
 
 $grid-unit: 30px;
 
@@ -22,12 +26,14 @@ $color--seaFloor: #01010e;
 
 $text--fontFamily--body: Quicksand, sans-serif;
 $text--fontFamily--display: $text--fontFamily--body;
-$text--fontSize--body: 18px;
-$text--fontSize--display: 60px;
 $text--fontWeight--body: 500;
 $text--fontWeight--display: 900;
-$text--lineHeight--body: 1.5rem;
-$text--lineHeight--display: 1.4em;
+
+@mixin responsiveStylesFor($breakpoint) {
+  @media screen and (min-width: map-get($breakpoints, $breakpoint)) {
+    @content;
+  }
+}
 
 /*/////////////////////////////////////////////////////////////////////////////
 // Resets
@@ -48,14 +54,25 @@ $text--lineHeight--display: 1.4em;
 
 :root {
   --grid-unit: 30px;
+  --text-size-body: 16px;
+  --text-size-display: 40px;
+  --text-line-height-body: 1.5rem;
+  --text-line-height-display: 1.4em;
 
   background: $color--background;
   color: $color--foreground;
   font-family: $text--fontFamily--body;
-  font-size: $text--fontSize--body;
-  line-height: $text--lineHeight--body;
+  font-size: var(--text-size-body);
+  line-height: var(--text-line-height-body);
   position: relative;
   overflow-x: hidden;
+}
+
+@include responsiveStylesFor(large) {
+  :root {
+    --text-size-body: 18px;
+    --text-size-display: 60px;
+  }
 }
 
 body {
@@ -92,6 +109,12 @@ code {
   font-family: 'Fira Code', monospace;
 }
 
+@include responsiveStylesFor(large) {
+  .nowrap {
+    white-space: nowrap;
+  }
+}
+
 /*/////////////////////////////////////////////////////////////////////////////
 // Nav
 */
@@ -122,36 +145,138 @@ a:hover {
   }
 }
 
+.siteNavigation-menuToggleButton {
+  position: fixed;
+  font-size: 0;
+  background: rgba(darken($color--background, 5%), 0.85);
+  z-index: 1000;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  padding: ($grid-unit / 2) $grid-unit;
+  text-align: right;
+
+  &:before {
+    content: '\f0c9';
+    font-family: 'Font Awesome 5 Pro';
+    font-size: calc(var(--text-size-display) / 2);
+  }
+}
+
 .siteNavigation {
-  display: flex;
-  justify-content: center;
   position: fixed;
   top: 0;
-  right: 0;
   left: 0;
-  background-color: rgba(darken($color--background, 5%), 0.85);
-  z-index: 20;
+  bottom: 0;
+  z-index: 999;
+  transition: all 0.5s;
+  opacity: 0;
+  transform: translateX(-100%);
+
+  &:after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-color: rgba($color--seaFloor, 0.8);
+    opacity: 0;
+    width: 100vw;
+    z-index: -1;
+  }
+
+  .siteNavigation-menuToggleButton[aria-expanded="true"] + & {
+    opacity: 1;
+    transform: translateX(0);
+
+    &:after {
+      opacity: 1;
+    }
+  }
 }
 
 .siteNavigation-contents {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  max-width: $breakpoints--xlarge;
-}
-
-.siteNavigation-items {
-  display: flex;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  white-space: nowrap;
+  padding-top: $grid-unit * 2.5;
+  background-color: $color--background;
 }
 
 .siteNavigation-button {
   display: block;
   color: $color--secondary;
   font-weight: $text--fontWeight--display;
-  padding: ($grid-unit / 2) ($grid-unit / 2);
+  padding: ($grid-unit / 2) $grid-unit;
 
   &:hover {
     color: $color--foreground;
+  }
+}
+
+.toggleButton {
+  align-items: center;
+  background-color: inherit;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  opacity: 0.5;
+  padding: 4px 8px;
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  &:before {
+    background-color: $color--background;
+    border: 1px solid $color--foreground;
+    border-radius: 3px;
+    padding: 1px 2px;
+    content: 'OFF';
+    display: inline-block;
+    font-size: 0.8em;
+    font-weight: bold;
+    margin-right: 5px;
+  }
+
+  &[aria-pressed="true"] {
+    opacity: 1;
+
+    &:before {
+      content: 'ON';
+      background-color: $color--foreground;
+      color: $color--background;
+    }
+  }
+}
+
+.animationToggleButton {
+  display: none;
+}
+
+@include responsiveStylesFor(large) {
+  .siteNavigation {
+    display: flex;
+    justify-content: center;
+    background-color: rgba(darken($color--background, 5%), 0.85);
+    z-index: 20;
+  }
+
+  .siteNavigation-contents {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    max-width: map-get($containerWidthsAtBreakpoint, xlarge);
+  }
+
+  .siteNavigation-items {
+    display: flex;
+  }
+
+  .siteNavigation-button {
+    padding: ($grid-unit / 2) ($grid-unit / 2);
   }
 }
 
@@ -159,22 +284,22 @@ a:hover {
 // Core Layout
 */
 .gridContainer {
-  display: grid;
   grid-template-columns: repeat(12, 1fr);
   gap: $grid-unit;
   margin: $grid-unit;
 }
 
-@media screen and (min-width: $breakpoints--large--minWidth) {
+@include responsiveStylesFor(large) {
   .gridContainer {
-    max-width: $breakpoints--large;
+    display: grid;
+    max-width: map-get($containerWidthsAtBreakpoint, large);
     margin: 0 auto;
   }
 }
 
-@media screen and (min-width: $breakpoints--xlarge--minWidth) {
+@include responsiveStylesFor(xlarge) {
   .gridContainer {
-    max-width: $breakpoints--xlarge;
+    max-width: map-get($containerWidthsAtBreakpoint, xlarge);
   }
 }
 
@@ -190,7 +315,7 @@ a:hover {
 
 .section-title {
   font-weight: $text--fontWeight--display;
-  font-size: $text--fontSize--display;
+  font-size: calc(var(--text-size-display));
   line-height: 0.9em;
   text-transform: uppercase;
   text-align: center;
@@ -199,8 +324,8 @@ a:hover {
 .section-intro {
   color: $color--secondary;
   font-weight: $text--fontWeight--display;
-  font-size: $text--fontSize--display / 2;
-  line-height: $text--lineHeight--display;
+  font-size: calc(var(--text-size-display) / 2);
+  line-height: calc(var(--text-line-height-display));
   margin-bottom: $grid-unit;
   text-align: center;
 }
@@ -212,14 +337,19 @@ a:hover {
   align-items: flex-start;
   display: flex;
   flex-direction: column;
-  grid-column-start: 3;
-  grid-column-end: 12;
-  height: 65vh;
   justify-content: center;
-  margin-top: 15vh;
 
   & > * + * {
     margin-top: $grid-unit * 2;
+  }
+}
+
+@include responsiveStylesFor(large) {
+  .hero {
+    grid-column-start: 3;
+    grid-column-end: 12;
+    height: 65vh;
+    margin-top: 15vh;
   }
 }
 
@@ -230,12 +360,26 @@ a:hover {
     @extend .floatInPlace;
 
     content: '';
-    position: absolute;
-    height: 309px;
-    width: 309px;
+    position: relative;
+    left: -30%;
+    display: block;
+    height: 200px;
+    width: 200px;
     background-image: url(/assets/img/logo.svg);
-    top: -200px;
-    left: -200px;
+    background-size: contain;
+  }
+}
+
+@include responsiveStylesFor(large) {
+  .logo {
+    &:before {
+      position: absolute;
+      height: 309px;
+      width: 309px;
+      top: -200px;
+      left: -200px;
+      transform: scale(1);
+    }
   }
 }
 
@@ -251,20 +395,22 @@ a:hover {
 
 .logo-bigText {
   @extend .section-title;
+
   line-height: 0.9em;
   text-align: left;
+  font-size: calc(var(--text-size-display));
 }
 
 .valueProp {
   color: $color--secondary;
-  font-size: $text--fontSize--display / 1.5;
+  font-size: calc(var(--text-size-display) / 1.5);
   font-weight: $text--fontWeight--display;
-  line-height: $text--lineHeight--display / 1.25;
+  line-height: calc(var(--text-line-height-display) / 1.25);
 }
 
 .description {
-  font-size: $text--fontSize--display / 2.5;
-  line-height: $text--lineHeight--display;
+  font-size: calc(var(--text-size-display) / 2.5);
+  line-height: calc(var(--text-line-height-display));
 }
 
 /*/////////////////////////////////////////////////////////////////////////////
@@ -353,10 +499,6 @@ a:hover {
   animation-delay: -2s;
 }
 
-.animationToggleButton {
-  display: none;
-}
-
 .bubbles {
   display: none;
 }
@@ -364,7 +506,7 @@ a:hover {
 /*/////////////////////////////////////////////////////////////////////////////
 // First breakpoint
 */
-@media screen and (min-width: 1280px) {
+@include responsiveStylesFor(large) {
   .animationToggleButton {
     display: block;
   }
@@ -442,42 +584,6 @@ a:hover {
   }
 }
 
-.toggleButton {
-  align-items: center;
-  background-color: inherit;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  opacity: 0.5;
-  padding: 4px 8px;
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  &:before {
-    background-color: $color--background;
-    border: 1px solid $color--foreground;
-    border-radius: 3px;
-    padding: 1px 2px;
-    content: 'OFF';
-    display: inline-block;
-    font-size: 0.8em;
-    font-weight: bold;
-    margin-right: 5px;
-  }
-
-  &[aria-pressed="true"] {
-    opacity: 1;
-
-    &:before {
-      content: 'ON';
-      background-color: $color--foreground;
-      color: $color--background;
-    }
-  }
-}
-
 .bubbleBox {
   border: 8px solid $color--bubbleBox;
   // background-color: $color--bubbleBox;
@@ -518,7 +624,7 @@ a:hover {
   display: grid;
 }
 
-@media screen and (min-width: $breakpoints--large--minWidth) {
+@include responsiveStylesFor(large) {
   .supportedNetworks-hiddenTabContents {
     display: none;
   }
@@ -528,7 +634,7 @@ a:hover {
   }
 }
 
-@media screen and (min-width: $breakpoints--xlarge--minWidth) {
+@include responsiveStylesFor(xlarge) {
   .supportedNetworks-tabs {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -563,7 +669,7 @@ a:hover {
   padding: $grid-unit;
 }
 
-@media screen and (min-width: $breakpoints--large--minWidth) {
+@include responsiveStylesFor(large) {
   .supportedNetworks-metaData {
     display: none;
     gap: $grid-unit;
@@ -580,7 +686,7 @@ a:hover {
   }
 }
 
-@media screen and (min-width: $breakpoints--xlarge--minWidth) {
+@include responsiveStylesFor(xlarge) {
   .supportedNetworks-metaData {
     grid-template-columns: repeat(3, 1fr);
   }
@@ -595,7 +701,7 @@ a:hover {
   }
 }
 
-@media screen and (min-width: $breakpoints--large--minWidth) {
+@include responsiveStylesFor(large) {
   .supportedNetworks-metaDatum {
     &:first-child {
       grid-column-start: 1;
@@ -612,7 +718,7 @@ a:hover {
 .supportedNetworks-metaDatumTitle {
   color: $color--secondary;
   font-weight: $text--fontWeight--display;
-  font-size: $text--fontSize--display / 2;
+  font-size: calc(var(--text-size-display) / 2);
   margin-bottom: $grid-unit / 2;
   position: relative;
 }
@@ -640,7 +746,7 @@ a:hover {
 
 }
 
-@media screen and (min-width: $breakpoints--large--minWidth) {
+@include responsiveStylesFor(large) {
   .whyStakeWithUs-reasons {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
@@ -648,7 +754,7 @@ a:hover {
   }
 }
 
-@media screen and (min-width: $breakpoints--xlarge--minWidth) {
+@include responsiveStylesFor(xlarge) {
   .whyStakeWithUs-reasons {
     grid-template-columns: repeat(4, 1fr);
   }
@@ -660,7 +766,7 @@ a:hover {
   }
 }
 
-@media screen and (min-width: $breakpoints--large--minWidth) {
+@include responsiveStylesFor(large) {
   .whyStakeWithUs-reason {
     & + & {
       margin-top: unset;
@@ -671,7 +777,7 @@ a:hover {
 .whyStakeWithUs-reasonTitle {
   color: $color--secondary;
   font-weight: $text--fontWeight--display;
-  font-size: $text--fontSize--display / 2;
+  font-size: calc(var(--text-size-display) / 2);
   margin-bottom: $grid-unit / 2;
 }
 
@@ -679,7 +785,7 @@ a:hover {
   @extend .floatInPlace;
 
   display: block;
-  font-size: $text--fontSize--display;
+  font-size: calc(var(--text-size-display));
   color: $color--secondary--light;
   margin-bottom: $grid-unit;
 
@@ -701,17 +807,17 @@ a:hover {
 .delegateWithUs {
   border-bottom: $border-width solid $color--bubbleBox;
   border-top: $border-width solid $color--bubbleBox;
-  font-size: $text--fontSize--display / 2;
+  font-size: calc(var(--text-size-display) / 2);
   grid-column-end: 4;
   grid-column-start: 1;
-  line-height: $text--lineHeight--display;
+  line-height: calc(var(--text-line-height-display));
   margin-bottom: $grid-unit;
   padding: $grid-unit 0;
   position: relative;
   text-align: center;
 }
 
-@media screen and (min-width: $breakpoints--large--minWidth) {
+@include responsiveStylesFor(large) {
   .delegateWithUs {
     border-top: 0;
     padding-top: 0;
@@ -748,7 +854,7 @@ a:hover {
   display: none;
 }
 
-@media screen and (min-width: $breakpoints--large--minWidth) {
+@include responsiveStylesFor(large) {
   .team-people {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -767,7 +873,7 @@ a:hover {
   max-width: 200px;
 }
 
-@media screen and (min-width: $breakpoints--large--minWidth) {
+@include responsiveStylesFor(large) {
   .team-person {
     max-width: unset;
 
@@ -847,7 +953,7 @@ a:hover {
   max-width: 25vw;
 }
 
-@media screen and (min-width: $breakpoints--large--minWidth) {
+@include responsiveStylesFor(large) {
   .team-bioContainer {
     height: 200px;
     position: relative;
@@ -874,9 +980,9 @@ a:hover {
 
 .team-bioName {
   display: block;
-  font-size: $text--fontSize--display / 2;
+  font-size: calc(var(--text-size-display) / 2);
   font-weight: $text--fontWeight--display;
-  line-height: $text--lineHeight--display;
+  line-height: calc(var(--text-line-height-display));
   color: $color--secondary;
   margin-bottom: $grid-unit / 2;
 }
@@ -885,7 +991,7 @@ a:hover {
 
 }
 
-@media screen and (min-width: $breakpoints--large--minWidth) {
+@include responsiveStylesFor(large) {
   .team-bioContent {
     column-count: 3;
     column-gap: $grid-unit;
@@ -897,105 +1003,21 @@ a:hover {
 */
 .siteFooter {
   padding: 60px 0 100px;
-  margin-top: $grid-unit * 10;
-  // background-color: $color--seaFloor;
+  margin-top: $grid-unit * 3;
   z-index: 10000;
   position: relative;
-
-  /*
-  &:before,
-  &:after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -40px;
-    height: 65px;
-    box-shadow: 0 1000px 0 1000px $color--seaFloor;
-    background-image: url(/assets/img/seafloor.svg);
-    background-repeat: repeat-x;
-    background-position: top left;
-  }
-
-  &:before {
-    opacity: 0.5;
-    top: -80px;
-    z-index: 1;
-    background-position: 200px 0;
-  }
-  &:after {
-    z-index: 3;
-  }
-  */
 }
 
 .siteFooter-wrapper {
   position: relative;
-
-  /*
-  &:before {
-    animation-direction: alternate;
-    animation-duration: 10s;
-    animation-iteration-count: infinite;
-    animation-name: pulse;
-    animation-timing-function: ease-in-out;
-    background-image:
-    radial-gradient(
-      closest-side,
-      $color--foreground,
-      rgba($color--foreground, 0)
-      );
-      content: '';
-      height: 600px;
-      left: 0;
-      position: absolute;
-      right: 0;
-      top: -300px;
-      z-index: 1;
-    }
-    */
-  }
-
-/*
-.siteFooter-plant {
-  position: absolute;
-  top: -220px;
-  width: 186px;
-  height: 160px;
-  background-repeat: no-repeat;
-  background-position: bottom center;
-
-  &:nth-child(1) {
-    background-image: url(/assets/img/plant-1.svg);
-    left: 14vw;
-    top: -240px;
-    z-index: 10;
-  }
-  &:nth-child(2) {
-    background-image: url(/assets/img/plant-2.svg);
-    left: 34vw;
-    top: -260px;
-  }
-  &:nth-child(3) {
-    background-image: url(/assets/img/plant-3.svg);
-    left: 67vw;
-    top: -200px;
-  }
-  &:nth-child(4) {
-    background-image: url(/assets/img/plant-4.svg);
-    left: 84vw;
-    top: -240px;
-    z-index: 10;
-  }
 }
-*/
 
 .siteFooter-contents {
   position: relative;
   z-index: 5;
   display: flex;
   justify-content: space-between;
-  max-width: $breakpoints--xlarge;
+  max-width: map-get($containerWidthsAtBreakpoint, xlarge);
   opacity: 0.8;
   margin: 0 auto;
   padding: 0 $grid-unit;
@@ -1007,10 +1029,23 @@ a:hover {
 
 .siteFooter-navItems {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  align-items: flex-start;
 
   & > * + * {
-    margin-left: $grid-unit;
+    margin-top: $grid-unit / 2;
+  }
+}
+
+@include responsiveStylesFor(large) {
+  .siteFooter-navItems {
+    flex-direction: row;
+    align-items: center;
+
+    & > * + * {
+      margin-top: 0;
+      margin-left: $grid-unit;
+    }
   }
 }
 
@@ -1034,9 +1069,22 @@ a:hover {
 
 .legalLinks-items {
   display: flex;
+  flex-direction: column;
+  align-items: flex-end;
 
   & > * + * {
-    margin-left: $grid-unit;
+    margin-top: $grid-unit / 2;
+  }
+}
+
+@include responsiveStylesFor(large) {
+  .legalLinks-items {
+    flex-direction: row;
+
+    & > * + * {
+      margin-top: 0;
+      margin-left: $grid-unit;
+    }
   }
 }
 
@@ -1055,7 +1103,7 @@ a:hover {
 .socialLinks-items {
   display: flex;
   justify-content: flex-end;
-  font-size: $text--fontSize--display / 2;
+  font-size: calc(var(--text-size-display) / 2);
 
   & > * + * {
     margin-left: $grid-unit / 2;
