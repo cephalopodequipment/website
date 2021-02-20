@@ -53,7 +53,7 @@ $text--fontWeight--display: 900;
   --color-foreground: #{$color--foreground};
   --color-secondary: #E5BF97;
   --color-secondary-light: #FEF0E2;
-  --color-bubble-box: ${rgba($color--foreground, 0.12)};
+  --color-bubble-box: #{rgba($color--foreground, 0.12)};
   --color-sea-floor: #01010e;
 
   --grid-unit: 30px;
