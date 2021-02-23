@@ -1,32 +1,3 @@
-# Permalinks
-permalink:           pretty
-
-# Setup
-title:               Cephalopod Equipment Corp.
-tagline:
-url:                 https://cephalopod.equipment
-paginate:            1
-baseurl:             ""
-
-# Assets
-#
-# We specify the directory for Jekyll so we can use @imports.
-sass:
-  sass_dir:          _sass
-  style:            :compressed
-
-# About/contact
-author:
-  name:              Jordan Bibla
-  url:               https://twitter.com/jbibla
-  email:             jbibla@gmail.com
-
-# Custom vars
-version:             2.0.0
-github:
-  repo:              https://github.com/cephalopodequipment/website
-
-# Plugins
-plugins:
-  - jekyll-paginate
-  - jekyll-gist
+url: "https://cephalopod.equipment" # the base hostname & protocol for your site, e.g. http://example.com
+baseurl: "/" # the subpath of your site, e.g. /blog
+title: "Cephalopod Equipment Corp." # the name of your site, e.g. ACME Corp.

@@ -1,0 +1,15 @@
+valueProp: Infrastructure for decentralized intelligence.
+
+description: |
+    We operate infrastructure for decentralized technologies designed to support
+    new forms of economic coordination and participant-owned networks.
+
+delegateWithUsAt: cosmosvaloper16k579jk6yt2cwmqx9dz5xvq9fug2tekvlu9qdv
+
+socialLinks:
+    - label: Email
+      href: 'mailto:squad@cephalopod.equipment'
+      icon: fas fa-envelope-square
+    - label: Twitter
+      href: https://twitter.com/cephalopodequip
+      icon: fab fa-twitter-square

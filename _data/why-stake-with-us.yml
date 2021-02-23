@@ -1,0 +1,24 @@
+sectionTitle: Why Stake With Us
+sectionHandle: why-stake-with-us
+reasons:
+    - title: Ecosystem Integration
+      icon: puzzle-piece
+      description: |
+          In collaboration with Informal Systems, Cephalopod understands the
+          infrastructure and product needs of the builders in the blockchain
+          ecosystem.
+    - title: Distributed
+      icon: chart-network
+      description: |
+          Our servers are geographically distributed to mitigate risk and ensure
+          we are always online.
+    - title: Reliable
+      icon: shield-check
+      description: |
+          We employ consistent monitoring practices to ensure availability and
+          quick response time to critical incidents.
+    - title: Secure
+      icon: lock-alt
+      description: |
+          We employ multi-tiered security best practices so staked assets are
+          always protected.

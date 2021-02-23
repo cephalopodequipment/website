@@ -3,3 +3,5 @@ _site
 _site/atom.xml
 /_site/atom.xml
 .sass-cache
+.jekyll-cache
+node_modules

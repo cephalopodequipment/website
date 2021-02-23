@@ -1,0 +1,55 @@
+sectionTitle: Networks We Support
+sectionHandle: supported-networks
+networks:
+    - title: Cosmos
+      image: cosmos.svg
+      fancyHeading:
+          label: 'Delegate with us at:'
+          value: |
+              [cosmosvaloper16k579jk6yt2cwmqx9dz5xvq9fug2tekvlu9qdv](https://wallet.keplr.app/#/cosmoshub-3/stake?modal=stake&validator=cosmosvaloper16k579jk6yt2cwmqx9dz5xvq9fug2tekvlu9qdv)
+      data:
+          - title: Operator Address
+            icon: globe-americas
+            values:
+                - cosmosvaloper16k579jk6yt2cwmqx9dz5xvq9fug2tekvlu9qdv
+                - 2-of-3 multisig
+          - title: Commission
+            icon: money-bill-wave
+            values:
+                - 'Rate: 8.11%'
+                - 'Max Change Rate: 1.18%'
+                - 'Max Rate: 42%'
+          - title: Datacenter
+            icon: server
+            values:
+                - Tier 3
+                - Near Toronto, Canada
+          - title: Hardware
+            icon: computer-classic
+            values:
+                - RAID - 1 storage
+                - TPM encrypted hard drive
+                - Secure Boot
+                - Redundant networking and power
+          - title: Signer
+            icon: pen-nib
+            values:
+                - Yubikey HSM
+                - Tendermint KMS
+          - title: Sentry Nodes
+            icon: chart-network
+            values:
+                - VPN on AWS
+          - title: Alerting
+            icon: sensor-alert
+            values:
+                - Peer connectivity
+                - Height drift
+    - title: Starkware
+      image: starkware.svg
+      description: |
+          STARK is a Zero-Knowledge Proof (ZKP) system that is transparent (no
+          trusted setup), post-quantum secure, and uniquely suited for solving
+          blockchain's biggest problems.
+
+          [Visit starkware.co](https://starkware.co/)
