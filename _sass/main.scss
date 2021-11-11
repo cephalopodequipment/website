@@ -956,11 +956,13 @@ a:hover {
     max-width: unset;
 
     &:nth-child(1),
-    &:nth-child(3) {
+    &:nth-child(3),
+    &:nth-child(5) {
       margin-top: $grid-unit * -2;
     }
     &:nth-child(2),
-    &:nth-child(4) {
+    &:nth-child(4),
+    &:nth-child(6) {
       margin-top: $grid-unit * 2;
     }
   }
