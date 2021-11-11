@@ -1,0 +1,30 @@
+---
+layout: tools
+---
+
+<section class="section-container js-tabs" id="pubkey-converter">
+    <h2 class="section-title">
+        Public key converter
+    </h2>
+    <p>Cosmos SDK v0.43 (bech32-encoded) -> Cosmos SDK v0.44 (base64-encoded) public key converter.<br><br>
+        This will only work for regular public keys.<br>
+        Multisig keys have to be recreated using each key and the CLI.<br>
+        Wallet addresses cannot be converted.<br>
+        This tool is provided AS IS. Use it at your own risk. Using the CLI to recover a pubkey is the safer option.
+    </p>
+    <form class="needs-validation" novalidate>
+        <div class="input-group" data-toggle="tooltip" data-placement="top"
+             title="Bech32-encoded public key (for example with the cosmospub prefix)">
+            <label class="input-group-text" for="pubkey-input-address" id="pubkey-input-address-label">Bech32-encoded public key:</label>
+            <input type="text" class="form-control" id="pubkey-input-address"
+                   placeholder="example: cosmospub1addwnpepqw40c3ukg8aczklckt6qw5yxhnav8cuqv560zd0fj5g3xz0m4g2sjkrc9y2">
+        </div>
+        <div class="input-group pt-2" data-toggle="tooltip" data-placement="top"
+             title="Base64-encoded public key">
+            <label class="input-group-text" for="pubkey-base64-address">Base64-encoded public key:</label>
+            <input type="text" class="form-control" id="pubkey-base64-address"
+                   readonly value="">
+        </div>
+        <div id="copyButton"></div>
+    </form>
+</section>
