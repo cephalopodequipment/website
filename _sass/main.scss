@@ -971,7 +971,7 @@ a:hover {
 .team-personName {
   @extend .floatInPlace;
 
-  padding: ($grid-unit / 2) $grid-unit;
+  padding: ($grid-unit / 4) ($grid-unit / 2);
   border-radius: 1000px;
   background-color: var(--color-foreground);
   color: var(--color-background);
