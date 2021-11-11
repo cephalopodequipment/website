@@ -45,11 +45,93 @@ networks:
             values:
                 - Peer connectivity
                 - Height drift
-    - title: Starkware
-      image: starkware.svg
-      description: |
-          STARK is a Zero-Knowledge Proof (ZKP) system that is transparent (no
-          trusted setup), post-quantum secure, and uniquely suited for solving
-          blockchain's biggest problems.
-
-          [Visit starkware.co](https://starkware.co/)
+    
+    - title: Osmosis
+      image: osmosis.svg
+      fancyHeading:
+          label: 'Delegate with us at:'
+          value: |
+              [osmovaloper1x20lytyf6zkcrv5edpkfkn8sz578qg5s833swz](https://wallet.keplr.app/#/osmosis/stake?modal=stake&validator=osmovaloper1x20lytyf6zkcrv5edpkfkn8sz578qg5s833swz)
+      data:
+          - title: Operator Address
+            icon: globe-americas
+            values:
+                - osmovaloper1x20lytyf6zkcrv5edpkfkn8sz578qg5s833swz
+                - 2-of-3 multisig
+          - title: Commission
+            icon: money-bill-wave
+            values:
+                - 'Rate: 8.11%'
+                - 'Max Change Rate: 1.18%'
+                - 'Max Rate: 42%'
+          - title: Datacenter
+            icon: server
+            values:
+                - Tier 3
+                - Near Toronto, Canada
+          - title: Hardware
+            icon: computer-classic
+            values:
+                - RAID - 1 storage
+                - TPM encrypted hard drive
+                - Secure Boot
+                - Redundant networking and power
+          - title: Signer
+            icon: pen-nib
+            values:
+                - Yubikey HSM
+                - Tendermint KMS
+          - title: Sentry Nodes
+            icon: chart-network
+            values:
+                - VPN on AWS
+          - title: Alerting
+            icon: sensor-alert
+            values:
+                - Peer connectivity
+                - Height drift
+                
+    - title: Regen
+      image: regen.svg
+      fancyHeading:
+          label: 'Delegate with us at:'
+          value: |
+              [regenvaloper1kl83t6gm2y5lgg5c5h3sz87tt5fg3cmyl2sksd](https://wallet.keplr.app/#/regen/stake?modal=stake&validator=regenvaloper1kl83t6gm2y5lgg5c5h3sz87tt5fg3cmyl2sksd)
+      data:
+          - title: Operator Address
+            icon: globe-americas
+            values:
+                - regenvaloper1kl83t6gm2y5lgg5c5h3sz87tt5fg3cmyl2sksd
+                - 2-of-3 multisig
+          - title: Commission
+            icon: money-bill-wave
+            values:
+                - 'Rate: 8.11%'
+                - 'Max Change Rate: 1.18%'
+                - 'Max Rate: 42%'
+          - title: Datacenter
+            icon: server
+            values:
+                - Tier 3
+                - Near Toronto, Canada
+          - title: Hardware
+            icon: computer-classic
+            values:
+                - RAID - 1 storage
+                - TPM encrypted hard drive
+                - Secure Boot
+                - Redundant networking and power
+          - title: Signer
+            icon: pen-nib
+            values:
+                - Yubikey HSM
+                - Tendermint KMS
+          - title: Sentry Nodes
+            icon: chart-network
+            values:
+                - VPN on AWS
+          - title: Alerting
+            icon: sensor-alert
+            values:
+                - Peer connectivity
+                - Height drift
