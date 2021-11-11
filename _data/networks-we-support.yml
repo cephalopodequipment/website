@@ -47,7 +47,7 @@ networks:
                 - Height drift
     
     - title: Osmosis
-      image: osmosis.svg
+      image: osmosis.png
       fancyHeading:
           label: 'Delegate with us at:'
           value: |
