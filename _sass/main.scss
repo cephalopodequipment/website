@@ -935,8 +935,9 @@ a:hover {
 @include responsiveStylesFor(large) {
   .team-people {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: $grid-unit;
+    grid-template-columns: repeat(auto-fill, minmax(146px, 1fr));
+    gap: 30px;
+    justify-content: center;
   }
 }
 
@@ -956,11 +957,13 @@ a:hover {
     max-width: unset;
 
     &:nth-child(1),
-    &:nth-child(3) {
+    &:nth-child(3),
+    &:nth-child(5) {
       margin-top: $grid-unit * -2;
     }
     &:nth-child(2),
-    &:nth-child(4) {
+    &:nth-child(4),
+    &:nth-child(6) {
       margin-top: $grid-unit * 2;
     }
   }
@@ -969,7 +972,7 @@ a:hover {
 .team-personName {
   @extend .floatInPlace;
 
-  padding: ($grid-unit / 2) $grid-unit;
+  padding: ($grid-unit / 4) ($grid-unit / 2);
   border-radius: 1000px;
   background-color: var(--color-foreground);
   color: var(--color-background);

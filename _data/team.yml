@@ -50,3 +50,11 @@ people:
           breaking software. He is based in Toronto and when he's not coding,
           you can find him in Rocket League and other competitive video game
           scenes.
+    - name: Josh Jeffrey
+      image: josh.png
+      bio: |
+          Joshua, also known as JD, is the Community Manager for Cephalopod. He creates marketing content and manages communication between the validator and delegator community.
+    - name: Andy Nogueira
+      image: andy.png
+      bio: |
+          Andy Nogueira is a Developer Advocate and Software Engineer at Informal Systems. He develops tooling to support Cosmos node operators and users.
