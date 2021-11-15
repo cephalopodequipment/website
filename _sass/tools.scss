@@ -31,7 +31,7 @@ input[readonly] {
   justify-content: center;
 
   & > * + * {
-    margin-top: $grid-unit * 2;
+    margin-top: $grid-unit;
   }
 }
 
