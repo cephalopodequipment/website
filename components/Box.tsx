@@ -1,3 +1,4 @@
+import mapValues from 'lodash/mapValues';
 import React from 'react';
 import styled, { CSSObject } from 'styled-components';
 import { breakpoints } from '../tokens';
@@ -52,7 +53,7 @@ const resolveProp: (
   } else {
     const propDefinition = computedPropConfigs[propName]!;
 
-    if (propDefinition.setDefaults) {
+    if (setDefaults && propDefinition.setDefaults) {
       Object.keys(propDefinition.setDefaults).forEach((cssPropName) => {
         if (!(cssPropName in props)) {
           styleObject[cssPropName] = propDefinition.setDefaults![cssPropName];
@@ -141,6 +142,18 @@ const Box: <TagName extends React.ElementType = 'div'>(
       );
     }
 
+    if (typeof props.customSelectorProps === 'object') {
+      Object.assign(
+        styleObject,
+        mapValues(props.customSelectorProps, (customSelectorProps) =>
+          resolveProps({
+            ...customSelectorProps,
+            activeBreakpoints,
+          })
+        )
+      );
+    }
+
     if (typeof props.responsiveProps === 'object') {
       Object.entries(props.responsiveProps).forEach(
         ([breakpointName, responsiveProps]) => {
@@ -152,6 +165,10 @@ const Box: <TagName extends React.ElementType = 'div'>(
           };
         }
       );
+    }
+
+    if (props.debug) {
+      console.log(styleObject);
     }
 
     return styleObject;

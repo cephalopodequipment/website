@@ -31,8 +31,8 @@ export const lineHeights = {
   xlarge: '2.2rem',
   large: '1.333rem',
   normal: '1.6rem',
-  small: '0.833rem',
-  xsmall: '0.588rem',
+  small: '1.2rem',
+  xsmall: '1rem',
 };
 
 export const textStyles = {

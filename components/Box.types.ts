@@ -1,6 +1,5 @@
 // https://github.com/kripod/react-polymorphic-box/blob/main/src/Box.tsx
 import React from 'react';
-import { CSSObject } from 'styled-components';
 import {
   animationNames,
   borderRadii,
@@ -483,6 +482,9 @@ export type BoxPropsWithConfigs<
    * ```
    */
   hoverProps?: BoxProps<TagName>;
+  customSelectorProps?: {
+    [selector: string]: BoxProps<TagName>;
+  };
   isOnlyForScreenReaders?: boolean;
   left?: GridSpaceOrLength;
   lineHeight?: FontSize;

@@ -75,6 +75,24 @@ function MyApp({ Component, pageProps }: AppProps) {
     setIsShowingMenu(true);
   };
 
+  const menuItems = [
+    {
+      label: 'Why Stake With Us',
+      href: '/#why-stake-with-us',
+      backgroundColor: 'blue--bright--50',
+    },
+    {
+      label: 'Team',
+      href: '/#meet-the-team',
+      backgroundColor: 'blue--bright--30',
+    },
+    {
+      label: 'Networks We Support',
+      href: '#',
+      onClick: showNetworkSelector,
+    },
+  ];
+
   return (
     <>
       <Head>
@@ -150,7 +168,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               transitionDuration="normal"
               transitionProperty={['backdrop-filter', 'padding']}
               transitionTimingFunction="linear"
-              zIndex="1000"
+              zIndex="5000"
             >
               <Anchor
                 href="/"
@@ -253,23 +271,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                   whiteSpace="nowrap"
                   onClick={hideMenu}
                 >
-                  {[
-                    {
-                      label: 'Why Stake With Us',
-                      href: '/#why-stake-with-us',
-                      backgroundColor: 'blue--bright--50',
-                    },
-                    {
-                      label: 'Team',
-                      href: '/#meet-the-team',
-                      backgroundColor: 'blue--bright--30',
-                    },
-                    {
-                      label: 'Networks We Support',
-                      href: '#',
-                      onClick: showNetworkSelector,
-                    },
-                  ].map((link) => (
+                  {menuItems.map((link) => (
                     <Anchor
                       href={link.href}
                       key={link.label}
@@ -334,7 +336,7 @@ function MyApp({ Component, pageProps }: AppProps) {
               </Box>
             </Box>
 
-            <Box as="main" rowGap="xxloose" zIndex="100">
+            <Box as="main" rowGap="xxloose" zIndex="1000">
               <Component
                 siteActions={{ delegateToUs, showNetworkSelector }}
                 {...pageProps}
@@ -353,6 +355,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                   tabletOrLarger: {
                     columnGap: 'xloose',
                     columns: ['2fr', '1fr'],
+                    justifyContent: 'space-between',
                   },
                 }}
               >
@@ -363,8 +366,14 @@ function MyApp({ Component, pageProps }: AppProps) {
                     Equipment
                   </Text>
                   <Text as="p">
-                    We work with our partners at Informal Systems to{' '}
-                    <Text whiteSpace="nowrap">build the Interchain.</Text>
+                    We work with our partners at{' '}
+                    <Anchor
+                      href="http://informal.systems/about"
+                      target="_blank"
+                    >
+                      Informal Systems
+                    </Anchor>{' '}
+                    to <Text whiteSpace="nowrap">build the Interchain.</Text>
                   </Text>
                 </Box>
 
@@ -407,35 +416,26 @@ function MyApp({ Component, pageProps }: AppProps) {
                 paddingY="loose"
               >
                 <Box as="ul" columnGap="normal">
-                  <li>
-                    <Anchor
-                      variant="subtle"
-                      href="#"
-                      onClick={showNetworkSelector}
-                    >
-                      Networks We Support
-                    </Anchor>
-                  </li>
-                  <li>
-                    <Anchor variant="subtle" href="#">
-                      Why Stake With Us
-                    </Anchor>
-                  </li>
-                  <li>
-                    <Anchor variant="subtle" href="#">
-                      Team
-                    </Anchor>
-                  </li>
+                  {menuItems.map((menuItem) => (
+                    <li key={menuItem.label}>
+                      <Anchor
+                        variant="subtle"
+                        href={menuItem.href}
+                        onClick={menuItem.onClick}
+                      >
+                        {menuItem.label}
+                      </Anchor>
+                    </li>
+                  ))}
                 </Box>
                 <Box as="ul" columnGap="normal">
                   <li>
-                    <Anchor variant="subtle" href="#">
+                    <Anchor
+                      variant="subtle"
+                      href="https://docs.google.com/document/d/1GvxlxBJO42YJ3xDUzAopQsJ7IVWBTnwWhV5S9rOYUao/edit#"
+                      target="_blank"
+                    >
                       Terms of Service
-                    </Anchor>
-                  </li>
-                  <li>
-                    <Anchor variant="subtle" href="#">
-                      Privacy Policy
                     </Anchor>
                   </li>
                 </Box>

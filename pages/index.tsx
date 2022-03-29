@@ -1,4 +1,4 @@
-import type { NextPage } from 'next';
+import startCase from 'lodash/startCase';
 import Head from 'next/head';
 import Image from 'next/image';
 import {
@@ -15,7 +15,10 @@ import {
   TypeWriter,
 } from '../components';
 import { Color } from '../components/Box.types';
+import { BrandIconName } from '../components/Icon.types';
 import { stakingReasons } from '../data/staking-reasons';
+import { teamMembers } from '../data/teamMembers';
+import { transitionDurations } from '../tokens';
 import { PageProps } from './_app';
 
 const Home = ({ siteActions }: PageProps) => {
@@ -215,41 +218,113 @@ const Home = ({ siteActions }: PageProps) => {
             tabletOrLarger: {
               columns: 4,
               gap: 'xtight',
+              position: 'relative',
               width: '60vw',
             },
           }}
         >
-          {[
-            'andy-nogueira',
-            'arianne-flemming',
-            'ethan-buchman',
-            'greg-szabo',
-            'jelena-djuric',
-            'joshua-jeffrey',
-            'mircea-colonescu',
-            'zarko-milosevic',
-          ].map((person) => (
-            <BobbingBox key={person}>
-              <Image
-                alt={`${person}`}
-                height={370}
-                src={`/img/portraits/${person}.png`}
-                width={370}
-              />
-            </BobbingBox>
+          {teamMembers.map(({ bio, name, socials }) => (
+            <Box
+              cursor="pointer"
+              data-team-member
+              key={name}
+              hoverProps={{
+                zIndex: '100',
+              }}
+            >
+              <BobbingBox>
+                <Image
+                  alt={`${name}`}
+                  height={370}
+                  src={`/img/portraits/${name}.png`}
+                  width={370}
+                />
+                <Box
+                  color="violet"
+                  fontSize="small"
+                  responsiveProps={{
+                    tabletOrLarger: {
+                      backgroundColor: 'blue--dark',
+                      borderRadius: 'small',
+                      bottom: 0,
+                      left: '50%',
+                      paddingX: 'tight',
+                      paddingY: 'xtight',
+                      position: 'absolute',
+                      transform: 'translate(-50%, -50%)',
+                      whiteSpace: 'nowrap',
+                    },
+                  }}
+                >
+                  {startCase(name.replace('-', ' '))}
+                </Box>
+                <Box
+                  fontSize="xsmall"
+                  customSelectorProps={{
+                    '[data-team-member]:hover &': {
+                      opacity: 1,
+                      pointerEvents: 'all',
+                    },
+                  }}
+                  responsiveProps={{
+                    phoneOnly: {
+                      rowGap: 'tight',
+                    },
+                    tabletOrLarger: {
+                      backgroundColor: 'blue',
+                      borderRadius: 'small',
+                      left: '50%',
+                      opacity: 0,
+                      pointerEvents: 'none',
+                      position: 'absolute',
+                      top: '100%',
+                      transform: 'translateX(-50%)',
+                      transitionProperty: 'opacity',
+                      width: 300,
+                    },
+                  }}
+                >
+                  <Box
+                    paddingY="tight"
+                    responsiveProps={{
+                      tabletOrLarger: {
+                        paddingX: 'normal',
+                      },
+                    }}
+                  >
+                    {bio}
+                  </Box>
+                  <Box
+                    borderTop="hairline"
+                    borderTopColor="white--30"
+                    columnGap="normal"
+                    paddingY="tight"
+                    responsiveProps={{
+                      tabletOrLarger: {
+                        paddingX: 'normal',
+                      },
+                    }}
+                  >
+                    {socials.map((social) => (
+                      <Anchor
+                        href={social.href}
+                        key={social.href}
+                        target="_blank"
+                        variant="subtle"
+                      >
+                        <Icon
+                          name={social.icon as BrandIconName}
+                          variant="brands"
+                        />{' '}
+                        {social.label}
+                      </Anchor>
+                    ))}
+                  </Box>
+                </Box>
+              </BobbingBox>
+            </Box>
           ))}
         </Box>
-
-        <Text as="p">
-          Learn more about{' '}
-          <Anchor href="http://informal.systems/about" target="_blank">
-            Our Team
-          </Anchor>{' '}
-          |{' '}
-          <Anchor href="https://informal.systems/" target="_blank">
-            Informal Systems
-          </Anchor>
-        </Text>
       </PageSection>
     </>
   );

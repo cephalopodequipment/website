@@ -46,7 +46,7 @@ export const propConfigs: PropConfigs = {
     setDefaults: {
       display: 'flex',
     },
-    options: ({}, propName = 'alignItems', propValue) => ({
+    options: (_, propName = 'alignItems', propValue) => ({
       [propName]: propValue,
     }),
   },
@@ -159,7 +159,7 @@ export const propConfigs: PropConfigs = {
       'whiteSpace',
       'width',
     ],
-    options: ({}, propName = 'display', propValue = '') => ({
+    options: (_, propName = 'display', propValue = '') => ({
       [propName]: propValue,
     }),
   },
