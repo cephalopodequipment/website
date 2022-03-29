@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "new": "node ./utilities/newComponent.js"
+    "new": "node ./utilities/newComponent.js",
+    "sync": "git push https://github.com/cephalopodequipment/website main:website-relaunch"
   },
   "dependencies": {
     "@types/lodash": "^4.14.179",
