@@ -33,6 +33,8 @@ const NetworkPage = ({ siteActions }: PageProps) => {
           responsiveProps={{
             tabletOrLarger: {
               columnGap: 'xloose',
+              columns: ['3fr', '2fr'],
+              display: 'grid',
             },
           }}
         >
@@ -48,6 +50,18 @@ const NetworkPage = ({ siteActions }: PageProps) => {
                 <Icon name="chevron-left" /> All Networks
               </Anchor>
               <Text variant="heading--2">{networkObject?.label}</Text>
+
+              {networkObject?.stats && (
+                <Box columnGap="loose" whiteSpace="nowrap" width="100%">
+                  {networkObject.stats.map(({ label, value }) => (
+                    <Box key={label} rowGap={0}>
+                      <Text variant="label">{label}</Text>
+                      <Text variant="statistic">{value}</Text>
+                    </Box>
+                  ))}
+                </Box>
+              )}
+
               <Text>{networkObject?.blurb}</Text>
             </Box>
             <Box alignItems="center" columnGap="loose">
@@ -77,16 +91,14 @@ const NetworkPage = ({ siteActions }: PageProps) => {
               )}
             </Box>
           </Box>
-          {networkObject?.stats && (
-            <Box rowGap="normal" whiteSpace="nowrap">
-              {networkObject.stats.map(({ label, value }) => (
-                <Box key={label} rowGap={0}>
-                  <Text variant="label">{label}</Text>
-                  <Text variant="statistic">{value}</Text>
-                </Box>
-              ))}
-            </Box>
-          )}
+          <Box>
+            <NetworkCard
+              height="100%"
+              network={nextNetworkObject}
+              showBackgroundImage={true}
+              width="100%"
+            />
+          </Box>
         </Box>
       </Box>
 
@@ -155,6 +167,7 @@ const NetworkPage = ({ siteActions }: PageProps) => {
         responsiveProps={{
           tabletOrLarger: {
             alignItems: 'center',
+            display: 'grid',
             flexDirection: 'row',
             columnGap: 'xloose',
             columns: 2,
@@ -171,7 +184,7 @@ const NetworkPage = ({ siteActions }: PageProps) => {
           </Text>
         </Box>
 
-        <Box as="form" rowGap="normal" alignItems="flex-start">
+        <Box alignItems="flex-end" as="form" rowGap="normal">
           <TextInput placeholder="Name" />
           <TextInput placeholder="Email Address" type="email" />
           <Button>Get in Touch</Button>

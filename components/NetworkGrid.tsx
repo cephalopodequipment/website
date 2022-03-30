@@ -8,6 +8,7 @@ export const NetworkCard = ({
   network = {},
   showBackgroundImage = false,
   tileBorderColor = 'blue',
+  ...props
 }) => {
   const { label, logoSize, slug } = network as typeof networks[number];
   const [logoWidth, logoHeight] = logoSize.split('x');
@@ -32,13 +33,20 @@ export const NetworkCard = ({
         borderColor: 'blue--bright',
         transform: 'scale(1.1)',
       }}
+      {...props}
     >
-      <Box display="flex" style={{ pointerEvents: 'none' }} zIndex="1">
+      <Box
+        display="flex"
+        height="6vh"
+        pointerEvents="none"
+        width="75%"
+        zIndex="1"
+      >
         <Image
           alt={`${label} Network`}
-          height={Number(logoHeight) / 2}
+          layout="fill"
+          objectFit="contain"
           src={`/img/networks/${slug}-logo.png`}
-          width={Number(logoWidth) / 2}
         />
       </Box>
       <Link href={`/networks/${slug}`} passHref={true}>

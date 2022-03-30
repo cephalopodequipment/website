@@ -117,13 +117,7 @@ const TypeWriter: <TagName extends React.ElementType>(
     };
 
     return (
-      <Box
-        as="span"
-        borderBottomColor="white"
-        color={values[activeIndex].color}
-        ref={refs}
-        {...props}
-      >
+      <Box as="span" color={values[activeIndex].color} ref={refs} {...props}>
         {currentValue}
         <Box
           animationName="blink"

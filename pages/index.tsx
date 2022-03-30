@@ -199,7 +199,8 @@ const Home = ({ siteActions }: PageProps) => {
 
         <Text as="p">
           Contribute to the security of these networks by delegating to
-          Cephalopod, and earn rewards for doing so.
+          Cephalopod, and{' '}
+          <Text whiteSpace="nowrap">earn rewards for doing so.</Text>
         </Text>
 
         <NetworkGrid />

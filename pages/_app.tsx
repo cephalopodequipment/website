@@ -353,6 +353,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 rowGap="loose"
                 responsiveProps={{
                   tabletOrLarger: {
+                    alignItems: 'flex-end',
                     columnGap: 'xloose',
                     columns: ['2fr', '1fr'],
                     justifyContent: 'space-between',
@@ -387,7 +388,6 @@ function MyApp({ Component, pageProps }: AppProps) {
                     },
                   }}
                 >
-                  <Text variant="heading--3">Social Media</Text>
                   <Box as="ul" columnGap="tight">
                     <li>
                       <Anchor href="#" variant="subtle">
