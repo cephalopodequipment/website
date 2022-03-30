@@ -36,7 +36,13 @@ export const NetworkSelector: (props: {
       <Icon name="xmark" />
     </Anchor>
 
-    <Box alignItems="flex-start" padding="loose" overflow="auto" rowGap="loose">
+    <Box
+      alignItems="flex-start"
+      padding="loose"
+      overflow="auto"
+      rowGap="loose"
+      width="100%"
+    >
       <Text variant="heading--2">Networks We Support</Text>
       <NetworkGrid tileBorderColor="white--30" />
     </Box>

@@ -23,8 +23,7 @@ export const NetworkCard = ({
       justifyContent="center"
       key={slug}
       overflow="hidden"
-      paddingX="normal"
-      paddingY="loose"
+      paddingY="normal"
       position="relative"
       transform="scale(1)"
       transitionProperty="background border transform"
@@ -37,9 +36,9 @@ export const NetworkCard = ({
     >
       <Box
         display="flex"
-        height="6vh"
+        height="100px"
         pointerEvents="none"
-        width="75%"
+        width="100%"
         zIndex="1"
       >
         <Image
@@ -78,6 +77,7 @@ export const NetworkGrid = ({ tileBorderColor = 'blue' }) => (
   <Box
     columns={1}
     gap="normal"
+    width="100%"
     responsiveProps={{
       desktopOrLarger: { columns: 3 },
       tabletOnly: { columns: 2 },
