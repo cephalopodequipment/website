@@ -222,7 +222,7 @@ export const networks = [
     },
     label: 'Chihuahua',
     logoSize: '180x180',
-    slug: 'huahua',
+    slug: 'chihuahua',
     socials: [
       {
         icon: 'twitter',

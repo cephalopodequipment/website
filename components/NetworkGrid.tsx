@@ -23,7 +23,6 @@ export const NetworkCard = ({
       justifyContent="center"
       key={slug}
       overflow="hidden"
-      paddingY="normal"
       position="relative"
       transform="scale(1)"
       transitionProperty="background border transform"
@@ -36,7 +35,7 @@ export const NetworkCard = ({
     >
       <Box
         display="flex"
-        height="100px"
+        height="120px"
         pointerEvents="none"
         width="100%"
         zIndex="1"
