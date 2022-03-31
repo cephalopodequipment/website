@@ -1,4 +1,31 @@
-export const networks = [
+export type NetworkDescriptor = {
+  bgSize: string;
+  blurb: string;
+  chain: {
+    description: string;
+    label: string;
+  };
+  delegationURL?: string;
+  label: string;
+  logoSize: string;
+  slug: string;
+  socials: Array<{
+    icon: string;
+    iconCollection?: string;
+    label: string;
+    url: string;
+  }>;
+  stats: Array<{
+    label: string;
+    value: string;
+  }>;
+  token: {
+    description: string;
+    label: string;
+  };
+};
+
+export const networks: Array<NetworkDescriptor> = [
   {
     bgSize: '1302x736',
     blurb: `
@@ -339,10 +366,10 @@ export const networks = [
   {
     bgSize: '1244x578',
     blurb: `
-      Cephalopod has been operating a validator for the IXO Impact Hub since
-      September, 2021. Here at Cephalopod we believe that blockchains enable more
-      sustainable economies that will lead to new forms of economic and social
-      coordination.
+      Cephalopod has been operating a validator for the IXO Impact Hub since September,
+      2021. Here at Cephalopod we believe that blockchains enable more sustainable
+      economies that will lead to new forms of economic and social coordination and
+      the Impact Hub provides a platform for economic and social innovation.
     `,
     chain: {
       description: `

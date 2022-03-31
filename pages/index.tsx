@@ -217,9 +217,12 @@ const Home = ({ siteActions }: PageProps) => {
         <Box
           responsiveProps={{
             tabletOrLarger: {
-              columns: 4,
+              columns: 2,
               gap: 'xtight',
               position: 'relative',
+            },
+            desktopOrLarger: {
+              columns: 4,
               width: '60vw',
             },
           }}
@@ -233,7 +236,7 @@ const Home = ({ siteActions }: PageProps) => {
                 zIndex: '100',
               }}
             >
-              <BobbingBox>
+              <BobbingBox textAlign="center">
                 <Image
                   alt={`${name}`}
                   height={370}
@@ -261,6 +264,7 @@ const Home = ({ siteActions }: PageProps) => {
                 </Box>
                 <Box
                   fontSize="xsmall"
+                  textAlign="left"
                   customSelectorProps={{
                     '[data-team-member]:hover &': {
                       opacity: 1,

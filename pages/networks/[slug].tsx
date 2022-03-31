@@ -1,7 +1,15 @@
 import { useRouter } from 'next/router';
-import { Anchor, Box, Button, Icon, PageSection, Text } from '../../components';
-import { NetworkCard } from '../../components/NetworkGrid';
-import { TextInput } from '../../components/TextInput';
+import {
+  Anchor,
+  Box,
+  Button,
+  Icon,
+  NetworkCard,
+  NetworkPanel,
+  PageSection,
+  Text,
+  TextInput,
+} from '../../components';
 import { networks } from '../../data/networks';
 import { PageProps } from '../_app';
 
@@ -31,7 +39,7 @@ const NetworkPage = ({ siteActions }: PageProps) => {
         <Box
           rowGap="loose"
           responsiveProps={{
-            tabletOrLarger: {
+            desktopOrLarger: {
               columnGap: 'xloose',
               columns: ['3fr', '2fr'],
               display: 'grid',
@@ -47,20 +55,9 @@ const NetworkPage = ({ siteActions }: PageProps) => {
                 variant="subtle"
                 onClick={siteActions.showNetworkSelector}
               >
-                <Icon name="chevron-left" /> All Networks
+                All Networks <Icon name="grid" />
               </Anchor>
               <Text variant="heading--2">{networkObject?.label}</Text>
-
-              {networkObject?.stats && (
-                <Box columnGap="loose" whiteSpace="nowrap" width="100%">
-                  {networkObject.stats.map(({ label, value }) => (
-                    <Box key={label} rowGap={0}>
-                      <Text variant="label">{label}</Text>
-                      <Text variant="statistic">{value}</Text>
-                    </Box>
-                  ))}
-                </Box>
-              )}
 
               <Text>{networkObject?.blurb}</Text>
             </Box>
@@ -75,29 +72,10 @@ const NetworkPage = ({ siteActions }: PageProps) => {
                   Delegate To Us
                 </Button>
               )}
-              {networkObject?.socials && (
-                <Box as="ul" columnGap="normal">
-                  {networkObject.socials.map((social) => (
-                    <li key={social.label}>
-                      <Anchor color="white" href={social.url} target="_blank">
-                        <Icon
-                          name={social.icon as any}
-                          variant={(social.iconCollection ?? 'brands') as any}
-                        />
-                      </Anchor>
-                    </li>
-                  ))}
-                </Box>
-              )}
             </Box>
           </Box>
           <Box>
-            <NetworkCard
-              height="100%"
-              network={nextNetworkObject}
-              showBackgroundImage={true}
-              width="100%"
-            />
+            <NetworkPanel height="100%" network={networkObject} width="100%" />
           </Box>
         </Box>
       </Box>
@@ -137,10 +115,15 @@ const NetworkPage = ({ siteActions }: PageProps) => {
         alignItems="center"
         backgroundColor="banner"
         borderRadius="normal"
-        paddingX="xxloose"
+        paddingX="xloose"
         paddingY="loose"
         rowGap="normal"
         textAlign="center"
+        responsiveProps={{
+          desktopOrLarger: {
+            paddingX: 'xxloose',
+          },
+        }}
       >
         <Text variant="label">Governance</Text>
         <Text variant="heading--2">

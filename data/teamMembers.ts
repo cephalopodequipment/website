@@ -128,9 +128,14 @@ export const teamMembers = [
         icon: 'twitter',
       },
       {
-        label: 'Reddit',
-        href: 'http://reddit.com/u/ethereumflow',
-        icon: 'reddit',
+        label: 'Discord',
+        href: 'https://discord.com/users/xxxx/J.D.Lorax777',
+        icon: 'discord',
+      },
+      {
+        label: 'Telegram',
+        href: 'https://t.me/JD_Lorax',
+        icon: 'telegram',
       },
     ],
   },
