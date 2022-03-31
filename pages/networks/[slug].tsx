@@ -43,7 +43,7 @@ type VoteProps = {
   type: VoteType;
 };
 
-const Vote = ({ type, ...props }: VoteProps) => (
+export const Vote = ({ type, ...props }: VoteProps) => (
   <Text
     color={voteIconMap[type].color}
     variant="vote"

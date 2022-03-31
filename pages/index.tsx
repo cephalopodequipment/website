@@ -19,6 +19,7 @@ import { BrandIconName } from '../components/Icon.types';
 import { stakingReasons } from '../data/staking-reasons';
 import { teamMembers } from '../data/teamMembers';
 import { transitionDurations } from '../tokens';
+import { Vote } from './networks/[slug]';
 import { PageProps } from './_app';
 
 const Home = ({ siteActions }: PageProps) => {
@@ -94,12 +95,12 @@ const Home = ({ siteActions }: PageProps) => {
         </Box>
 
         <Banner>
-          We voted{' '}
-          <Text fontName="body--bold" color="highlighted">
-            YES
-          </Text>{' '}
-          to Juno Network Proposal #11.{' '}
-          <Anchor color="white" href="#">
+          We voted <Vote type="yes" /> to Cosmos Hub Proposal #65.{' '}
+          <Anchor
+            color="white"
+            href="https://www.mintscan.io/cosmos/proposals/65"
+            target="_blank"
+          >
             Learn more
           </Anchor>
           <Box
