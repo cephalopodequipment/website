@@ -6,7 +6,7 @@ export const NetworkSelector: (props: {
   setIsOpen: (isOpen: boolean) => void;
 }) => JSX.Element = ({ isOpen = false, setIsOpen }) => (
   <Box
-    backgroundColor="blue"
+    backgroundColor="banner"
     height="100vh"
     justifyContent="center"
     left={0}
@@ -37,11 +37,16 @@ export const NetworkSelector: (props: {
     </Anchor>
 
     <Box
-      alignItems="flex-start"
+      alignItems="center"
       padding="loose"
       overflow="auto"
       rowGap="loose"
       width="100%"
+      responsiveProps={{
+        tabletOrLarger: {
+          width: '70vw',
+        },
+      }}
     >
       <Text variant="heading--2">Networks We Support</Text>
       <NetworkGrid tileBorderColor="white--30" />

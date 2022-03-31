@@ -159,7 +159,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                 tabletOrLarger: {
                   display: 'flex',
                   justifyContent: 'space-between',
-                  paddingX: '10vw',
+                  paddingX: 'calc(10vw - (15px / 2))',
                 },
                 bigDesktopOrLarger: {
                   paddingX: '20vw',

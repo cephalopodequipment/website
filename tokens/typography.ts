@@ -51,6 +51,7 @@ export const textStyles = {
     fontSize: 'large',
   },
   'label': {
+    color: 'highlighted',
     fontSize: 'xsmall',
     fontName: 'body--bold',
   },
@@ -63,7 +64,6 @@ export const textStyles = {
   'normal': {},
   'statistic': {
     as: 'var',
-    color: 'highlighted',
     fontName: 'display--bold',
     fontSize: 'large',
     fontWeight: 800,
@@ -73,9 +73,8 @@ export const textStyles = {
       },
     },
   },
-  'voteabstain': {
+  'vote': {
     as: 'em',
-    color: 'abstain',
     textTransform: 'uppercase',
   },
 };

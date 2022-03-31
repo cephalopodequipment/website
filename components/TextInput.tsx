@@ -13,8 +13,8 @@ const TextInput: (
   ({ children, type = 'text', ...props }: TextInputProps, ref) => (
     <Box
       as="input"
-      backgroundColor="white--50"
-      borderColor="white"
+      backgroundColor="blue--bright--30"
+      borderColor="border"
       borderRadius="small"
       color="white"
       paddingX="normal"

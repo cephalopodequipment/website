@@ -34,7 +34,7 @@ export const NetworkCard = ({
     >
       <Box
         display="flex"
-        height="120px"
+        height="150px"
         pointerEvents="none"
         width="100%"
         zIndex="1"

@@ -10,8 +10,49 @@ import {
   Text,
   TextInput,
 } from '../../components';
-import { networks } from '../../data/networks';
+import { Color } from '../../components/Box.types';
+import { IconName } from '../../components/Icon.types';
+import { networks, VoteType } from '../../data/networks';
 import { PageProps } from '../_app';
+
+const voteIconMap: {
+  [K in VoteType]: {
+    icon: IconName;
+    color: Color;
+  };
+} = {
+  'yes': {
+    icon: 'check-to-slot',
+    color: 'teal--bright',
+  },
+  'no': {
+    icon: 'xmark-to-slot',
+    color: 'red',
+  },
+  'no-with-veto': {
+    icon: 'octagon-exclamation',
+    color: 'red',
+  },
+  'abstain': {
+    icon: 'circle-minus',
+    color: 'violet',
+  },
+};
+
+type VoteProps = {
+  type: VoteType;
+};
+
+const Vote = ({ type, ...props }: VoteProps) => (
+  <Text
+    color={voteIconMap[type].color}
+    variant="vote"
+    whiteSpace="nowrap"
+    {...props}
+  >
+    <Icon name={voteIconMap[type].icon} variant="solid" /> {type}
+  </Text>
+);
 
 const NetworkPage = ({ siteActions }: PageProps) => {
   const router = useRouter();
@@ -75,7 +116,7 @@ const NetworkPage = ({ siteActions }: PageProps) => {
             </Box>
           </Box>
           <Box>
-            <NetworkPanel height="100%" network={networkObject} width="100%" />
+            <NetworkPanel network={networkObject} width="100%" />
           </Box>
         </Box>
       </Box>
@@ -111,50 +152,46 @@ const NetworkPage = ({ siteActions }: PageProps) => {
         </Box>
       </Box>
 
-      <Box
-        alignItems="center"
-        backgroundColor="banner"
-        borderRadius="normal"
-        paddingX="xloose"
-        paddingY="loose"
-        rowGap="normal"
-        textAlign="center"
-        responsiveProps={{
-          desktopOrLarger: {
-            paddingX: 'xxloose',
-          },
-        }}
-      >
-        <Text variant="label">Governance</Text>
-        <Text variant="heading--2">
-          We voted{' '}
-          <Text variant="voteabstain" whiteSpace="nowrap">
-            <Icon name="circle-minus" variant="solid" /> Abstain
-          </Text>{' '}
-          on{' '}
-          <Text responsiveProps={{ tabletOrLarger: { whiteSpace: 'nowrap' } }}>
-            Proposal #60
+      {networkObject?.recentVote && (
+        <Box
+          alignItems="center"
+          backgroundColor="banner"
+          borderRadius="normal"
+          paddingX="xloose"
+          paddingTop="loose"
+          paddingBottom="xloose"
+          rowGap="normal"
+          textAlign="center"
+          responsiveProps={{
+            desktopOrLarger: {
+              paddingX: 'xxloose',
+            },
+          }}
+        >
+          <Text variant="label">Governance</Text>
+          <Text variant="heading--2">
+            We voted <Vote type={networkObject.recentVote.vote} />
+            <br />
+            on{' '}
+            <Text
+              responsiveProps={{ tabletOrLarger: { whiteSpace: 'nowrap' } }}
+            >
+              Proposal #{networkObject.recentVote.proposal}
+            </Text>
           </Text>
-        </Text>
-        <Box>
-          Cephalopod validates on the Cosmos Hub since...Lorem Ipsum is simply
-          dummy text of the printing and{' '}
-          <Text whiteSpace="nowrap">typesetting industry.</Text>
+          {networkObject?.recentVote?.blurb && (
+            <Box>{networkObject.recentVote.blurb}</Box>
+          )}
         </Box>
-      </Box>
+      )}
 
       <Box
+        alignItems="center"
         flexDirection="column"
         rowGap="loose"
-        textAlign="left"
+        textAlign="center"
         responsiveProps={{
-          tabletOrLarger: {
-            alignItems: 'center',
-            display: 'grid',
-            flexDirection: 'row',
-            columnGap: 'xloose',
-            columns: 2,
-          },
+          tabletOrLarger: {},
         }}
       >
         <Box rowGap="normal">
@@ -167,7 +204,16 @@ const NetworkPage = ({ siteActions }: PageProps) => {
           </Text>
         </Box>
 
-        <Box alignItems="flex-end" as="form" rowGap="normal">
+        <Box
+          as="form"
+          rowGap="normal"
+          width="100%"
+          responsiveProps={{
+            desktopOrLarger: {
+              columnGap: 'normal',
+            },
+          }}
+        >
           <TextInput placeholder="Name" />
           <TextInput placeholder="Email Address" type="email" />
           <Button>Get in Touch</Button>
@@ -178,9 +224,12 @@ const NetworkPage = ({ siteActions }: PageProps) => {
         <Box
           columns={1}
           gap="normal"
+          width="100%"
           responsiveProps={{
             tabletOrLarger: {
               columns: 2,
+              marginX: 'auto',
+              width: '60vw',
             },
           }}
         >
@@ -197,7 +246,7 @@ const NetworkPage = ({ siteActions }: PageProps) => {
           variant="subtle"
           onClick={siteActions.showNetworkSelector}
         >
-          View All Networks <Icon name="chevron-right" />
+          View All Networks <Icon name="grid" />
         </Anchor>
       </Box>
     </PageSection>

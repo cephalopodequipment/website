@@ -1,3 +1,5 @@
+export type VoteType = 'abstain' | 'yes' | 'no' | 'no-with-veto';
+
 export type NetworkDescriptor = {
   bgSize: string;
   blurb: string;
@@ -8,6 +10,11 @@ export type NetworkDescriptor = {
   delegationURL?: string;
   label: string;
   logoSize: string;
+  recentVote?: {
+    vote: VoteType;
+    proposal: number;
+    blurb?: string;
+  };
   slug: string;
   socials: Array<{
     icon: string;
@@ -184,6 +191,11 @@ export const networks: Array<NetworkDescriptor> = [
     delegationURL: 'https://cheqd.omniflix.co/',
     label: 'Cheqd',
     logoSize: '317x120',
+    recentVote: {
+      blurb: 'This was a software upgrade signalling proposal to v0.4.x',
+      vote: 'yes',
+      proposal: 2,
+    },
     slug: 'cheqd',
     socials: [
       {
@@ -316,6 +328,12 @@ export const networks: Array<NetworkDescriptor> = [
       'https://wallet.keplr.app/#/cosmoshub/stake?modal=detail&validator=cosmosvaloper16k579jk6yt2cwmqx9dz5xvq9fug2tekvlu9qdv',
     label: 'Cosmos Hub',
     logoSize: '640x120',
+    recentVote: {
+      blurb:
+        'v7: Theta brings exciting update to the Hub such as Interchain accounts.',
+      vote: 'yes',
+      proposal: 65,
+    },
     slug: 'cosmos',
     socials: [
       {
@@ -343,7 +361,7 @@ export const networks: Array<NetworkDescriptor> = [
       },
       {
         label: 'Self-Delegated ATOM',
-        value: '3,000.222520',
+        value: '3,000.22',
       },
       {
         label: 'Total Delegated ATOM',
@@ -383,6 +401,11 @@ export const networks: Array<NetworkDescriptor> = [
       'https://wallet.keplr.app/#/impacthub/stake?modal=detail&validator=ixovaloper1x20lytyf6zkcrv5edpkfkn8sz578qg5sqfyqnp',
     label: 'IXO',
     logoSize: '204x120',
+    recentVote: {
+      blurb: 'We support a network minimum commission of 5%',
+      vote: 'yes',
+      proposal: 10,
+    },
     slug: 'ixo',
     socials: [
       {
@@ -451,6 +474,11 @@ export const networks: Array<NetworkDescriptor> = [
       'https://wallet.keplr.app/#/juno/stake?modal=detail&validator=junovaloper1x20lytyf6zkcrv5edpkfkn8sz578qg5sujlhnj',
     label: 'Juno',
     logoSize: '452x120',
+    recentVote: {
+      blurb: 'See vote explanation here: https://ceph.is/voting/juno/16',
+      vote: 'no',
+      proposal: 16,
+    },
     slug: 'juno',
     socials: [
       {
@@ -521,6 +549,12 @@ export const networks: Array<NetworkDescriptor> = [
       'https://wallet.keplr.app/#/osmosis/stake?modal=detail&validator=osmovaloper1x20lytyf6zkcrv5edpkfkn8sz578qg5s833swz',
     label: 'Osmosis',
     logoSize: '690x120',
+    recentVote: {
+      blurb:
+        'We support the creation of rNCT carbon markets on Osmosis to enable DeFi to ReFi!',
+      vote: 'yes',
+      proposal: 182,
+    },
     slug: 'osmosis',
     socials: [
       {
@@ -589,6 +623,12 @@ export const networks: Array<NetworkDescriptor> = [
       'https://wallet.keplr.app/#/regen/stake?modal=detail&validator=regenvaloper1kl83t6gm2y5lgg5c5h3sz87tt5fg3cmyl2sksd',
     label: 'Regen',
     logoSize: '536x200',
+    recentVote: {
+      blurb:
+        'Regen Ledger v3 supports new eco-credit baskets that will be used Interchain for carbon markets.',
+      vote: 'yes',
+      proposal: 9,
+    },
     slug: 'regen',
     socials: [
       {

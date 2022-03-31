@@ -14,19 +14,25 @@ export const NetworkPanel = ({ network, ...props }: NetworkPanelProps) => {
       backgroundColor="blue--bright--30"
       border="normal"
       borderRadius="normal"
+      flexDirection="column"
       padding="xtight"
       {...props}
     >
       <NetworkCard
         borderRadius="20px"
         network={network}
+        pointerEvents="none"
         showBackgroundImage={true}
       />
       <Box
-        position="relative"
-        rowGap="normal"
-        whiteSpace="nowrap"
+        gap="normal"
         padding="normal"
+        whiteSpace="nowrap"
+        responsiveProps={{
+          tabletOrLarger: {
+            columns: 2,
+          },
+        }}
       >
         {network?.stats.map(({ label, value }) => (
           <Box key={label} rowGap={0}>
@@ -34,27 +40,21 @@ export const NetworkPanel = ({ network, ...props }: NetworkPanelProps) => {
             <Text variant="statistic">{value}</Text>
           </Box>
         ))}
-        {network?.socials && (
-          <Box
-            as="ul"
-            bottom="normal"
-            columnGap="normal"
-            position="absolute"
-            right="normal"
-          >
-            {network.socials.map((social) => (
-              <li key={social.label}>
-                <Anchor color="white" href={social.url} target="_blank">
-                  <Icon
-                    name={social.icon as any}
-                    variant={(social.iconCollection ?? 'brands') as any}
-                  />
-                </Anchor>
-              </li>
-            ))}
-          </Box>
-        )}
       </Box>
+      {network?.socials && (
+        <Box alignSelf="flex-end" as="ul" columnGap="normal" padding="normal">
+          {network.socials.map((social) => (
+            <li key={social.label}>
+              <Anchor color="white" href={social.url} target="_blank">
+                <Icon
+                  name={social.icon as any}
+                  variant={(social.iconCollection ?? 'brands') as any}
+                />
+              </Anchor>
+            </li>
+          ))}
+        </Box>
+      )}
     </Box>
   );
 };

@@ -36,7 +36,6 @@ const corePalette = {
 };
 
 const colorSwatches = {
-  'abstain': corePalette['violet'],
   'gradient': {
     backgroundImage:
       'linear-gradient(220deg, #8FFFF6 0%, #5838FF 70%, #2A25FF 100%)',
