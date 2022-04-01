@@ -390,17 +390,29 @@ function MyApp({ Component, pageProps }: AppProps) {
                 >
                   <Box as="ul" columnGap="tight">
                     <li>
-                      <Anchor href="#" variant="subtle">
+                      <Anchor
+                        href="https://twitter.com/CephalopodEquip"
+                        target="_blank"
+                        variant="subtle"
+                      >
                         <Icon name="twitter" variant="brands" />
                       </Anchor>
                     </li>
                     <li>
-                      <Anchor href="#" variant="subtle">
+                      <Anchor
+                        href="https://discord.gg/WQa3HKf3wf"
+                        target="_blank"
+                        variant="subtle"
+                      >
                         <Icon name="discord" variant="brands" />
                       </Anchor>
                     </li>
                     <li>
-                      <Anchor href="#" variant="subtle">
+                      <Anchor
+                        href="https://informal.systems/"
+                        target="_blank"
+                        variant="subtle"
+                      >
                         <Icon name="globe" variant="solid" />
                       </Anchor>
                     </li>
