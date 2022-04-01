@@ -223,7 +223,6 @@ const Home = ({ siteActions }: PageProps) => {
             },
             desktopOrLarger: {
               columns: 4,
-              width: '60vw',
             },
           }}
         >
