@@ -2,15 +2,13 @@ import React, { forwardRef } from 'react';
 import { Box } from './Box';
 import { BoxProps } from './Box.types';
 
-type TextInputProps = BoxProps<'input'> & {
+type TextInputProps = Omit<BoxProps<'input'>, 'ref'> & {
   /* customProp?: boolean; */
 };
 
-const TextInput: (
-  props: TextInputProps
-  // eslint-disable-next-line react/display-name
-) => JSX.Element = forwardRef(
-  ({ children, type = 'text', ...props }: TextInputProps, ref) => (
+// eslint-disable-next-line react/display-name
+const TextInput = forwardRef<HTMLInputElement, TextInputProps>(
+  ({ children, type = 'text', ...props }, ref) => (
     <Box
       as="input"
       backgroundColor="blue--bright--30"
@@ -19,7 +17,7 @@ const TextInput: (
       color="white"
       paddingX="normal"
       paddingY="tight"
-      ref={ref as any}
+      ref={ref}
       type={type}
       width="100%"
       {...props}
@@ -27,6 +25,6 @@ const TextInput: (
       {children}
     </Box>
   )
-) as any;
+);
 
 export { TextInput };

@@ -18,7 +18,6 @@ import { Color } from '../components/Box.types';
 import { BrandIconName } from '../components/Icon.types';
 import { stakingReasons } from '../data/staking-reasons';
 import { teamMembers } from '../data/teamMembers';
-import { transitionDurations } from '../tokens';
 import { Vote } from './networks/[slug]';
 import { PageProps } from './_app';
 

@@ -1,7 +1,7 @@
 const corePalette = {
   'banner': {
     backdropFilter: `blur(20px)`,
-    background: `linear-gradient(315deg, rgba(27, 5, 120, 0.5) 29.69%, rgba(63, 18, 254, 0.5) 87.5%)`,
+    background: `rgba(5, 1, 33, 0.9) linear-gradient(315deg, rgba(27, 5, 120, 0.5) 29.69%, rgba(63, 18, 254, 0.5) 87.5%)`,
   },
   'blue': '#140A6F',
   'blue--bright': '#3F18FE',
@@ -16,6 +16,7 @@ const corePalette = {
   'blue--bright--90': 'rgba(63, 24, 254, 0.9)',
   'blue--dark': '#050121',
   'blurred': {
+    backgroundColor: 'rgba(5, 1, 33, 0.9)',
     backdropFilter: 'blur(10px) brightness(60%)',
   },
   'blurred--off': {

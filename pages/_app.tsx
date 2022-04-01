@@ -162,7 +162,7 @@ function MyApp({ Component, pageProps }: AppProps) {
                   paddingX: 'calc(10vw - (15px / 2))',
                 },
                 bigDesktopOrLarger: {
-                  paddingX: '20vw',
+                  paddingX: 'calc(20vw - (15px / 2))',
                 },
               }}
               transitionDuration="normal"
@@ -416,12 +416,20 @@ function MyApp({ Component, pageProps }: AppProps) {
                 paddingY="loose"
               >
                 <Box as="ul" columnGap="normal">
-                  {menuItems.map((menuItem) => (
+                  {[
+                    ...menuItems,
+                    {
+                      label: 'PubKey Converter',
+                      href: '/tools/pubKeyConverter',
+                    },
+                  ].map((menuItem) => (
                     <li key={menuItem.label}>
                       <Anchor
                         variant="subtle"
                         href={menuItem.href}
-                        onClick={menuItem.onClick}
+                        onClick={
+                          'onClick' in menuItem ? menuItem.onClick : undefined
+                        }
                       >
                         {menuItem.label}
                       </Anchor>
