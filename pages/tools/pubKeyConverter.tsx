@@ -122,10 +122,15 @@ const PubKeyConverter = () => {
         rowGap="loose"
       >
         <Box
-          alignItems="center"
-          columnGap="normal"
-          justifyContent="center"
+          rowGap="normal"
           whiteSpace="nowrap"
+          responsiveProps={{
+            tabletOrLarger: {
+              alignItems: 'center',
+              columnGap: 'normal',
+              justifyContent: 'center',
+            },
+          }}
         >
           <Box
             alignItems="flex-start"
@@ -138,7 +143,13 @@ const PubKeyConverter = () => {
             <Text as="p">Cosmos SDK v0.43</Text>
             <Text variant="label">bech32-encoded</Text>
           </Box>
-          <Box>
+          <Box
+            responsiveProps={{
+              phoneOnly: {
+                transform: 'rotate(90deg)',
+              },
+            }}
+          >
             <Icon name="arrow-right" />
           </Box>
           <Box
