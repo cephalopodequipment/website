@@ -36,8 +36,7 @@ export const networks: Array<NetworkDescriptor> = [
   {
     bgSize: '1302x736',
     blurb: `
-      Cephalopod has been an active validator on Agoric since March 2022 but our
-      history with the team goes back before the days of the Interchain. The Agoric
+      Cephalopod has been an active validator on Agoric since March 2022. The Agoric
       team are pioneers of smart contracts, with their work predating blockchains, and
       also helped to standardize and generalize the IBC protocol. Agoric is also
       working with Informal Systems using formal verification tools to improve
@@ -175,16 +174,17 @@ export const networks: Array<NetworkDescriptor> = [
   {
     bgSize: '1302x736',
     blurb: `
-      Cephalopod has been an active validator for Cheqd since November, 2021. Cheqd
-      enables digital trust between people and organizations and is the first self
-      sovereign identity solution in the Interchain. As one of the top validators for
-      Cheqd we offer security to the network and are active in governance.
+      Cephalopod has been an active validator for Cheqd since November, 2021. Cheqd 
+      enables digital trust between people and organizations and is the first self 
+      sovereign identity solution in the Interchain. As one of the top validators for 
+      Cheqd we offer premium network security and are active in network governance.
     `,
     chain: {
       description: `
-        Cheqd Network is an application specific blockchain powering a Self Sovereign
-        Identity platform. The Cheqd network enables digital trust, facilitates new
-        business around SSI, and bridges DeFi to DID markets.
+        Cheqd Network is an application specific blockchain powering a Self Sovereign 
+        Identity (SSI) platform. The Cheqd network enables digital trust, facilitates 
+        new business around SSI, and bridges DeFi to DID (Decentralized Identifiers) 
+        markets. 
       `,
       label: 'Cheqd Network',
     },
@@ -455,11 +455,10 @@ export const networks: Array<NetworkDescriptor> = [
   {
     bgSize: '1216x566',
     blurb: `
-      Cephalopod has been an active Juno validator since the chain launched in October
-      2021. Juno is a community innovation and became the first blockchain to
-      implement CosmWasm 1.0 which introduced IBC enabled smart contracts. As
-      innovators of the Interchain we support Juno as a pioneer of fully interoperable
-      smart contracts.
+      Cephalopod has been an active Juno validator since the Juno launch on October 
+      2021. Juno is an innovation by the community and became the first blockchain to 
+      implement CosmWasm 1.0 which introduced IBC enabled smart contracts. As innovators 
+      of the Interchain, we support Juno as a pioneer of fully interoperable smart contracts.
     `,
     chain: {
       description: `
@@ -519,10 +518,10 @@ export const networks: Array<NetworkDescriptor> = [
     ],
     token: {
       description: `
-        JUNO is the gas, staking and governance token for the Juno Network. JUNO is
-        required to pay for fees when interacting with smart contracts and sending
-        tokens on the Juno blockchain. JUNO also serves as the base pair for JunoSwap,
-        the on-chain Interchain AMM.
+        JUNO is the gas, staking and governance token for the Juno Network. 
+        JUNO is required to pay for fees when interacting with smart contracts 
+        and sending tokens on the Juno blockchain. JUNO also serves as the base 
+        pair for JunoSwap, the on-chain Interchain Automated Market Maker (AMM). 
       `,
       label: 'JUNO',
     },
@@ -530,18 +529,18 @@ export const networks: Array<NetworkDescriptor> = [
   {
     bgSize: '1302x736',
     blurb: `
-      Cephalopod has been an active validator and primary IBC relayer operator for
-      Osmosis since the genesis block in June 2021. Osmosis has become an economic hub
-      in the Interchain continuing to innovate and push the limits of what IBC is
-      capable of, with our Hermes relayers supporting the highest volume channels in
-      the ecosystem.
+      Cephalopod has been an active validator and main IBC relayer operator for 
+      Osmosis since the genesis block on June 2021. Osmosis has become an economic 
+      hub in the Interchain continuing to innovate and push the limits of what IBC 
+      is capable of, with the Hermes relayers supporting the highest volume channels 
+      in the ecosystem. 
     `,
     chain: {
       description: `
-        Osmosis is a highly advanced and experimental AMM protocol developed using the
-        Cosmos SDK. Beyond the DeFi tools, Osmosis is also leading the way for DeFi to
-        ReFi as the first ever blockchain to go carbon neutral using completely on-chain
-        methods.
+        Osmosis is a highly advanced and experimental AMM protocol developed using the 
+        Cosmos SDK. Beyond tools for DeFi, Osmosis is also leading the way for DeFi to ReFi 
+        (“Regenerative Finance”) as the first ever blockchain to go carbon neutral using 
+        completely on-chain methods. 
       `,
       label: 'Osmosis AMM',
     },
@@ -595,10 +594,11 @@ export const networks: Array<NetworkDescriptor> = [
     ],
     token: {
       description: `
-        OSMO is the staking and governance token, liquidity mining incentive, staking
-        reward token, and provides a base pair for Osmosis AMM Liquidity Pools. Osmosis
-        supports a novel “superfluid staking” mechanism that allows OSMO in liquidity
-        pools to be used to secure the chain.
+        OSMO holds multiple roles in the Osmosis ecosystem. OSMO is a staking and 
+        governance token, liquidity mining incentive, staking reward token, and 
+        provides a base pair for Osmosis AMM Liquidity Pools. Osmosis supports a 
+        novel “superfluid staking” mechanism that allows OSMO in liquidity pools 
+        to be used to secure the chain.
       `,
       label: 'OSMO',
     },
