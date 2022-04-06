@@ -24,9 +24,8 @@ export const NetworkPanel = ({ network, ...props }: NetworkPanelProps) => {
         pointerEvents="none"
         showBackgroundImage={true}
       />
-      {network?.stats?.map(({ label, value }) => (
+      {network?.stats && (
         <Box
-          key={label}
           gap="normal"
           padding="normal"
           whiteSpace="nowrap"
@@ -36,12 +35,14 @@ export const NetworkPanel = ({ network, ...props }: NetworkPanelProps) => {
             },
           }}
         >
-          <Box rowGap={0}>
-            <Text variant="label">{label}</Text>
-            <Text variant="statistic">{value}</Text>
-          </Box>
+          {network?.stats?.map(({ label, value }) => (
+            <Box key={label} rowGap={0}>
+              <Text variant="label">{label}</Text>
+              <Text variant="statistic">{value}</Text>
+            </Box>
+          ))}
         </Box>
-      ))}
+      )}
       {network?.socials && (
         <Box alignSelf="flex-end" as="ul" columnGap="normal" padding="normal">
           {network.socials.map((social) => (
