@@ -24,23 +24,24 @@ export const NetworkPanel = ({ network, ...props }: NetworkPanelProps) => {
         pointerEvents="none"
         showBackgroundImage={true}
       />
-      <Box
-        gap="normal"
-        padding="normal"
-        whiteSpace="nowrap"
-        responsiveProps={{
-          tabletOrLarger: {
-            columns: 2,
-          },
-        }}
-      >
-        {network?.stats.map(({ label, value }) => (
-          <Box key={label} rowGap={0}>
+      {network?.stats?.map(({ label, value }) => (
+        <Box
+          key={label}
+          gap="normal"
+          padding="normal"
+          whiteSpace="nowrap"
+          responsiveProps={{
+            tabletOrLarger: {
+              columns: 2,
+            },
+          }}
+        >
+          <Box rowGap={0}>
             <Text variant="label">{label}</Text>
             <Text variant="statistic">{value}</Text>
           </Box>
-        ))}
-      </Box>
+        </Box>
+      ))}
       {network?.socials && (
         <Box alignSelf="flex-end" as="ul" columnGap="normal" padding="normal">
           {network.socials.map((social) => (

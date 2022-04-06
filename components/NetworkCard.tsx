@@ -57,7 +57,7 @@ export const NetworkCard = ({
           transitionProperty="opacity"
           top={0}
           style={{
-            backgroundImage: `url(/img/networks/${slug}-bg.jpeg)`,
+            backgroundImage: `url(/img/networks/${slug}-bg.jpg)`,
             backgroundPosition: 'center',
             backgroundSize: 'cover',
             filter: 'brightness(50%)',

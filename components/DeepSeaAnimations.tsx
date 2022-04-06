@@ -71,7 +71,13 @@ export const DeepSeaAnimations = () => (
         variant={2}
       />
 
-      <BobbingBubble left="3vw" position="absolute" top="10vh" variant={3} />
+      <BobbingBubble
+        left="10vw"
+        position="absolute"
+        top="10vh"
+        transform="translateX(-50%)"
+        variant={3}
+      />
 
       <BobbingBox
         height="120vh"

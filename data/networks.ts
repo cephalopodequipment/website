@@ -1,7 +1,6 @@
 export type VoteType = 'abstain' | 'yes' | 'no' | 'no-with-veto';
 
 export type NetworkDescriptor = {
-  bgSize: string;
   blurb: string;
   chain: {
     description: string;
@@ -9,20 +8,19 @@ export type NetworkDescriptor = {
   };
   delegationURL?: string;
   label: string;
-  logoSize: string;
   recentVote?: {
     vote: VoteType;
     proposal: number;
     blurb?: string;
   };
   slug: string;
-  socials: Array<{
+  socials?: Array<{
     icon: string;
     iconCollection?: string;
     label: string;
     url: string;
   }>;
-  stats: Array<{
+  stats?: Array<{
     label: string;
     value: string;
   }>;
@@ -34,7 +32,6 @@ export type NetworkDescriptor = {
 
 export const networks: Array<NetworkDescriptor> = [
   {
-    bgSize: '1302x736',
     blurb: `
       Cephalopod has been an active validator on Agoric since March 2022 but our
       history with the team goes back before the days of the Interchain. The Agoric
@@ -55,7 +52,6 @@ export const networks: Array<NetworkDescriptor> = [
     delegationURL:
       'https://wallet.keplr.app/#/agoric/stake?modal=detail&validator=agoricvaloper1x20lytyf6zkcrv5edpkfkn8sz578qg5shcm4rq',
     label: 'Agoric',
-    logoSize: '544x160',
     slug: 'agoric',
     socials: [
       {
@@ -104,7 +100,6 @@ export const networks: Array<NetworkDescriptor> = [
     },
   },
   {
-    bgSize: '1302x736',
     blurb: `
       Cephalopod has been an active validator for Akash Network since February, 2022.
       Here at Cephalopod we don’t consider current software solutions to be secure
@@ -124,7 +119,6 @@ export const networks: Array<NetworkDescriptor> = [
     delegationURL:
       'https://wallet.keplr.app/#/akashnet/stake?modal=detail&validator=akashvaloper1x20lytyf6zkcrv5edpkfkn8sz578qg5sjyfzx8',
     label: 'Akash',
-    logoSize: '576x134',
     slug: 'akash',
     socials: [
       {
@@ -173,7 +167,6 @@ export const networks: Array<NetworkDescriptor> = [
     },
   },
   {
-    bgSize: '1302x736',
     blurb: `
       Cephalopod has been an active validator for Cheqd since November, 2021. Cheqd
       enables digital trust between people and organizations and is the first self
@@ -190,7 +183,6 @@ export const networks: Array<NetworkDescriptor> = [
     },
     delegationURL: 'https://cheqd.omniflix.co/',
     label: 'Cheqd',
-    logoSize: '317x120',
     recentVote: {
       blurb: 'This was a software upgrade signalling proposal to v0.4.x',
       vote: 'yes',
@@ -244,72 +236,6 @@ export const networks: Array<NetworkDescriptor> = [
     },
   },
   {
-    bgSize: '1364x754',
-    blurb: `
-      Cephalopod has been an active validator for Chihuahua Chain since (not live
-      yet), 2022. HUAHUA is self-identified as a “useless meme-coin” and while that
-      may have been true at launch, HUAHUA has become an Interchain icon and even a
-      point of entry for people entering the Cosmos.
-    `,
-    chain: {
-      description: `
-        Chihuahua Chain is the first ever proof of stake blockchain dedicated to
-        powering a meme coin. Chihuahua blockchain is eco-friendly and consumes less
-        energy per year than other meme coins like DOGE or SHIBA use in a day.
-      `,
-      label: 'Chihuahua Chain',
-    },
-    label: 'Chihuahua',
-    logoSize: '180x180',
-    slug: 'chihuahua',
-    socials: [
-      {
-        icon: 'twitter',
-        label: 'Twitter',
-        url: 'https://twitter.com/ChihuahuaChain',
-      },
-      {
-        icon: 'globe',
-        iconCollection: 'solid',
-        label: 'Website',
-        url: 'https://chihuahua.wtf',
-      },
-      {
-        icon: 'telescope',
-        iconCollection: 'solid',
-        label: 'Explorer',
-        url: 'https://www.mintscan.io/chihuahua',
-      },
-    ],
-    stats: [
-      {
-        label: 'Commission',
-        value: '5%',
-      },
-      {
-        label: 'Self-Delegated',
-        value: 'N/A',
-      },
-      {
-        label: 'Total Delegated',
-        value: 'N/A',
-      },
-      {
-        label: 'Uptime',
-        value: '99.99%',
-      },
-    ],
-    token: {
-      description: `
-        HUAHUA is the first fully interoperable meme-coin and is used to secure the
-        Chihuahua Chain. HUAHUA serves as the staking and governance token, inflation
-        rewards, and is required to pay network fees.
-      `,
-      label: 'HUAHUA',
-    },
-  },
-  {
-    bgSize: '1302x736',
     blurb: `
       Cephalopod has been operating a Cosmos Hub validator since the genesis block in
       2019 and continues to be an active network participant working to improve the
@@ -327,7 +253,6 @@ export const networks: Array<NetworkDescriptor> = [
     delegationURL:
       'https://wallet.keplr.app/#/cosmoshub/stake?modal=detail&validator=cosmosvaloper16k579jk6yt2cwmqx9dz5xvq9fug2tekvlu9qdv',
     label: 'Cosmos Hub',
-    logoSize: '640x120',
     recentVote: {
       blurb:
         'v7: Theta brings exciting update to the Hub such as Interchain accounts.',
@@ -382,7 +307,6 @@ export const networks: Array<NetworkDescriptor> = [
     },
   },
   {
-    bgSize: '1244x578',
     blurb: `
       Cephalopod has been operating a validator for the IXO Impact Hub since September,
       2021. Here at Cephalopod we believe that blockchains enable more sustainable
@@ -400,7 +324,6 @@ export const networks: Array<NetworkDescriptor> = [
     delegationURL:
       'https://wallet.keplr.app/#/impacthub/stake?modal=detail&validator=ixovaloper1x20lytyf6zkcrv5edpkfkn8sz578qg5sqfyqnp',
     label: 'IXO',
-    logoSize: '204x120',
     recentVote: {
       blurb: 'We support a network minimum commission of 5%',
       vote: 'yes',
@@ -453,7 +376,6 @@ export const networks: Array<NetworkDescriptor> = [
     },
   },
   {
-    bgSize: '1216x566',
     blurb: `
       Cephalopod has been an active Juno validator since the chain launched in October
       2021. Juno is a community innovation and became the first blockchain to
@@ -473,7 +395,6 @@ export const networks: Array<NetworkDescriptor> = [
     delegationURL:
       'https://wallet.keplr.app/#/juno/stake?modal=detail&validator=junovaloper1x20lytyf6zkcrv5edpkfkn8sz578qg5sujlhnj',
     label: 'Juno',
-    logoSize: '452x120',
     recentVote: {
       blurb: 'See vote explanation here: https://ceph.is/voting/juno/16',
       vote: 'no',
@@ -528,7 +449,48 @@ export const networks: Array<NetworkDescriptor> = [
     },
   },
   {
-    bgSize: '1302x736',
+    blurb: `
+      Cephalopod has been an active validator for Nomic since April, 2022. The
+      Nomic Bitcoin bridge is a custom developed blockchain designed specifically
+      to bring BTC to the Interchain. We view BTC as central to the future of the
+      decentralized cryptocurrency economy, and Nomic offers a novel and unique
+      bridging protocol to enable Bitcoin transactions in the Interchain.
+    `,
+    chain: {
+      description: `
+        The Nomic blockchain secures the Nomic Bitcoin bridge – the first decentralized
+        and permissionless bridge bringing BTC into the Interchain ecosystem. Nomic is a
+        custom proof of stake blockchain developed using Rust running on top of
+        Tendermint.
+      `,
+      label: 'Nomic Bitcoin Bridge',
+    },
+    label: 'Nomic',
+    slug: 'nomic',
+    socials: [
+      {
+        icon: 'twitter',
+        label: 'Twitter',
+        url: 'https://twitter.com/nomicbtc',
+      },
+      {
+        icon: 'globe',
+        iconCollection: 'solid',
+        label: 'Website',
+        url: 'https://nomic.io',
+      },
+    ],
+    token: {
+      description: `
+        Nomic has two tokens. NOM is the staking token used to secure and govern the
+        Nomic Bitcoin bridge, as well as the fee token required to pay network fees. The
+        second token on Nomic is nBTC, a 1:1 wrapped token of BTC on the Nomic
+        blockchain.
+      `,
+      label: 'NOM',
+    },
+  },
+  {
     blurb: `
       Cephalopod has been an active validator and primary IBC relayer operator for
       Osmosis since the genesis block in June 2021. Osmosis has become an economic hub
@@ -548,7 +510,6 @@ export const networks: Array<NetworkDescriptor> = [
     delegationURL:
       'https://wallet.keplr.app/#/osmosis/stake?modal=detail&validator=osmovaloper1x20lytyf6zkcrv5edpkfkn8sz578qg5s833swz',
     label: 'Osmosis',
-    logoSize: '690x120',
     recentVote: {
       blurb:
         'We support the creation of rNCT carbon markets on Osmosis to enable DeFi to ReFi!',
@@ -604,7 +565,6 @@ export const networks: Array<NetworkDescriptor> = [
     },
   },
   {
-    bgSize: '1302x736',
     blurb: `
       Cephalopod has been an active validator for Regen Network since the genesis
       block in March, 2022. Regen was the second network that Cephalopod joined after
@@ -622,7 +582,6 @@ export const networks: Array<NetworkDescriptor> = [
     delegationURL:
       'https://wallet.keplr.app/#/regen/stake?modal=detail&validator=regenvaloper1kl83t6gm2y5lgg5c5h3sz87tt5fg3cmyl2sksd',
     label: 'Regen',
-    logoSize: '536x200',
     recentVote: {
       blurb:
         'Regen Ledger v3 supports new eco-credit baskets that will be used Interchain for carbon markets.',
