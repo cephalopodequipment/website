@@ -113,42 +113,14 @@ export const teamMembers = [
     ],
   },
   {
-    name: 'joshua-jeffrey',
-    bio: `
-      Josh (also known as JD), is the Community
-      Manager for Cephalopod. He creates
-      marketing content and manages
-      communication between the
-      validator and delegator community.
-    `,
-    socials: [
-      {
-        label: 'Twitter',
-        href: 'http://twitter.com/loraxjd',
-        icon: 'twitter',
-      },
-      {
-        label: 'Discord',
-        href: 'https://discord.com/users/xxxx/J.D.Lorax777',
-        icon: 'discord',
-      },
-      {
-        label: 'Telegram',
-        href: 'https://t.me/JD_Lorax',
-        icon: 'telegram',
-      },
-    ],
-  },
-  {
     name: 'mircea-colonescu',
     bio: `
-      Mircea is Infrastructure and Security
-      Lead at Informal Systems. He
-      is a data centre operations
-      expert and builds developer
-      tools for the Cosmos
-      ecosystem. He’s been running
-      Cosmos testnets since 2017.
+      Mircea is an Infrastructure Engineer at Informal leading the
+      operations of the Cephalopod Validator. He specializes in designing
+      & implementing infrastructure solutions on many platforms and at
+      breaking software. He is based in Toronto and when he's not coding,
+      you can find him in Rocket League and other competitive video game
+      scenes.
     `,
     socials: [
       {
