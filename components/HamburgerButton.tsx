@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import { Icon } from '.';
+import { Box, Icon } from '.';
 import { BoxProps } from './Box.types';
 import { IconName } from './Icon.types';
 
@@ -17,11 +17,12 @@ const HamburgerButton: <TagName extends React.ElementType>(
     { iconName, isVisible, ...props }: HamburgerButtonProps<TagName>,
     ref: any
   ) => (
-    <Icon
-      display="none"
-      name={iconName}
+    <Box
       ref={ref}
       responsiveProps={{
+        desktopOrLarger: {
+          display: 'none',
+        },
         phoneOrTablet: {
           display: 'block',
           fontSize: 'xlarge',
@@ -36,7 +37,9 @@ const HamburgerButton: <TagName extends React.ElementType>(
         },
       }}
       {...props}
-    />
+    >
+      <Icon display="none" name={iconName} />
+    </Box>
   )
 ) as any;
 

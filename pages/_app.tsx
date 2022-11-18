@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import Image from 'next/image';
 import Script from 'next/script';
 import { useEffect, useState } from 'react';
 import {
@@ -21,6 +22,9 @@ import {
 import { Color } from '../components/Box.types';
 import { useKeyboardShortcuts } from '../hooks';
 import '../public/fonts/svg-with-js.min.css';
+
+const LOGO_HEIGHT = 60;
+const LOGO_WIDTH = 150;
 
 export type PageProps = {
   siteActions: {
@@ -177,17 +181,13 @@ function MyApp({ Component, pageProps }: AppProps) {
                 zIndex="5000"
                 onClick={hideMenu}
               >
-                <Text
-                  fontSize={isScrollingAndNotShowingMenu ? 'small' : 'normal'}
-                  transitionDuration="normal"
-                  transitionProperty="font-size"
-                  transitionTimingFunction="ease-in-out"
-                  variant="logo"
-                >
-                  Cephalopod
-                  <br />
-                  Equipment
-                </Text>
+                <Image
+                  alt="Informal Staking Logo"
+                  objectFit="contain"
+                  height={LOGO_HEIGHT}
+                  src="/img/informal-staking-logo.svg"
+                  width={LOGO_WIDTH}
+                />
               </Anchor>
 
               <HamburgerButton
@@ -361,11 +361,16 @@ function MyApp({ Component, pageProps }: AppProps) {
                 }}
               >
                 <Box rowGap="normal">
-                  <Text variant="logo">
-                    Cephalopod
-                    <br />
-                    Equipment
-                  </Text>
+                  <Box>
+                    <Image
+                      alt="Informal Staking Logo"
+                      objectFit="contain"
+                      height={LOGO_HEIGHT}
+                      src="/img/informal-staking-logo.svg"
+                      width={LOGO_WIDTH}
+                    />
+                  </Box>
+
                   <Text as="p">
                     We work with our partners at{' '}
                     <Anchor
