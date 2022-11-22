@@ -3,6 +3,7 @@ const corePalette = {
     backdropFilter: `blur(20px)`,
     background: `rgba(5, 1, 33, 0.9) linear-gradient(315deg, rgba(27, 5, 120, 0.5) 29.69%, rgba(63, 18, 254, 0.5) 87.5%)`,
   },
+  'black': '#000000',
   'blue': '#140A6F',
   'blue--bright': '#3F18FE',
   'blue--bright--10': 'rgba(63, 24, 254, 0.1)',
