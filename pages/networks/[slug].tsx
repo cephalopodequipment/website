@@ -185,41 +185,6 @@ const NetworkPage = ({ siteActions }: PageProps) => {
         </Box>
       )}
 
-      <Box
-        alignItems="center"
-        flexDirection="column"
-        rowGap="loose"
-        textAlign="center"
-        responsiveProps={{
-          tabletOrLarger: {},
-        }}
-      >
-        <Box rowGap="normal">
-          <Text variant="heading--2">
-            Get In Touch <Text whiteSpace="nowrap">With Us</Text>
-          </Text>
-          <Text as="p">
-            If you’re a whale or a whale or a whale... how to get the delegation
-            deck
-          </Text>
-        </Box>
-
-        <Box
-          as="form"
-          rowGap="normal"
-          width="100%"
-          responsiveProps={{
-            desktopOrLarger: {
-              columnGap: 'normal',
-            },
-          }}
-        >
-          <TextInput placeholder="Name" />
-          <TextInput placeholder="Email Address" type="email" />
-          <Button>Get in Touch</Button>
-        </Box>
-      </Box>
-
       <Box rowGap="loose" textAlign="center">
         <Box
           columns={1}
