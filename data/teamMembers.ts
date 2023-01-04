@@ -96,7 +96,7 @@ export const teamMembers = [
       Informal Systems. She works
       to build out marketing and
       growth strategies for
-      Cephalopod and other core
+      Informal Staking and other core
       products at Informal Systems.
     `,
     socials: [
@@ -116,7 +116,7 @@ export const teamMembers = [
     name: 'mircea-colonescu',
     bio: `
       Mircea is an Infrastructure Engineer at Informal leading the
-      operations of the Cephalopod Validator. He specializes in designing
+      operations of the Informal Staking Validator. He specializes in designing
       & implementing infrastructure solutions on many platforms and at
       breaking software. He is based in Toronto and when he's not coding,
       you can find him in Rocket League and other competitive video game

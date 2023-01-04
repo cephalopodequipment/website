@@ -1,5 +1,6 @@
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import Image from 'next/image';
 import Script from 'next/script';
 import { useEffect, useState } from 'react';
 import {
@@ -21,6 +22,9 @@ import {
 import { Color } from '../components/Box.types';
 import { useKeyboardShortcuts } from '../hooks';
 import '../public/fonts/svg-with-js.min.css';
+
+const LOGO_HEIGHT = 60;
+const LOGO_WIDTH = 150;
 
 export type PageProps = {
   siteActions: {
@@ -135,203 +139,238 @@ function MyApp({ Component, pageProps }: AppProps) {
 
           <Box rowGap="xxloose">
             <Box
-              alignItems="center"
               as="header"
-              backgroundColor={
-                isScrolling || isShowingMenu ? 'blurred' : 'blurred--off'
-              }
               left={0}
               right={0}
               top={0}
-              paddingY={isScrollingAndNotShowingMenu ? 'xtight' : 'tight'}
               position="fixed"
-              responsiveProps={{
-                phoneOnly: {
-                  paddingX: 'normal',
-                },
-                phoneOrTablet: {
-                  textAlign: 'left',
-                },
-                tabletOnly: {
-                  bottom: isShowingMenu ? 0 : undefined,
-                  alignItems: 'flex-start',
-                },
-                tabletOrLarger: {
-                  display: 'flex',
-                  justifyContent: 'space-between',
-                  paddingX: 'calc(10vw - (15px / 2))',
-                },
-                bigDesktopOrLarger: {
-                  paddingX: 'calc(20vw - (15px / 2))',
-                },
-              }}
-              transitionDuration="normal"
-              transitionProperty={['backdrop-filter', 'padding']}
-              transitionTimingFunction="linear"
+              rowGap={0}
               zIndex="5000"
             >
-              <Anchor
-                href="/"
-                position="relative"
-                variant="subtle"
-                zIndex="5000"
-                onClick={hideMenu}
+              <Box
+                backgroundColor="black"
+                fontSize="xsmall"
+                textAlign="left"
+                width="100%"
               >
-                <Text
-                  fontSize={isScrollingAndNotShowingMenu ? 'small' : 'normal'}
-                  transitionDuration="normal"
-                  transitionProperty="font-size"
-                  transitionTimingFunction="ease-in-out"
-                  variant="logo"
-                >
-                  Cephalopod
-                  <br />
-                  Equipment
-                </Text>
-              </Anchor>
-
-              <HamburgerButton
-                iconName="bars"
-                isVisible={!isShowingMenu}
-                onClick={showMenu}
-              />
-
-              <HamburgerButton
-                iconName="xmark"
-                isVisible={isShowingMenu}
-                onClick={hideMenu}
-              />
-
-              {isShowingMenu && (
                 <Box
+                  backgroundColor="blue--bright"
+                  borderBottom="normal"
+                  paddingX="normal"
+                  paddingY="xtight"
                   responsiveProps={{
-                    tabletOrLarger: {
-                      display: 'none',
-                    },
-                  }}
-                >
-                  <Fish
-                    left="-20vw"
-                    position="fixed"
-                    top="95vh"
-                    zIndex={5000}
-                  />
-                  <PeekingCephalopod
-                    right={0}
-                    position="fixed"
-                    top="30vh"
-                    transform="scaleX(-1)"
-                    zIndex={5000}
-                  />
-                  <BobbingBubble
-                    left={0}
-                    position="fixed"
-                    top="8vh"
-                    transform="translateX(-60%)"
-                    variant={3}
-                    zIndex={5000}
-                  />
-                </Box>
-              )}
-
-              <Box as="nav">
-                <Box
-                  as="ul"
-                  fontSize={isScrollingAndNotShowingMenu ? 'xsmall' : 'small'}
-                  responsiveProps={{
-                    phoneOnly: {
-                      bottom: 0,
-                      height: '100vh',
-                      left: 0,
-                      paddingTop: '16vh',
-                      top: 0,
-                    },
-                    phoneOrTablet: {
-                      backgroundColor: 'blue',
-                      pointerEvents: isShowingMenu ? 'all' : 'none',
-                      position: 'absolute',
-                      right: 0,
-                      transform: `translateX(${isShowingMenu ? '0' : '100%'})`,
-                      zIndex: 4999,
-                    },
                     tabletOnly: {
-                      borderBottomLeftRadius: 'small',
-                      borderTopLeftRadius: 'small',
-                      overflow: 'hidden',
-                      top: 'calc(var(--whiteSpace--loose) * 1.8)',
+                      paddingX: 'calc(10vw - (15px / 2))',
                     },
-                    desktopOrLarger: {
-                      alignItems: 'center',
-                      columnGap: 'normal',
-                      display: 'flex',
+                    bigDesktopOrLarger: {
+                      paddingX: 'calc(20vw - (15px / 2))',
                     },
                   }}
-                  transitionProperty={['font-size', 'transform']}
-                  transitionTimingFunction="ease-in-out"
-                  whiteSpace="nowrap"
+                >
+                  Cephalopod Equipment is now renamed to Informal Staking. For
+                  the past few years we have been closely aligned with the team
+                  at Informal Systems. As a result of our close collaboration,
+                  we’ve decided to formalize our naming across the blockchains
+                  we validate. Our delegators will now see us as &ldquo;Informal
+                  Systems&rdquo;!
+                </Box>
+              </Box>
+
+              <Box
+                alignItems="center"
+                backgroundColor={
+                  isScrolling || isShowingMenu ? 'blurred' : 'blurred--off'
+                }
+                paddingY={isScrollingAndNotShowingMenu ? 'xtight' : 'tight'}
+                responsiveProps={{
+                  phoneOnly: {
+                    paddingX: 'normal',
+                  },
+                  phoneOrTablet: {
+                    textAlign: 'left',
+                  },
+                  tabletOnly: {
+                    alignItems: 'flex-start',
+                    bottom: isShowingMenu ? 0 : undefined,
+                  },
+                  tabletOrLarger: {
+                    display: 'flex',
+                    justifyContent: 'space-between',
+                    paddingX: 'calc(10vw - (15px / 2))',
+                  },
+                  bigDesktopOrLarger: {
+                    paddingX: 'calc(20vw - (15px / 2))',
+                  },
+                }}
+                transitionDuration="normal"
+                transitionProperty={['backdrop-filter', 'padding']}
+                transitionTimingFunction="linear"
+              >
+                <Anchor
+                  href="/"
+                  position="relative"
+                  variant="subtle"
+                  zIndex="5000"
                   onClick={hideMenu}
                 >
-                  {menuItems.map((link) => (
-                    <Anchor
-                      href={link.href}
-                      key={link.label}
-                      variant="subtle"
-                      transitionProperty="padding"
-                      responsiveProps={{
-                        phoneOnly: {
-                          height: '21vh',
-                        },
-                        tabletOnly: {
-                          paddingX: 'loose',
-                          paddingY: 'normal',
-                        },
-                        phoneOrTablet: {
-                          alignItems: 'center',
-                          backgroundColor: link.backgroundColor as Color,
-                          fontName: 'body--bold',
-                          fontSize: 'normal',
-                          justifyContent: 'center',
-                        },
-                      }}
-                      onClick={link.onClick}
-                    >
-                      {link.label}
-                    </Anchor>
-                  ))}
-                  <li>
-                    <Button
-                      variant="primary"
-                      responsiveProps={{
-                        phoneOnly: {
-                          height: '21vh',
-                        },
-                        phoneOrTablet: {
-                          alignItems: 'center',
-                          borderRadius: 0,
-                          fontSize: 'normal',
-                          justifyContent: 'center',
-                          width: '100%',
-                        },
-                        desktopOrLarger: {
-                          fontSize: isScrollingAndNotShowingMenu
-                            ? 'xsmall'
-                            : 'small',
-                          paddingX: isScrollingAndNotShowingMenu
-                            ? 'normal'
-                            : 'loose',
-                          paddingY: isScrollingAndNotShowingMenu
-                            ? 'tight'
-                            : 'normal',
-                        },
-                      }}
-                      transitionDuration="normal"
-                      transitionProperty={['font-size', 'padding', 'transform']}
-                      transitionTimingFunction="ease-in-out"
-                      onClick={delegateToUs}
-                    >
-                      Delegate To Us
-                    </Button>
-                  </li>
+                  <Image
+                    alt="Informal Staking Logo"
+                    objectFit="contain"
+                    height={LOGO_HEIGHT}
+                    src="/img/informal-staking-logo.svg"
+                    width={LOGO_WIDTH}
+                  />
+                </Anchor>
+
+                <HamburgerButton
+                  iconName="bars"
+                  isVisible={!isShowingMenu}
+                  onClick={showMenu}
+                />
+
+                <HamburgerButton
+                  iconName="xmark"
+                  isVisible={isShowingMenu}
+                  onClick={hideMenu}
+                />
+
+                {isShowingMenu && (
+                  <Box
+                    responsiveProps={{
+                      tabletOrLarger: {
+                        display: 'none',
+                      },
+                    }}
+                  >
+                    <Fish
+                      left="-20vw"
+                      position="fixed"
+                      top="95vh"
+                      zIndex={5000}
+                    />
+                    <PeekingCephalopod
+                      right={0}
+                      position="fixed"
+                      top="30vh"
+                      transform="scaleX(-1)"
+                      zIndex={5000}
+                    />
+                    <BobbingBubble
+                      left={0}
+                      position="fixed"
+                      top="8vh"
+                      transform="translateX(-60%)"
+                      variant={3}
+                      zIndex={5000}
+                    />
+                  </Box>
+                )}
+
+                <Box as="nav">
+                  <Box
+                    as="ul"
+                    fontSize={isScrollingAndNotShowingMenu ? 'xsmall' : 'small'}
+                    responsiveProps={{
+                      phoneOnly: {
+                        bottom: 0,
+                        height: '100vh',
+                        left: 0,
+                        paddingTop: '16vh',
+                        top: 0,
+                      },
+                      phoneOrTablet: {
+                        backgroundColor: 'blue',
+                        pointerEvents: isShowingMenu ? 'all' : 'none',
+                        position: 'absolute',
+                        right: 0,
+                        transform: `translateX(${
+                          isShowingMenu ? '0' : '100%'
+                        })`,
+                        zIndex: 4999,
+                      },
+                      tabletOnly: {
+                        borderBottomLeftRadius: 'small',
+                        borderTopLeftRadius: 'small',
+                        overflow: 'hidden',
+                        top: 'calc(var(--whiteSpace--loose) * 1.8)',
+                      },
+                      desktopOrLarger: {
+                        alignItems: 'center',
+                        columnGap: 'normal',
+                        display: 'flex',
+                      },
+                    }}
+                    transitionProperty={['font-size', 'transform']}
+                    transitionTimingFunction="ease-in-out"
+                    whiteSpace="nowrap"
+                    onClick={hideMenu}
+                  >
+                    {menuItems.map((link) => (
+                      <Anchor
+                        href={link.href}
+                        key={link.label}
+                        variant="subtle"
+                        transitionProperty="padding"
+                        responsiveProps={{
+                          phoneOnly: {
+                            height: '21vh',
+                          },
+                          tabletOnly: {
+                            paddingX: 'loose',
+                            paddingY: 'normal',
+                          },
+                          phoneOrTablet: {
+                            alignItems: 'center',
+                            backgroundColor: link.backgroundColor as Color,
+                            fontName: 'body--bold',
+                            fontSize: 'normal',
+                            justifyContent: 'center',
+                          },
+                        }}
+                        onClick={link.onClick}
+                      >
+                        {link.label}
+                      </Anchor>
+                    ))}
+                    <li>
+                      <Button
+                        variant="primary"
+                        responsiveProps={{
+                          phoneOnly: {
+                            height: '21vh',
+                          },
+                          phoneOrTablet: {
+                            alignItems: 'center',
+                            borderRadius: 0,
+                            fontSize: 'normal',
+                            justifyContent: 'center',
+                            width: '100%',
+                          },
+                          desktopOrLarger: {
+                            fontSize: isScrollingAndNotShowingMenu
+                              ? 'xsmall'
+                              : 'small',
+                            paddingX: isScrollingAndNotShowingMenu
+                              ? 'normal'
+                              : 'loose',
+                            paddingY: isScrollingAndNotShowingMenu
+                              ? 'tight'
+                              : 'normal',
+                          },
+                        }}
+                        transitionDuration="normal"
+                        transitionProperty={[
+                          'font-size',
+                          'padding',
+                          'transform',
+                        ]}
+                        transitionTimingFunction="ease-in-out"
+                        onClick={delegateToUs}
+                      >
+                        Delegate To Us
+                      </Button>
+                    </li>
+                  </Box>
                 </Box>
               </Box>
             </Box>
@@ -361,11 +400,16 @@ function MyApp({ Component, pageProps }: AppProps) {
                 }}
               >
                 <Box rowGap="normal">
-                  <Text variant="logo">
-                    Cephalopod
-                    <br />
-                    Equipment
-                  </Text>
+                  <Box>
+                    <Image
+                      alt="Informal Staking Logo"
+                      objectFit="contain"
+                      height={LOGO_HEIGHT}
+                      src="/img/informal-staking-logo.svg"
+                      width={LOGO_WIDTH}
+                    />
+                  </Box>
+
                   <Text as="p">
                     We work with our partners at{' '}
                     <Anchor

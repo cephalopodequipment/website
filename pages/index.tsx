@@ -25,7 +25,7 @@ const Home = ({ siteActions }: PageProps) => {
   return (
     <>
       <Head>
-        <title>Cephalopod Equipment</title>
+        <title>Informal Staking</title>
       </Head>
 
       <PageSection
@@ -198,8 +198,8 @@ const Home = ({ siteActions }: PageProps) => {
         </Text>
 
         <Text as="p">
-          Contribute to the security of these networks by delegating to
-          Cephalopod, and{' '}
+          Contribute to the security of these networks by delegating to Informal
+          Staking, and{' '}
           <Text whiteSpace="nowrap">earn rewards for doing so.</Text>
         </Text>
 
